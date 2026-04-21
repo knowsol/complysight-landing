@@ -605,10 +605,6 @@ export default function App() {
                       </div>
                     ))}
                   </div>
-                  <div className="mt-6 pt-5 border-t border-white/10 flex items-center justify-between">
-                    <div className="text-xs text-slate-400">처리 엔진</div>
-                    <div className="font-mono text-xs font-semibold text-slate-300">COMPLYSIGHT CORE</div>
-                  </div>
                 </div>
               </div>
 
