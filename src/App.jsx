@@ -659,11 +659,13 @@ export default function App() {
               <div className="eyebrow">PRODUCTS</div>
               <h2 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1]" style={{ color: 'var(--navy)' }}>
                 점검보고, 보고확인.<br />
-                <span className="font-serif italic font-normal">보고자와 관리자 모두</span> 하나의 시스템으로.
+                <span className="font-serif italic font-normal">보고자와 관리자 모두</span><br />
+                하나의 시스템으로.
               </h2>
               <p className="mt-8 text-slate-600 leading-relaxed text-lg">
                 컴플리사이트는 현장에서 데이터를 수집하는 Sentinel과
-                관리자가 결과를 운영하는 Manager, 두 제품이 실시간으로 연결된 통합 솔루션입니다.
+                관리자가 결과를 운영하는 Manager,<br />
+                두 제품이 실시간으로 연결된 통합 솔루션입니다.
               </p>
             </div>
 
