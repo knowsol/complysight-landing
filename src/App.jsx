@@ -131,7 +131,7 @@ export default function App() {
                   <span>행정안전부 정보시스템 예방점검 기준 기반</span>
                 </div>
 
-                <h1 className="mt-8 text-[64px] md:text-[88px] lg:text-[104px] leading-[1.02] tracking-[-0.035em] font-semibold fade-up-2" style={{ color: 'var(--navy)' }}>
+                <h1 className="mt-8 text-xl md:text-2xl leading-snug tracking-tight font-semibold fade-up-2" style={{ color: 'var(--navy)' }}>
                   데이터 <span className="font-serif italic font-normal" style={{ color: 'var(--brand)' }}>자동수집</span>
                 </h1>
 
