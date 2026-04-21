@@ -599,7 +599,7 @@ export default function App() {
                       { t: '결과 통합', d: '시스템·기간·담당자 단위로 결과 집계' },
                       { t: '예외 검토 플래그', d: '판단이 필요한 항목만 담당자에게 전달' },
                     ].map((item, i) => (
-                      <div key={i} className="pl-6 border-l-2" style={{ borderColor: 'var(--brand-2)' }}>
+                      <div key={i}>
                         <div className="text-sm font-semibold">{item.t}</div>
                         <div className="text-xs text-slate-400 mt-0.5">{item.d}</div>
                       </div>
