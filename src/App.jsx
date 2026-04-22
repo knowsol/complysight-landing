@@ -266,7 +266,7 @@ export default function App() {
                 <span className="font-serif italic font-normal text-slate-500">수작업</span>으로 관리하고 계신가요?
               </h2>
               <p className="mt-8 text-slate-600 leading-relaxed text-lg">
-                규제는 매년 강화되지만 점검 방식은 십 년 전과 다르지 않습니다.<br />
+                매번 반복되는 예방점검 업무,<br />
                 흩어진 자료와 반복되는 수작업은 담당자의 시간을 소모하고,
                 결정적인 순간마다 리스크로 돌아옵니다.
               </p>
