@@ -324,12 +324,16 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-20">
               <div className="eyebrow">THE SOLUTION</div>
-              <h2 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1]" style={{ color: 'var(--navy)' }}>
-                컴플리사이트는 예방점검 업무를<br />
-                <span className="font-serif italic font-normal" style={{ color: 'var(--brand)' }}>자동화 가능한 프로세스</span>로 전환합니다.
+              <h2 className="mt-4 text-2xl md:text-3xl font-semibold tracking-tight leading-[1.3]" style={{ color: 'var(--navy)' }}>
+                예방점검 방식의 혁신 컴플리사이트
               </h2>
               <p className="mt-8 text-slate-600 leading-relaxed text-lg">
-                8단계의 반복 수작업이 5단계로 줄고, 그중 4단계는 시스템이 자동으로 처리합니다.
+                컴플리사이트는 예방점검 업무를 <strong className="font-semibold text-slate-900">사람이 반복 수행하는 작업이 아닌</strong>,<br />
+                <strong className="font-semibold text-slate-900">시스템이 관리하는 운영 체계로 전환</strong>합니다.
+              </p>
+              <p className="mt-6 text-slate-600 leading-relaxed text-lg">
+                점검 기준을 <strong className="font-semibold text-slate-900">시스템에 내재화</strong>하고 <strong className="font-semibold text-slate-900">점검 데이터 자동 수집부터 결과 판별, 보고까지</strong><br />
+                전 과정을 하나의 흐름으로 통합 관리합니다.
               </p>
             </div>
 
