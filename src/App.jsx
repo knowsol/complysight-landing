@@ -197,7 +197,7 @@ export default function App() {
                     <div className="flex items-center justify-between mb-4">
                       <div>
                         <div className="text-[9px] font-mono text-slate-400 tracking-wider">MAIN DASHBOARD</div>
-                        <div className="text-sm font-semibold text-slate-900 mt-0.5">배경점검 통합 현황</div>
+                        <div className="text-sm font-semibold text-slate-900 mt-0.5">예방점검 통합 현황</div>
                       </div>
                       <div className="flex items-center gap-1.5 text-[9px] font-mono text-slate-500">
                         <span className="w-1.5 h-1.5 rounded-full pulse-dot" style={{ background: 'var(--accent)' }} />
@@ -262,7 +262,7 @@ export default function App() {
             <div className="text-center max-w-3xl mx-auto mb-20">
               <div className="eyebrow">THE PROBLEM</div>
               <h2 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1]" style={{ color: 'var(--navy)' }}>
-                배경점검 업무, 아직도<br />
+                예방점검 업무, 아직도<br />
                 <span className="font-serif italic font-normal text-slate-500">수작업</span>으로 관리하고 계신가요?
               </h2>
               <p className="mt-8 text-slate-600 leading-relaxed text-lg">
@@ -325,7 +325,7 @@ export default function App() {
             <div className="text-center max-w-3xl mx-auto mb-20">
               <div className="eyebrow">THE SOLUTION</div>
               <h2 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1]" style={{ color: 'var(--navy)' }}>
-                컴플리사이트는 배경점검 업무를<br />
+                컴플리사이트는 예방점검 업무를<br />
                 <span className="font-serif italic font-normal" style={{ color: 'var(--brand)' }}>자동화 가능한 프로세스</span>로 전환합니다.
               </h2>
               <p className="mt-8 text-slate-600 leading-relaxed text-lg">
@@ -758,11 +758,11 @@ export default function App() {
             <div className="max-w-3xl mb-20">
               <div className="eyebrow" style={{ color: '#94A3B8' }}>EXPECTED OUTCOMES</div>
               <h2 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1] text-white">
-                도입 이후, 배경점검 업무는<br />
+                도입 이후, 예방점검 업무는<br />
                 <span className="font-serif italic font-normal text-slate-400">이렇게 달라집니다.</span>
               </h2>
               <p className="mt-8 text-slate-300 leading-relaxed text-lg max-w-2xl">
-                단순한 기능 도입이 아니라, 조직의 배경점검 운영 체계 자체가 바뀝니다.
+                단순한 기능 도입이 아니라, 조직의 예방점검 운영 체계 자체가 바뀝니다.
               </p>
             </div>
 
@@ -798,7 +798,7 @@ export default function App() {
                   <span className="font-serif italic font-normal">꼭 필요</span>합니다.
                 </h2>
                 <p className="mt-8 text-slate-600 leading-relaxed max-w-md">
-                  배경점검 업무가 반복적이고, 여러 조직에 걸쳐 있고,
+                  예방점검 업무가 반복적이고, 여러 조직에 걸쳐 있고,
                   감사 대응이 필수인 환경이라면
                   컴플리사이트가 즉시 효과를 발휘합니다.
                 </p>
@@ -857,7 +857,7 @@ export default function App() {
             <div className="eyebrow" style={{ color: '#94A3B8' }}>GET STARTED</div>
 
             <h2 className="mt-6 text-4xl md:text-5xl font-semibold tracking-tight leading-[1.15] text-white">
-              배경점검 업무를<br />
+              예방점검 업무를<br />
               더 <span className="font-serif italic font-normal" style={{ color: 'var(--brand-2)' }}>정확하고 효율적</span>으로<br />
               운영하고 싶다면,
             </h2>
@@ -886,7 +886,7 @@ export default function App() {
                   <span className="font-semibold tracking-tight text-[17px]" style={{ color: 'var(--navy)' }}>COMPLYSIGHT</span>
                 </div>
                 <p className="mt-4 text-sm text-slate-600 leading-relaxed max-w-sm">
-                  공공기관·정보시스템 배경점검 업무를 자동화하는 컴플라이언스 솔루션.
+                  공공기관·정보시스템 예방점검 업무를 자동화하는 컴플라이언스 솔루션.
                 </p>
                 <div className="mt-6 text-xs text-slate-500 font-mono">
                   © 2026 Knowwhere Soft. All rights reserved.
