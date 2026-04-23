@@ -402,21 +402,6 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Emphasized Summary - below After */}
-              <div className="mt-14 flex flex-wrap items-baseline justify-center gap-x-8 gap-y-4">
-                <div className="flex items-baseline gap-3">
-                  <span className="text-4xl md:text-5xl font-mono font-light text-slate-300 line-through">8</span>
-                  <svg width="20" height="20" viewBox="0 0 20 20" style={{ color: 'var(--brand)' }}>
-                    <path d="M4 10 L16 10 M11 5 L16 10 L11 15" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" />
-                  </svg>
-                  <span className="text-5xl md:text-6xl font-serif font-semibold leading-none" style={{ color: 'var(--brand)' }}>5단계</span>
-                </div>
-                <div className="w-px h-10 bg-slate-200 hidden md:block" />
-                <div className="flex items-baseline gap-3">
-                  <span className="text-5xl md:text-6xl font-serif font-semibold leading-none" style={{ color: 'var(--brand)' }}>80%</span>
-                  <span className="text-base text-slate-600">자동화</span>
-                </div>
-              </div>
 
             </div>
           </div>
