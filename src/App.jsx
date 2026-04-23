@@ -473,18 +473,30 @@ export default function App() {
                 <div className="bg-white border border-slate-200 rounded-xl p-8 card-hover">
                   <div className="flex items-start justify-between mb-6">
                     <div className="font-mono text-2xl font-semibold" style={{ color: 'var(--brand)' }}>03</div>
-                    <div className="w-11 h-11 rounded-lg flex items-center justify-center" style={{ background: 'var(--bg-subtle)' }}>
-                      <Gauge className="w-5 h-5" style={{ color: 'var(--navy)' }} strokeWidth={1.5} />
+                    <div className="relative w-16 h-16">
+                      <svg className="w-16 h-16 -rotate-90" viewBox="0 0 36 36">
+                        <circle cx="18" cy="18" r="15.915" fill="none" stroke="#E2E8F0" strokeWidth="2.5" />
+                        <circle cx="18" cy="18" r="15.915" fill="none" stroke="var(--brand)" strokeWidth="2.5" strokeDasharray="90, 100" strokeLinecap="round" pathLength="100" />
+                      </svg>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="font-mono text-[12px] font-bold" style={{ color: 'var(--brand)' }}>90%</span>
+                      </div>
                     </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-slate-900 tracking-tight">점검 항목 자동 분석</h3>
-                  <p className="mt-3 text-sm text-slate-600 leading-relaxed">
-                    행정안전부 기준과 기관별 고유 기준을 시스템에 내재화하고, 수집된 데이터를 기준과 자동 대조해 상태를 판별합니다.
-                  </p>
-                  <div className="mt-6 pt-6 border-t border-slate-100">
-                    <div className="eyebrow">업무상 효과</div>
-                    <div className="mt-2 font-semibold text-slate-900">점검 기준의 일관성 확보</div>
-                  </div>
+                  <h3 className="text-xl font-semibold text-slate-900 tracking-tight">상태 자동 판별</h3>
+                  <div className="mt-1 text-xs font-mono tracking-wider text-slate-400">자동 판별률</div>
+                  <ul className="mt-5 space-y-2.5">
+                    {[
+                      '검증 Code 기준에 따라 수집 데이터의 정상·비정상 여부 자동 분석',
+                      'CPU·Memory·Connection Pool 등 주요 성능 항목에 대한 임계값 판단',
+                      '장애 감지 시 관리자 알림',
+                    ].map((t, i) => (
+                      <li key={i} className="flex items-start gap-2.5 text-sm text-slate-600 leading-relaxed">
+                        <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ background: 'var(--brand)' }} />
+                        <span>{t}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
 
