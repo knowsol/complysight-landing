@@ -524,11 +524,11 @@ export default function App() {
         {/* =========== §5 OPERATIONS (운영 구조) =========== */}
         <section className="py-32">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center max-w-3xl mx-auto mb-20">
+            <div className="text-center max-w-5xl mx-auto mb-20">
               <div className="eyebrow">HOW IT WORKS</div>
-              <h2 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1]" style={{ color: 'var(--navy)' }}>
+              <h2 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tight leading-[1.15]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
                 입력부터, 처리, 결과 보고까지<br />
-                흩어진 점검 정보를 <span className="font-serif italic font-normal">하나로 통합</span>하였습니다.
+                흩어진 점검 정보를 <span className="font-serif italic font-normal whitespace-nowrap">하나로 통합</span>하였습니다.
               </h2>
             </div>
 
