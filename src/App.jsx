@@ -260,8 +260,7 @@ export default function App() {
         <section className="py-32" style={{ background: 'var(--bg-alt)' }}>
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-20">
-              <div className="eyebrow">THE PROBLEM</div>
-              <h2 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1]" style={{ color: 'var(--navy)' }}>
+              <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1]" style={{ color: 'var(--navy)' }}>
                 예방점검 업무, 아직도<br />
                 <span className="font-serif italic font-normal text-slate-500">수작업</span>으로 관리하고 계신가요?
               </h2>
@@ -323,8 +322,7 @@ export default function App() {
         <section className="py-32">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-20">
-              <div className="eyebrow">THE SOLUTION</div>
-              <h2 className="mt-4 text-2xl md:text-3xl font-semibold tracking-tight leading-[1.3]" style={{ color: 'var(--navy)' }}>
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight leading-[1.3]" style={{ color: 'var(--navy)' }}>
                 예방점검 방식의 혁신 컴플리사이트
               </h2>
               <p className="mt-8 text-slate-600 leading-relaxed text-lg">
@@ -428,8 +426,7 @@ export default function App() {
         <section className="py-32" style={{ background: 'var(--bg-alt)' }}>
           <div className="max-w-7xl mx-auto px-6">
             <div className="max-w-3xl mb-20">
-              <div className="eyebrow">CORE FEATURES</div>
-              <h2 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1]" style={{ color: 'var(--navy)' }}>
+              <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1]" style={{ color: 'var(--navy)' }}>
                 컴플리사이트 도입,<br />
                 <span className="font-serif italic font-normal">실질적 업무 효율</span>을 가져옵니다.
               </h2>
@@ -525,8 +522,7 @@ export default function App() {
         <section className="py-32">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center max-w-5xl mx-auto mb-20">
-              <div className="eyebrow">HOW IT WORKS</div>
-              <h2 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tight leading-[1.15]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
+              <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.15]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
                 입력부터, 처리, 결과 보고까지<br />
                 흩어진 점검 정보를 <span className="font-serif italic font-normal whitespace-nowrap">하나로 통합</span>하였습니다.
               </h2>
@@ -656,8 +652,7 @@ export default function App() {
         <section className="py-32" style={{ background: 'var(--bg-alt)' }}>
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-20">
-              <div className="eyebrow">PRODUCTS</div>
-              <h2 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1]" style={{ color: 'var(--navy)' }}>
+              <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1]" style={{ color: 'var(--navy)' }}>
                 점검보고, 보고확인.<br />
                 <span className="font-serif italic font-normal">보고자와 관리자 모두</span><br />
                 하나의 시스템으로.
@@ -756,8 +751,7 @@ export default function App() {
         <section className="py-32" style={{ background: 'var(--navy)' }}>
           <div className="max-w-7xl mx-auto px-6">
             <div className="max-w-3xl mb-20">
-              <div className="eyebrow" style={{ color: '#94A3B8' }}>EXPECTED OUTCOMES</div>
-              <h2 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tight leading-[1.15] text-white" style={{ wordBreak: 'keep-all' }}>
+              <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.15] text-white" style={{ wordBreak: 'keep-all' }}>
                 도입 이후,<br />
                 <span className="font-serif italic font-normal text-slate-400">달라진 예방점검 업무</span>를 확인하세요.
               </h2>
@@ -792,8 +786,7 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid lg:grid-cols-[1fr_1.2fr] gap-20 items-start">
               <div className="lg:sticky lg:top-24">
-                <div className="eyebrow">WHO IT'S FOR</div>
-                <h2 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1]" style={{ color: 'var(--navy)' }}>
+                <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1]" style={{ color: 'var(--navy)' }}>
                   이런 조직에<br />
                   <span className="font-serif italic font-normal">꼭 필요</span>합니다.
                 </h2>
@@ -854,9 +847,7 @@ export default function App() {
           }} />
 
           <div className="relative max-w-4xl mx-auto px-6 text-center">
-            <div className="eyebrow" style={{ color: '#94A3B8' }}>GET STARTED</div>
-
-            <h2 className="mt-6 text-4xl md:text-5xl font-semibold tracking-tight leading-[1.15] text-white">
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.15] text-white">
               예방점검 업무를<br />
               더 <span className="font-serif italic font-normal" style={{ color: 'var(--brand-2)' }}>정확하고 효율적</span>으로<br />
               운영하고 싶다면,
