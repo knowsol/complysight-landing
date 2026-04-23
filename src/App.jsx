@@ -674,7 +674,7 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-20">
               <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1]" style={{ color: 'var(--navy)' }}>
-                점검보고, 보고확인.<br />
+                <span style={{ color: 'var(--accent)' }}>점검보고</span>, <span style={{ color: 'var(--brand)' }}>보고확인</span>.<br />
                 <span className="font-serif italic font-normal">보고자와 관리자 모두</span><br />
                 하나의 시스템으로.
               </h2>
@@ -686,45 +686,6 @@ export default function App() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-5">
-
-              {/* MANAGER */}
-              <div className="bg-white border border-slate-200 rounded-2xl p-10 card-hover">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="px-2.5 py-1 rounded font-mono text-[10px] font-bold tracking-wider text-white" style={{ background: 'var(--brand)' }}>
-                    MANAGER
-                  </div>
-                  <div className="eyebrow" style={{ marginTop: 0 }}>통합 관리 · 대시보드</div>
-                </div>
-
-                <h3 className="text-2xl md:text-3xl font-semibold tracking-tight leading-snug" style={{ color: 'var(--navy)' }}>
-                  점검 기준을 내재화하고<br />결과를 한눈에.
-                </h3>
-
-                <p className="mt-5 text-slate-600 leading-relaxed">
-                  행정안전부 예방점검 기준과 기관 고유 기준을 시스템에 내재화하고,
-                  Sentinel이 수집한 데이터를 기준과 자동 대조하여
-                  상태 판별, 대시보드 시각화, 보고서 생성까지 한 화면에서 처리합니다.
-                </p>
-
-                <ul className="mt-8 space-y-3">
-                  {[
-                    '행정안전부 기준·기관 커스텀 룰 내재화',
-                    '상태 자동 판별 및 대시보드 시각화',
-                    '정기·감사 보고서 자동 생성',
-                    '기관·부서·직무별 권한 관리',
-                  ].map((t, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm text-slate-700">
-                      <Check className="w-4 h-4 shrink-0" style={{ color: 'var(--brand)' }} strokeWidth={2.5} />
-                      {t}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-8 pt-8 border-t border-slate-100">
-                  <div className="eyebrow">FOR</div>
-                  <div className="mt-1 text-sm font-semibold text-slate-900">관리자 · 감사 담당</div>
-                </div>
-              </div>
 
               {/* SENTINEL */}
               <div className="bg-white border border-slate-200 rounded-2xl p-10 card-hover">
@@ -762,6 +723,45 @@ export default function App() {
                 <div className="mt-8 pt-8 border-t border-slate-100">
                   <div className="eyebrow">FOR</div>
                   <div className="mt-1 text-sm font-semibold text-slate-900">운영 환경 상주</div>
+                </div>
+              </div>
+
+              {/* MANAGER */}
+              <div className="bg-white border border-slate-200 rounded-2xl p-10 card-hover">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="px-2.5 py-1 rounded font-mono text-[10px] font-bold tracking-wider text-white" style={{ background: 'var(--brand)' }}>
+                    MANAGER
+                  </div>
+                  <div className="eyebrow" style={{ marginTop: 0 }}>통합 관리 · 대시보드</div>
+                </div>
+
+                <h3 className="text-2xl md:text-3xl font-semibold tracking-tight leading-snug" style={{ color: 'var(--navy)' }}>
+                  점검 기준을 내재화하고<br />결과를 한눈에.
+                </h3>
+
+                <p className="mt-5 text-slate-600 leading-relaxed">
+                  행정안전부 예방점검 기준과 기관 고유 기준을 시스템에 내재화하고,
+                  Sentinel이 수집한 데이터를 기준과 자동 대조하여
+                  상태 판별, 대시보드 시각화, 보고서 생성까지 한 화면에서 처리합니다.
+                </p>
+
+                <ul className="mt-8 space-y-3">
+                  {[
+                    '행정안전부 기준·기관 커스텀 룰 내재화',
+                    '상태 자동 판별 및 대시보드 시각화',
+                    '정기·감사 보고서 자동 생성',
+                    '기관·부서·직무별 권한 관리',
+                  ].map((t, i) => (
+                    <li key={i} className="flex items-center gap-3 text-sm text-slate-700">
+                      <Check className="w-4 h-4 shrink-0" style={{ color: 'var(--brand)' }} strokeWidth={2.5} />
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-8 pt-8 border-t border-slate-100">
+                  <div className="eyebrow">FOR</div>
+                  <div className="mt-1 text-sm font-semibold text-slate-900">관리자 · 감사 담당</div>
                 </div>
               </div>
             </div>
