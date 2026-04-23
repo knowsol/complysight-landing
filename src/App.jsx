@@ -338,106 +338,71 @@ export default function App() {
             {/* Before / After Comparison */}
             <div className="max-w-5xl mx-auto">
 
-              {/* BEFORE */}
+              {/* BEFORE — 5 columns aligned with AFTER; merged items stacked vertically */}
               <div>
                 <div className="mb-4 text-xs font-mono tracking-wider text-slate-400">
                   BEFORE · 개별 관리 · 수동 관리
                 </div>
-                <div className="flex items-center gap-1.5">
-                  {['기준 해석', '수동 점검', '수기 분석', '엑셀 편집', '수치 모니터링', '수기 보고', '수동 조치', '이력 추적'].map((t, i, arr) => (
-                    <React.Fragment key={i}>
-                      <div className="flex-1 min-w-0 px-2 py-2.5 rounded border border-slate-200 bg-white text-center">
-                        <div className="text-[11px] text-slate-500 truncate">{t}</div>
-                      </div>
-                      {i < arr.length - 1 && (
-                        <div className="text-slate-300 text-xs shrink-0">›</div>
-                      )}
-                    </React.Fragment>
-                  ))}
-                </div>
-              </div>
-
-              {/* Connector: BEFORE (8) → AFTER (5) mapping */}
-              <div className="relative my-6 md:my-8">
-                <svg
-                  className="w-full h-20 md:h-28 block"
-                  viewBox="0 0 1000 100"
-                  preserveAspectRatio="none"
-                  aria-hidden="true"
-                >
+                <div className="grid grid-cols-5 gap-3 items-end">
                   {[
-                    { from: 62.5,  to: 100 }, // 기준 해석 → 기준 내재화
-                    { from: 187.5, to: 300 }, // 수동 점검 → 데이터 확보
-                    { from: 312.5, to: 500 }, // 수기 분석 → 상태 판별
-                    { from: 437.5, to: 700 }, // 엑셀 편집 → 리포트 생성
-                    { from: 562.5, to: 500 }, // 수치 모니터링 → 상태 판별
-                    { from: 687.5, to: 700 }, // 수기 보고 → 리포트 생성
-                    { from: 812.5, to: 900 }, // 수동 조치 → 점검 이력 자동 기록
-                    { from: 937.5, to: 900 }, // 이력 추적 → 점검 이력 자동 기록
-                  ].map((p, i) => (
-                    <path
-                      key={i}
-                      d={`M ${p.from} 0 C ${p.from} 55, ${p.to} 45, ${p.to} 100`}
-                      stroke="var(--brand)"
-                      strokeOpacity="0.35"
-                      strokeWidth="2"
-                      fill="none"
-                      strokeLinecap="round"
-                      vectorEffect="non-scaling-stroke"
-                    />
-                  ))}
-                </svg>
-                {/* Arrow tips at AFTER positions (CSS-positioned so they don't stretch) */}
-                <div className="absolute inset-x-0 bottom-0 h-0 pointer-events-none">
-                  {[10, 30, 50, 70, 90].map((pct, i) => (
-                    <svg
-                      key={i}
-                      className="absolute -translate-x-1/2 -translate-y-1/2"
-                      style={{ left: `${pct}%` }}
-                      width="14"
-                      height="14"
-                      viewBox="0 0 14 14"
-                    >
-                      <path d="M2 4 L7 9 L12 4" stroke="var(--brand)" strokeOpacity="0.6" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
+                    ['기준 해석'],
+                    ['수동 점검'],
+                    ['수기 분석', '수치 모니터링'],
+                    ['엑셀 편집', '수기 보고'],
+                    ['수동 조치', '이력 추적'],
+                  ].map((col, i) => (
+                    <div key={i} className="flex flex-col gap-2">
+                      {col.map((t, j) => (
+                        <div key={j} className="px-3 py-2.5 rounded border border-slate-200 bg-white text-center">
+                          <div className="text-[11px] text-slate-500 truncate">{t}</div>
+                        </div>
+                      ))}
+                    </div>
                   ))}
                 </div>
               </div>
 
-              {/* AFTER */}
+              {/* Down arrows — one per column */}
+              <div className="grid grid-cols-5 gap-3 my-3">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <div key={i} className="flex justify-center text-slate-300">
+                    <svg width="16" height="22" viewBox="0 0 16 22" aria-hidden="true">
+                      <path d="M8 2 L8 18 M4 14 L8 18 L12 14" stroke="currentColor" strokeWidth="1.25" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                ))}
+              </div>
+
+              {/* AFTER — 5 columns matching BEFORE columns 1:1 */}
               <div>
                 <div className="mb-4 text-xs font-mono tracking-wider" style={{ color: 'var(--brand)' }}>
                   AFTER · 통합 관리 · 자동 관리
                 </div>
-                <div className="flex items-stretch gap-2">
+                <div className="grid grid-cols-5 gap-3">
                   {[
                     { t: '기준 내재화', icon: BookCheck, auto: true },
                     { t: '데이터 확보', icon: Database, auto: true },
                     { t: '상태 판별', icon: Gauge, auto: true },
                     { t: '리포트 생성', icon: FileSearch, auto: false },
                     { t: '점검 이력 자동 기록', icon: FileCheck, auto: true },
-                  ].map((s, i, arr) => (
-                    <React.Fragment key={i}>
-                      <div
-                        className="flex-1 rounded-lg p-5 flex items-center gap-3"
-                        style={{
-                          background: s.auto ? 'var(--brand)' : 'white',
-                          border: s.auto ? 'none' : '1.5px solid #CBD5E1',
-                          color: s.auto ? 'white' : 'inherit',
-                        }}
-                      >
-                        <s.icon className="w-5 h-5 shrink-0" strokeWidth={1.75} style={{ color: s.auto ? 'white' : '#64748B' }} />
-                        <div className="min-w-0">
-                          <div className={`text-sm font-semibold ${s.auto ? '' : 'text-slate-900'}`}>{s.t}</div>
-                          <div className={`text-[10px] font-mono mt-0.5 ${s.auto ? 'opacity-70' : 'text-slate-400'}`}>
-                            {s.auto ? 'AUTO' : '담당자'}
-                          </div>
+                  ].map((s, i) => (
+                    <div
+                      key={i}
+                      className="rounded-lg p-4 flex items-center gap-2.5"
+                      style={{
+                        background: s.auto ? 'var(--brand)' : 'white',
+                        border: s.auto ? 'none' : '1.5px solid #CBD5E1',
+                        color: s.auto ? 'white' : 'inherit',
+                      }}
+                    >
+                      <s.icon className="w-5 h-5 shrink-0" strokeWidth={1.75} style={{ color: s.auto ? 'white' : '#64748B' }} />
+                      <div className="min-w-0">
+                        <div className={`text-sm font-semibold leading-tight ${s.auto ? '' : 'text-slate-900'}`}>{s.t}</div>
+                        <div className={`text-[10px] font-mono mt-0.5 ${s.auto ? 'opacity-70' : 'text-slate-400'}`}>
+                          {s.auto ? 'AUTO' : '담당자'}
                         </div>
                       </div>
-                      {i < arr.length - 1 && (
-                        <div className="flex items-center text-slate-300 shrink-0 text-sm">›</div>
-                      )}
-                    </React.Fragment>
+                    </div>
                   ))}
                 </div>
               </div>
