@@ -439,7 +439,7 @@ export default function App() {
             <div className="grid md:grid-cols-2 gap-6">
               {/* Left column */}
               <div className="flex flex-col gap-6">
-                {/* 01 데이터 자동 수집 */}
+                {/* 01 데이터 자동 확보 */}
                 <div className="bg-white border border-slate-200 rounded-xl p-8 card-hover">
                   <div className="flex items-start justify-between mb-6">
                     <div className="font-mono text-2xl font-semibold" style={{ color: 'var(--brand)' }}>01</div>
@@ -447,14 +447,19 @@ export default function App() {
                       <Database className="w-5 h-5" style={{ color: 'var(--navy)' }} strokeWidth={1.5} />
                     </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-slate-900 tracking-tight">데이터 자동 수집</h3>
-                  <p className="mt-3 text-sm text-slate-600 leading-relaxed">
-                    Web·WAS·DB·Server 등 주요 시스템 자원에서 점검 항목별 데이터를 자동으로 수집하고, 원천 증적까지 함께 보관합니다.
-                  </p>
-                  <div className="mt-6 pt-6 border-t border-slate-100">
-                    <div className="eyebrow">업무상 효과</div>
-                    <div className="mt-2 font-semibold text-slate-900">수기 캡처·엑셀 작성 업무 제거</div>
-                  </div>
+                  <h3 className="text-xl font-semibold text-slate-900 tracking-tight">데이터 자동 확보</h3>
+                  <ul className="mt-4 space-y-2.5">
+                    {[
+                      'Web·WAS·DB·Server 등 주요 자원으로부터 데이터 자동 확보',
+                      '점검 대상별 수집 항목 및 주기 설정 가능',
+                      '보고서 제출율·수집 커버리지·유효 증적 충족율 등 시각화 자료 제공',
+                    ].map((t, i) => (
+                      <li key={i} className="flex items-start gap-2.5 text-sm text-slate-600 leading-relaxed">
+                        <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ background: 'var(--brand)' }} />
+                        <span>{t}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
                 {/* 03 상태 자동 판별 */}
