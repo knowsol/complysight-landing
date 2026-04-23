@@ -757,9 +757,9 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="max-w-3xl mb-20">
               <div className="eyebrow" style={{ color: '#94A3B8' }}>EXPECTED OUTCOMES</div>
-              <h2 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1] text-white">
-                도입 이후, 예방점검 업무는<br />
-                <span className="font-serif italic font-normal text-slate-400">이렇게 달라집니다.</span>
+              <h2 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tight leading-[1.15] text-white" style={{ wordBreak: 'keep-all' }}>
+                도입 이후,<br />
+                <span className="font-serif italic font-normal text-slate-400">달라진 예방점검 업무</span>를 확인하세요.
               </h2>
               <p className="mt-8 text-slate-300 leading-relaxed text-lg max-w-2xl">
                 단순한 기능 도입이 아니라, 조직의 예방점검 운영 체계 자체가 바뀝니다.
