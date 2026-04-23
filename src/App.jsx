@@ -103,7 +103,6 @@ export default function App() {
               <span className="font-semibold tracking-tight text-[17px]" style={{ color: 'var(--navy)' }}>COMPLYSIGHT</span>
             </div>
             <div className="flex items-center gap-2">
-              <button className="btn-ghost px-4 py-2 text-sm rounded-md hidden sm:block">로그인</button>
               <button className="btn-primary px-4 py-2 text-sm rounded-md flex items-center gap-1.5">
                 도입 문의 <ArrowRight className="w-3.5 h-3.5" />
               </button>
