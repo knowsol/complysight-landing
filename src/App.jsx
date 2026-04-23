@@ -443,12 +443,19 @@ export default function App() {
                 <div className="bg-white border border-slate-200 rounded-xl p-8 card-hover">
                   <div className="flex items-start justify-between mb-6">
                     <div className="font-mono text-2xl font-semibold" style={{ color: 'var(--brand)' }}>01</div>
-                    <div className="w-11 h-11 rounded-lg flex items-center justify-center" style={{ background: 'var(--bg-subtle)' }}>
-                      <Database className="w-5 h-5" style={{ color: 'var(--navy)' }} strokeWidth={1.5} />
+                    <div className="relative w-16 h-16">
+                      <svg className="w-16 h-16 -rotate-90" viewBox="0 0 36 36">
+                        <circle cx="18" cy="18" r="15.915" fill="none" stroke="#E2E8F0" strokeWidth="2.5" />
+                        <circle cx="18" cy="18" r="15.915" fill="none" stroke="var(--brand)" strokeWidth="2.5" strokeDasharray="95, 100" strokeLinecap="round" pathLength="100" />
+                      </svg>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="font-mono text-[12px] font-bold" style={{ color: 'var(--brand)' }}>95%</span>
+                      </div>
                     </div>
                   </div>
                   <h3 className="text-xl font-semibold text-slate-900 tracking-tight">데이터 자동 확보</h3>
-                  <ul className="mt-4 space-y-2.5">
+                  <div className="mt-1 text-xs font-mono tracking-wider text-slate-400">자동 수집률</div>
+                  <ul className="mt-5 space-y-2.5">
                     {[
                       'Web·WAS·DB·Server 등 주요 자원으로부터 데이터 자동 확보',
                       '점검 대상별 수집 항목 및 주기 설정 가능',
