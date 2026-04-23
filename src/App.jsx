@@ -527,13 +527,9 @@ export default function App() {
             <div className="text-center max-w-3xl mx-auto mb-20">
               <div className="eyebrow">HOW IT WORKS</div>
               <h2 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1]" style={{ color: 'var(--navy)' }}>
-                흩어진 점검 정보를<br />
-                <span className="font-serif italic font-normal">하나의 운영 체계</span>로 연결합니다.
+                입력부터, 처리, 결과 보고까지<br />
+                흩어진 점검 정보를 <span className="font-serif italic font-normal">하나로 통합</span>하였습니다.
               </h2>
-              <p className="mt-8 text-slate-600 leading-relaxed text-lg">
-                입력 데이터, 처리 로직, 결과물. 세 가지 축이 하나의 시스템 안에서
-                일관되게 작동하며 점검 업무의 표준 운영 체계를 만듭니다.
-              </p>
             </div>
 
             <div className="flex items-stretch gap-0 -mx-2">
