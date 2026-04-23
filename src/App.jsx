@@ -374,8 +374,8 @@ export default function App() {
                     { t: '기준 내재화', icon: BookCheck, auto: true },
                     { t: '데이터 확보', icon: Database, auto: true },
                     { t: '상태 판별', icon: Gauge, auto: true },
-                    { t: '결과 검토', icon: FileSearch, auto: false },
-                    { t: '리포트 · 이력', icon: FileCheck, auto: true },
+                    { t: '리포트 생성', icon: FileSearch, auto: false },
+                    { t: '점검 이력 자동 기록', icon: FileCheck, auto: true },
                   ].map((s, i, arr) => (
                     <React.Fragment key={i}>
                       <div
