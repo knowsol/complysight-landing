@@ -357,11 +357,51 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Transition divider - subtle */}
-              <div className="flex items-center justify-center py-10">
-                <svg width="24" height="32" viewBox="0 0 24 32" className="text-slate-300">
-                  <path d="M12 2 L12 28 M4 20 L12 28 L20 20" stroke="currentColor" strokeWidth="1.25" fill="none" strokeLinecap="round" />
+              {/* Connector: BEFORE (8) → AFTER (5) mapping */}
+              <div className="relative my-6 md:my-8">
+                <svg
+                  className="w-full h-20 md:h-28 block"
+                  viewBox="0 0 1000 100"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  {[
+                    { from: 62.5,  to: 100 }, // 기준 해석 → 기준 내재화
+                    { from: 187.5, to: 300 }, // 수동 점검 → 데이터 확보
+                    { from: 312.5, to: 500 }, // 수기 분석 → 상태 판별
+                    { from: 437.5, to: 700 }, // 엑셀 편집 → 리포트 생성
+                    { from: 562.5, to: 500 }, // 수치 모니터링 → 상태 판별
+                    { from: 687.5, to: 700 }, // 수기 보고 → 리포트 생성
+                    { from: 812.5, to: 900 }, // 수동 조치 → 점검 이력 자동 기록
+                    { from: 937.5, to: 900 }, // 이력 추적 → 점검 이력 자동 기록
+                  ].map((p, i) => (
+                    <path
+                      key={i}
+                      d={`M ${p.from} 0 C ${p.from} 55, ${p.to} 45, ${p.to} 100`}
+                      stroke="var(--brand)"
+                      strokeOpacity="0.35"
+                      strokeWidth="2"
+                      fill="none"
+                      strokeLinecap="round"
+                      vectorEffect="non-scaling-stroke"
+                    />
+                  ))}
                 </svg>
+                {/* Arrow tips at AFTER positions (CSS-positioned so they don't stretch) */}
+                <div className="absolute inset-x-0 bottom-0 h-0 pointer-events-none">
+                  {[10, 30, 50, 70, 90].map((pct, i) => (
+                    <svg
+                      key={i}
+                      className="absolute -translate-x-1/2 -translate-y-1/2"
+                      style={{ left: `${pct}%` }}
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                    >
+                      <path d="M2 4 L7 9 L12 4" stroke="var(--brand)" strokeOpacity="0.6" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  ))}
+                </div>
               </div>
 
               {/* AFTER */}
