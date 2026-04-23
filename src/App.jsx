@@ -102,13 +102,6 @@ export default function App() {
               </div>
               <span className="font-semibold tracking-tight text-[17px]" style={{ color: 'var(--navy)' }}>COMPLYSIGHT</span>
             </div>
-            <div className="hidden md:flex items-center gap-8 text-sm text-slate-600">
-              <a className="hover:text-slate-900 transition">솔루션</a>
-              <a className="hover:text-slate-900 transition">기능</a>
-              <a className="hover:text-slate-900 transition">도입 효과</a>
-              <a className="hover:text-slate-900 transition">자료실</a>
-              <a className="hover:text-slate-900 transition">문의</a>
-            </div>
             <div className="flex items-center gap-2">
               <button className="btn-ghost px-4 py-2 text-sm rounded-md hidden sm:block">로그인</button>
               <button className="btn-primary px-4 py-2 text-sm rounded-md flex items-center gap-1.5">
@@ -889,35 +882,19 @@ export default function App() {
         {/* =========== FOOTER =========== */}
         <footer className="bg-white border-t border-slate-200">
           <div className="max-w-7xl mx-auto px-6 py-16">
-            <div className="grid md:grid-cols-[2fr_1fr_1fr_1fr] gap-10">
-              <div>
-                <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-md flex items-center justify-center" style={{ background: 'var(--navy)' }}>
-                    <Circle className="w-3.5 h-3.5 text-white" fill="white" strokeWidth={0} />
-                  </div>
-                  <span className="font-semibold tracking-tight text-[17px]" style={{ color: 'var(--navy)' }}>COMPLYSIGHT</span>
+            <div>
+              <div className="flex items-center gap-2">
+                <div className="w-7 h-7 rounded-md flex items-center justify-center" style={{ background: 'var(--navy)' }}>
+                  <Circle className="w-3.5 h-3.5 text-white" fill="white" strokeWidth={0} />
                 </div>
-                <p className="mt-4 text-sm text-slate-600 leading-relaxed max-w-sm">
-                  공공기관·정보시스템 예방점검 업무를 자동화하는 컴플라이언스 솔루션.
-                </p>
-                <div className="mt-6 text-xs text-slate-500 font-mono">
-                  © 2026 Knowwhere Soft. All rights reserved.
-                </div>
+                <span className="font-semibold tracking-tight text-[17px]" style={{ color: 'var(--navy)' }}>COMPLYSIGHT</span>
               </div>
-              {[
-                { h: '솔루션', l: ['주요 기능', '운영 구조', '도입 효과', '지원 환경'] },
-                { h: '자료실', l: ['소개 자료', '도입 사례', '기술 문서', 'FAQ'] },
-                { h: '회사', l: ['회사 소개', '파트너', '문의하기', '채용'] },
-              ].map((c, i) => (
-                <div key={i}>
-                  <div className="text-xs font-semibold tracking-wider text-slate-400 font-mono uppercase">{c.h}</div>
-                  <ul className="mt-4 space-y-2.5">
-                    {c.l.map(item => (
-                      <li key={item} className="text-sm text-slate-600 hover:text-slate-900 transition cursor-pointer">{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+              <p className="mt-4 text-sm text-slate-600 leading-relaxed max-w-sm">
+                공공기관·정보시스템 예방점검 업무를 자동화하는 컴플라이언스 솔루션.
+              </p>
+              <div className="mt-6 text-xs text-slate-500 font-mono">
+                © 2026 Knowwhere Soft. All rights reserved.
+              </div>
             </div>
           </div>
         </footer>
