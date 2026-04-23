@@ -321,103 +321,69 @@ export default function App() {
         {/* =========== §3 SOLUTION (해결 방식) =========== */}
         <section className="py-32">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center max-w-3xl mx-auto mb-20">
-              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight leading-[1.3]" style={{ color: 'var(--navy)' }}>
-                예방점검 방식의 혁신 컴플리사이트
-              </h2>
-              <p className="mt-8 text-slate-600 leading-relaxed text-lg">
-                컴플리사이트는 예방점검 업무를 <strong className="font-semibold text-slate-900">사람이 반복 수행하는 작업이 아닌</strong>,<br />
-                <strong className="font-semibold text-slate-900">시스템이 관리하는 운영 체계로 전환</strong>합니다.
-              </p>
-              <p className="mt-6 text-slate-600 leading-relaxed text-lg">
-                점검 기준을 <strong className="font-semibold text-slate-900">시스템에 내재화</strong>하고 <strong className="font-semibold text-slate-900">점검 데이터 자동 수집부터 결과 판별, 보고까지</strong><br />
-                전 과정을 하나의 흐름으로 통합 관리합니다.
-              </p>
+            {/* Title + Bullets */}
+            <div className="grid md:grid-cols-[auto_1fr] gap-8 md:gap-16 mb-12 max-w-6xl mx-auto">
+              <div className="md:max-w-[220px]">
+                <h2 className="text-2xl md:text-[28px] font-semibold leading-[1.3] tracking-tight" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
+                  개별·수동관리에서<br />
+                  통합·자동관리로,
+                </h2>
+                <div className="mt-2 text-xl md:text-2xl font-semibold leading-snug" style={{ color: 'var(--brand)' }}>
+                  컴플리사이트 차별점
+                </div>
+              </div>
+              <ul className="space-y-3 md:pt-2">
+                {[
+                  '컴플리사이트는 기존의 개별 수작업 중심 점검 방식을 벗어나, 점검 기준 설정부터 리포트 생성까지 전 과정을 자동화합니다.',
+                  '통합 대시보드를 통해 점검 현황과 이상 징후를 한눈에 파악할 수 있으며, 실시간 알림으로 신속한 대응이 가능합니다.',
+                  '이를 통해 운영 효율성과 점검 정확도를 동시에 높이는 통합 예방점검 관리체계를 구현합니다.',
+                ].map((t, i) => (
+                  <li key={i} className="flex items-start gap-3 text-slate-700 leading-relaxed">
+                    <span className="mt-2.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ background: 'var(--brand)' }} />
+                    <span>{t}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            {/* Before / After Comparison */}
-            <div className="max-w-5xl mx-auto">
-
-              {/* BEFORE */}
-              <div>
-                <div className="mb-4 text-xs font-mono tracking-wider text-slate-400">
-                  BEFORE · 도입 전
+            {/* VS Comparison Table */}
+            <div className="max-w-6xl mx-auto border border-slate-200 rounded-xl overflow-hidden bg-white">
+              {/* Header */}
+              <div className="grid grid-cols-[120px_1fr_1fr] md:grid-cols-[160px_1fr_1fr] border-b border-slate-200">
+                <div className="bg-slate-50 border-r border-slate-200" />
+                <div className="py-5 px-4 md:px-6 text-center bg-slate-50 border-r border-slate-200">
+                  <div className="text-sm md:text-base font-semibold text-slate-700">기존 방식</div>
+                  <div className="text-xs text-slate-500 mt-1 font-mono tracking-wider">개별 관리 · 수동 관리</div>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  {['수집 계획', '시스템 접속', '화면 캡처', '엑셀 입력', '기준 대조', '결과 검토', '보고서 작성', '증빙 정리'].map((t, i, arr) => (
-                    <React.Fragment key={i}>
-                      <div className="flex-1 min-w-0 px-2 py-2.5 rounded border border-slate-200 bg-white text-center">
-                        <div className="text-[11px] text-slate-500 truncate">{t}</div>
-                      </div>
-                      {i < arr.length - 1 && (
-                        <div className="text-slate-300 text-xs shrink-0">›</div>
-                      )}
-                    </React.Fragment>
-                  ))}
+                <div className="py-5 px-4 md:px-6 text-center" style={{ background: 'var(--navy)' }}>
+                  <div className="text-sm md:text-base font-semibold text-white">컴플리사이트</div>
+                  <div className="text-xs mt-1 font-mono tracking-wider" style={{ color: '#94A3B8' }}>통합 관리 · 자동 관리</div>
                 </div>
               </div>
 
-              {/* Transition divider - subtle */}
-              <div className="flex items-center justify-center py-10">
-                <svg width="24" height="32" viewBox="0 0 24 32" className="text-slate-300">
-                  <path d="M12 2 L12 28 M4 20 L12 28 L20 20" stroke="currentColor" strokeWidth="1.25" fill="none" strokeLinecap="round" />
-                </svg>
-              </div>
-
-              {/* AFTER */}
-              <div>
-                <div className="mb-4 text-xs font-mono tracking-wider" style={{ color: 'var(--brand)' }}>
-                  AFTER · 도입 후
+              {/* Rows */}
+              {[
+                { label: '점검기준관리', before: '매뉴얼 문서 해석 및 수기 입력 의존', after: '최신 점검 기준 자동 반영 및 표준화 점검 적용' },
+                { label: '데이터 확보', before: '시스템별 수동 점검 및 개별 로그 확인', after: 'Agent·Agentless 기반 자동 데이터 확보' },
+                { label: '상태 판단', before: '운영자 수작업 분석 및 임계값 수동 확인', after: '정상·비정상 상태 자동 판별 및 이상 징후 감지' },
+                { label: '리포트 생성', before: '한글·엑셀 반복 편집, 수작업 포맷 맞춤', after: '점검 결과 자동 리포트 생성 및 표준 보고서 제공' },
+                { label: '대시보드', before: '단순 수치 모니터링 중심', after: '전체 현황을 한눈에 파악할 수 있는 통합 대시보드 제공' },
+                { label: '감사 대응', before: '운영자별 수기 보고서 작성', after: '증적 기반 자동 보고서로 감사 대응 즉시 가능' },
+                { label: '대응 속도', before: '점검 후 수동 확인 및 조치 반복', after: '실시간 알림 및 자동 판단으로 즉각적 대응 가능' },
+                { label: '점검 이력 관리', before: '자원별 점검 이력 추적 어려움', after: '점검 이력 자동 기록 및 이력 분석 지원' },
+              ].map((r, i, arr) => (
+                <div key={i} className={`grid grid-cols-[120px_1fr_1fr] md:grid-cols-[160px_1fr_1fr] ${i < arr.length - 1 ? 'border-b border-slate-100' : ''}`}>
+                  <div className="py-4 px-4 md:px-5 text-sm font-semibold text-slate-700 bg-slate-50 border-r border-slate-200 flex items-center">
+                    {r.label}
+                  </div>
+                  <div className="py-4 px-4 md:px-6 text-sm text-slate-600 border-r border-slate-200 flex items-center leading-relaxed">
+                    {r.before}
+                  </div>
+                  <div className="py-4 px-4 md:px-6 text-sm font-semibold flex items-center leading-relaxed" style={{ color: 'var(--brand)' }}>
+                    {r.after}
+                  </div>
                 </div>
-                <div className="flex items-stretch gap-2">
-                  {[
-                    { t: '데이터 수집', icon: Database, auto: true },
-                    { t: '자동 분석', icon: Gauge, auto: true },
-                    { t: '결과 검토', icon: FileSearch, auto: false },
-                    { t: '보고서 생성', icon: FileCheck, auto: true },
-                    { t: '이력 관리', icon: BookCheck, auto: true },
-                  ].map((s, i, arr) => (
-                    <React.Fragment key={i}>
-                      <div
-                        className="flex-1 rounded-lg p-5 flex items-center gap-3"
-                        style={{
-                          background: s.auto ? 'var(--brand)' : 'white',
-                          border: s.auto ? 'none' : '1.5px solid #CBD5E1',
-                          color: s.auto ? 'white' : 'inherit',
-                        }}
-                      >
-                        <s.icon className="w-5 h-5 shrink-0" strokeWidth={1.75} style={{ color: s.auto ? 'white' : '#64748B' }} />
-                        <div className="min-w-0">
-                          <div className={`text-sm font-semibold ${s.auto ? '' : 'text-slate-900'}`}>{s.t}</div>
-                          <div className={`text-[10px] font-mono mt-0.5 ${s.auto ? 'opacity-70' : 'text-slate-400'}`}>
-                            {s.auto ? 'AUTO' : '담당자'}
-                          </div>
-                        </div>
-                      </div>
-                      {i < arr.length - 1 && (
-                        <div className="flex items-center text-slate-300 shrink-0 text-sm">›</div>
-                      )}
-                    </React.Fragment>
-                  ))}
-                </div>
-              </div>
-
-              {/* Emphasized Summary - below After */}
-              <div className="mt-14 flex flex-wrap items-baseline justify-center gap-x-8 gap-y-4">
-                <div className="flex items-baseline gap-3">
-                  <span className="text-4xl md:text-5xl font-mono font-light text-slate-300 line-through">8</span>
-                  <svg width="20" height="20" viewBox="0 0 20 20" style={{ color: 'var(--brand)' }}>
-                    <path d="M4 10 L16 10 M11 5 L16 10 L11 15" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" />
-                  </svg>
-                  <span className="text-5xl md:text-6xl font-serif font-semibold leading-none" style={{ color: 'var(--brand)' }}>5단계</span>
-                </div>
-                <div className="w-px h-10 bg-slate-200 hidden md:block" />
-                <div className="flex items-baseline gap-3">
-                  <span className="text-5xl md:text-6xl font-serif font-semibold leading-none" style={{ color: 'var(--brand)' }}>80%</span>
-                  <span className="text-base text-slate-600">자동화</span>
-                </div>
-              </div>
-
+              ))}
             </div>
           </div>
         </section>
