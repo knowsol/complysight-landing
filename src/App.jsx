@@ -494,18 +494,30 @@ export default function App() {
                 <div className="bg-white border border-slate-200 rounded-xl p-8 card-hover">
                   <div className="flex items-start justify-between mb-6">
                     <div className="font-mono text-2xl font-semibold" style={{ color: 'var(--brand)' }}>02</div>
-                    <div className="w-11 h-11 rounded-lg flex items-center justify-center" style={{ background: 'var(--bg-subtle)' }}>
-                      <FileCheck className="w-5 h-5" style={{ color: 'var(--navy)' }} strokeWidth={1.5} />
+                    <div className="relative w-16 h-16">
+                      <svg className="w-16 h-16 -rotate-90" viewBox="0 0 36 36">
+                        <circle cx="18" cy="18" r="15.915" fill="none" stroke="#E2E8F0" strokeWidth="2.5" />
+                        <circle cx="18" cy="18" r="15.915" fill="none" stroke="var(--brand)" strokeWidth="2.5" strokeDasharray="100, 100" strokeLinecap="round" pathLength="100" />
+                      </svg>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="font-mono text-[11px] font-bold" style={{ color: 'var(--brand)' }}>100%</span>
+                      </div>
                     </div>
                   </div>
                   <h3 className="text-xl font-semibold text-slate-900 tracking-tight">보고서 자동 생성</h3>
-                  <p className="mt-3 text-sm text-slate-600 leading-relaxed">
-                    점검 결과를 바탕으로 정기 운영 보고서와 감사 대응 보고서를 표준 양식으로 자동 생성합니다.
-                  </p>
-                  <div className="mt-6 pt-6 border-t border-slate-100">
-                    <div className="eyebrow">업무상 효과</div>
-                    <div className="mt-2 font-semibold text-slate-900">보고서 작성 시간 단축</div>
-                  </div>
+                  <div className="mt-1 text-xs font-mono tracking-wider text-slate-400">자동 생성률</div>
+                  <ul className="mt-5 space-y-2.5">
+                    {[
+                      '일·주·월 단위 정기 운영 리포트 및 감사 대응 보고서 자동 생성',
+                      '점검 결과 및 증적 리포팅 생성 (직접 점검·배치 점검 선택)',
+                      '공공 표준 예방점검 절차에 부합한 보고서 포맷 지원',
+                    ].map((t, i) => (
+                      <li key={i} className="flex items-start gap-2.5 text-sm text-slate-600 leading-relaxed">
+                        <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ background: 'var(--brand)' }} />
+                        <span>{t}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
                 {/* 04 통합 대시보드 */}
