@@ -338,71 +338,66 @@ export default function App() {
             {/* Before / After Comparison */}
             <div className="max-w-5xl mx-auto">
 
-              {/* BEFORE — 5 columns aligned with AFTER; merged items stacked vertically */}
+              {/* BEFORE */}
               <div>
                 <div className="mb-4 text-xs font-mono tracking-wider text-slate-400">
                   BEFORE · 개별 관리 · 수동 관리
                 </div>
-                <div className="grid grid-cols-5 gap-3 items-end">
-                  {[
-                    ['기준 해석'],
-                    ['수동 점검'],
-                    ['수기 분석', '수치 모니터링'],
-                    ['엑셀 편집', '수기 보고'],
-                    ['수동 조치', '이력 추적'],
-                  ].map((col, i) => (
-                    <div key={i} className="flex flex-col gap-2">
-                      {col.map((t, j) => (
-                        <div key={j} className="px-3 py-2.5 rounded border border-slate-200 bg-white text-center">
-                          <div className="text-[11px] text-slate-500 truncate">{t}</div>
-                        </div>
-                      ))}
-                    </div>
+                <div className="flex items-center gap-1.5">
+                  {['기준 해석', '수동 점검', '수기 분석', '엑셀 편집', '수치 모니터링', '수기 보고', '수동 조치', '이력 추적'].map((t, i, arr) => (
+                    <React.Fragment key={i}>
+                      <div className="flex-1 min-w-0 px-2 py-2.5 rounded border border-slate-200 bg-white text-center">
+                        <div className="text-[11px] text-slate-500 truncate">{t}</div>
+                      </div>
+                      {i < arr.length - 1 && (
+                        <div className="text-slate-300 text-xs shrink-0">›</div>
+                      )}
+                    </React.Fragment>
                   ))}
                 </div>
               </div>
 
-              {/* Down arrows — one per column */}
-              <div className="grid grid-cols-5 gap-3 my-3">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <div key={i} className="flex justify-center text-slate-300">
-                    <svg width="16" height="22" viewBox="0 0 16 22" aria-hidden="true">
-                      <path d="M8 2 L8 18 M4 14 L8 18 L12 14" stroke="currentColor" strokeWidth="1.25" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                ))}
+              {/* Transition divider */}
+              <div className="flex items-center justify-center py-10">
+                <svg width="24" height="32" viewBox="0 0 24 32" className="text-slate-300">
+                  <path d="M12 2 L12 28 M4 20 L12 28 L20 20" stroke="currentColor" strokeWidth="1.25" fill="none" strokeLinecap="round" />
+                </svg>
               </div>
 
-              {/* AFTER — 5 columns matching BEFORE columns 1:1 */}
+              {/* AFTER */}
               <div>
                 <div className="mb-4 text-xs font-mono tracking-wider" style={{ color: 'var(--brand)' }}>
                   AFTER · 통합 관리 · 자동 관리
                 </div>
-                <div className="grid grid-cols-5 gap-3">
+                <div className="flex items-stretch gap-2">
                   {[
                     { t: '기준 내재화', icon: BookCheck, auto: true },
                     { t: '데이터 확보', icon: Database, auto: true },
                     { t: '상태 판별', icon: Gauge, auto: true },
                     { t: '리포트 생성', icon: FileSearch, auto: false },
                     { t: '점검 이력 자동 기록', icon: FileCheck, auto: true },
-                  ].map((s, i) => (
-                    <div
-                      key={i}
-                      className="rounded-lg p-4 flex items-center gap-2.5"
-                      style={{
-                        background: s.auto ? 'var(--brand)' : 'white',
-                        border: s.auto ? 'none' : '1.5px solid #CBD5E1',
-                        color: s.auto ? 'white' : 'inherit',
-                      }}
-                    >
-                      <s.icon className="w-5 h-5 shrink-0" strokeWidth={1.75} style={{ color: s.auto ? 'white' : '#64748B' }} />
-                      <div className="min-w-0">
-                        <div className={`text-sm font-semibold leading-tight ${s.auto ? '' : 'text-slate-900'}`}>{s.t}</div>
-                        <div className={`text-[10px] font-mono mt-0.5 ${s.auto ? 'opacity-70' : 'text-slate-400'}`}>
-                          {s.auto ? 'AUTO' : '담당자'}
+                  ].map((s, i, arr) => (
+                    <React.Fragment key={i}>
+                      <div
+                        className="flex-1 rounded-lg p-5 flex items-center gap-3"
+                        style={{
+                          background: s.auto ? 'var(--brand)' : 'white',
+                          border: s.auto ? 'none' : '1.5px solid #CBD5E1',
+                          color: s.auto ? 'white' : 'inherit',
+                        }}
+                      >
+                        <s.icon className="w-5 h-5 shrink-0" strokeWidth={1.75} style={{ color: s.auto ? 'white' : '#64748B' }} />
+                        <div className="min-w-0">
+                          <div className={`text-sm font-semibold ${s.auto ? '' : 'text-slate-900'}`}>{s.t}</div>
+                          <div className={`text-[10px] font-mono mt-0.5 ${s.auto ? 'opacity-70' : 'text-slate-400'}`}>
+                            {s.auto ? 'AUTO' : '담당자'}
+                          </div>
                         </div>
                       </div>
-                    </div>
+                      {i < arr.length - 1 && (
+                        <div className="flex items-center text-slate-300 shrink-0 text-sm">›</div>
+                      )}
+                    </React.Fragment>
                   ))}
                 </div>
               </div>
