@@ -1,4 +1,5 @@
 import React from 'react';
+import { SpecBridgeAnnotation } from '@specbridge-v1/sdk';
 import {
   ArrowRight, Check, ChevronRight, Shield, ShieldCheck, Clock, FileCheck, FileText,
   Database, Bell, Users, BarChart3, Building2, Factory, Landmark, Stethoscope,
@@ -8,6 +9,7 @@ import {
 
 export default function App() {
   return (
+    <SpecBridgeAnnotation pageId="plan-brand-complysight">
     <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=JetBrains+Mono:wght@400;500&display=swap');
@@ -899,5 +901,6 @@ export default function App() {
         </footer>
       </div>
     </>
+  </SpecBridgeAnnotation>
   );
 }
