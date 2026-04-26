@@ -1,5 +1,5 @@
-import React from 'react';
-import { SpecBridgeAnnotation } from '@specbridge-v1/sdk';
+import React, { useMemo } from 'react';
+import { SpecBridgeAnnotation, httpAdapter } from '@specbridge-v1/sdk';
 import {
   ArrowRight, Check, ChevronRight, Shield, ShieldCheck, Clock, FileCheck, FileText,
   Database, Bell, Users, BarChart3, Building2, Factory, Landmark, Stethoscope,
@@ -8,8 +8,13 @@ import {
 } from 'lucide-react';
 
 export default function App() {
+  const storage = useMemo(() => httpAdapter({
+    baseUrl: 'https://sb-api.aiatti.com',
+    apiKey:  'sk_KwYMGQKSW4icLTOpSGIfQO3X-ky0H2wv3hbxrqVVIs0',
+  }), [])
+
   return (
-    <SpecBridgeAnnotation pageId="plan-brand-complysight">
+    <SpecBridgeAnnotation pageId="plan-brand-complysight" storage={storage}>
     <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=JetBrains+Mono:wght@400;500&display=swap');
