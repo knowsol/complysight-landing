@@ -1,6 +1,6 @@
 {
   "name": "@specbridge-v1/sdk",
-  "version": "0.7.15",
+  "version": "0.7.16",
   "description": "SpecBridge Annotation SDK — 기획자 · 디자이너 · 개발자 간 페이지 어노테이션과 스레드 협업",
   "license": "UNLICENSED",
   "private": false,
