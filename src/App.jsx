@@ -1120,7 +1120,7 @@ export default function App() {
         </section>
 
         {/* =========== §8 AI ROADMAP =========== */}
-        <section className="py-32 relative overflow-hidden" style={{ background: '#0A1628' }}>
+        <section className="py-32 relative overflow-hidden" style={{ background: 'var(--navy-2)' }}>
           {/* Subtle globe / dot pattern background */}
           <div
             className="absolute inset-0 opacity-30"
@@ -1301,7 +1301,7 @@ export default function App() {
         </section>
 
         {/* =========== §9 CTA =========== */}
-        <section className="py-32 relative overflow-hidden" style={{ background: 'var(--navy)' }}>
+        <section className="py-32 relative overflow-hidden" style={{ background: '#050D1A' }}>
           <div className="absolute inset-0" style={{
             background: 'radial-gradient(ellipse 60% 80% at 50% 50%, rgba(30, 64, 175, 0.25), transparent 70%)'
           }} />
