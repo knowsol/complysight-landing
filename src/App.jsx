@@ -369,7 +369,7 @@ export default function App() {
         <section className="py-32">
           <div className="max-w-7xl mx-auto px-6">
             <h2 className="text-4xl md:text-5xl lg:text-[56px] font-semibold tracking-tight leading-[1.15]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
-              <span style={{ color: 'var(--brand)' }}>3개 분야</span> <span style={{ color: 'var(--brand)' }}>8개 점검항목</span>
+              3개 분야 8개 점검항목이 점검 <span style={{ color: 'var(--brand)' }}>의무화</span> 되었습니다.
             </h2>
             <p className="mt-6 text-lg text-slate-600 leading-relaxed max-w-4xl" style={{ wordBreak: 'keep-all' }}>
               3개 분야(<strong className="font-semibold text-slate-900">일상점검, 특별점검, 구조진단</strong>)
