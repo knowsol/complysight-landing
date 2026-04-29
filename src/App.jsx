@@ -807,10 +807,29 @@ export default function App() {
                   <span className="font-serif italic font-normal">꼭 필요</span>합니다.
                 </h2>
                 <p className="mt-8 text-slate-600 leading-relaxed max-w-md">
-                  예방점검 업무가 반복적이고, 여러 조직에 걸쳐 있고,
-                  감사 대응이 필수인 환경이라면
-                  컴플리사이트가 즉시 효과를 발휘합니다.
+                  법령이 자동화된 예방점검 도구의 활용을 명시적으로 요구하고 있습니다.<br />
+                  컴플리사이트는 이러한 환경에서 즉시 효과를 발휘합니다.
                 </p>
+
+                <div className="mt-8 max-w-md p-6 rounded-xl border border-slate-200 bg-white">
+                  <div className="text-[10px] font-mono tracking-wider mb-3" style={{ color: 'var(--brand)' }}>
+                    LEGAL BASIS
+                  </div>
+                  <div className="text-sm font-semibold text-slate-900 mb-1">
+                    행정기관 및 공공기관 정보시스템 안정성 고시
+                  </div>
+                  <div className="text-[11px] font-mono text-slate-500 mb-4">
+                    제12조 정보시스템 예방점검 체계
+                  </div>
+                  <blockquote className="text-sm text-slate-600 leading-relaxed border-l-2 pl-4 py-1" style={{ borderColor: 'var(--brand)' }}>
+                    <span className="text-slate-400">— 중략 — </span>
+                    중앙행정기관등의 장은 예방점검 수행 시,
+                    <strong className="font-semibold text-slate-900"> 수작업으로 인한 누락 및 오류를 방지</strong>하고
+                    정확성·신뢰성을 확보하기 위하여
+                    <strong className="font-semibold text-slate-900"> 자동화된 점검 도구 또는 시스템을 활용</strong>하도록
+                    노력하여야 한다.
+                  </blockquote>
+                </div>
               </div>
 
               <div className="space-y-5">
@@ -852,33 +871,6 @@ export default function App() {
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* =========== §8 REGULATION (고시 인용) =========== */}
-        <section className="py-32" style={{ background: 'var(--bg-alt)' }}>
-          <div className="max-w-4xl mx-auto px-6">
-            <div className="bg-white border border-slate-200 rounded-2xl p-10 md:p-12">
-              <div className="text-xs font-mono tracking-wider mb-6" style={{ color: 'var(--brand)' }}>
-                LEGAL BASIS
-              </div>
-              <div className="text-lg md:text-xl font-semibold text-slate-900 mb-2">
-                &lt;행정기관 및 공공기관 정보시스템 안정성 고시&gt;
-              </div>
-              <div className="text-sm font-mono text-slate-500 mb-8">
-                제2장 정보시스템 운영·관리 / 제12조(정보시스템 예방점검 체계)
-              </div>
-              <blockquote className="border-l-4 pl-6 py-2 text-slate-700 leading-relaxed" style={{ borderColor: 'var(--brand)' }}>
-                <p className="text-sm text-slate-500 mb-3">— 중략 —</p>
-                <p>
-                  ② 중앙행정기관등의 장은 제1항에 따른 예방점검 수행 시,
-                  <strong className="font-semibold text-slate-900"> 수작업으로 인한 누락 및 오류를 방지</strong>하고,
-                  점검 결과의 정확성과 신뢰성을 확보하기 위하여
-                  <strong className="font-semibold text-slate-900"> 자동화된 점검 도구 또는 시스템을 활용</strong>하도록
-                  노력하여야 한다.
-                </p>
-              </blockquote>
             </div>
           </div>
         </section>
