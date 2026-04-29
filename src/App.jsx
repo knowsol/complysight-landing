@@ -566,51 +566,13 @@ export default function App() {
                   ].map((s, i, arr) => (
                     <React.Fragment key={i}>
                       <div
-                        className="flex-1 rounded-lg p-5 flex items-center gap-3 relative"
+                        className="flex-1 rounded-lg p-5 flex items-center gap-3"
                         style={{
                           background: s.auto ? 'var(--brand)' : 'white',
                           border: s.auto ? 'none' : '1.5px solid #CBD5E1',
                           color: s.auto ? 'white' : 'inherit',
                         }}
                       >
-                        {s.auto && (
-                          <div
-                            className="absolute pointer-events-none"
-                            style={{
-                              top: '-14px',
-                              left: '-14px',
-                              width: '64px',
-                              height: '64px',
-                              transform: 'rotate(-14deg)',
-                              filter: 'drop-shadow(0 4px 10px rgba(220, 38, 38, 0.3))',
-                              zIndex: 5,
-                            }}
-                            aria-hidden="true"
-                          >
-                            <svg viewBox="0 0 64 64" className="w-full h-full">
-                              <defs>
-                                <filter id={`stamp-rough-${i}`}>
-                                  <feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="2" seed={i} />
-                                  <feDisplacementMap in="SourceGraphic" scale="0.8" />
-                                </filter>
-                              </defs>
-                              <g style={{ color: '#C0392B' }} filter={`url(#stamp-rough-${i})`} opacity="0.92">
-                                <circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" strokeWidth="2.5" />
-                                <circle cx="32" cy="32" r="22" fill="none" stroke="currentColor" strokeWidth="1" />
-                                <text
-                                  x="32"
-                                  y="39"
-                                  textAnchor="middle"
-                                  fill="currentColor"
-                                  fontFamily="'Fraunces', serif"
-                                  fontSize="18"
-                                  fontWeight="700"
-                                  letterSpacing="2"
-                                >자동</text>
-                              </g>
-                            </svg>
-                          </div>
-                        )}
                         <s.icon className="w-5 h-5 shrink-0" strokeWidth={1.75} style={{ color: s.auto ? 'white' : '#64748B' }} />
                         <div className="min-w-0">
                           <div className={`text-sm font-semibold ${s.auto ? '' : 'text-slate-900'}`}>{s.t}</div>
