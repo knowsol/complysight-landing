@@ -797,80 +797,86 @@ export default function App() {
           </div>
         </section>
 
-        {/* =========== §7 TARGET (추천 대상) =========== */}
+        {/* =========== §7 LEGAL MANDATE =========== */}
         <section className="py-32">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="grid lg:grid-cols-[1fr_1.2fr] gap-20 items-start">
-              <div className="lg:sticky lg:top-24">
-                <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1]" style={{ color: 'var(--navy)' }}>
-                  이런 조직에<br />
-                  <span className="font-serif italic font-normal">꼭 필요</span>합니다.
-                </h2>
-                <p className="mt-8 text-slate-600 leading-relaxed max-w-md">
-                  법령이 자동화된 예방점검 도구의 활용을 명시적으로 요구하고 있습니다.<br />
-                  컴플리사이트는 이러한 환경에서 즉시 효과를 발휘합니다.
-                </p>
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            {/* Headline */}
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.25]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
+              행정안전부 기준, 이제<br />
+              <span className="font-serif italic font-normal" style={{ color: 'var(--brand)' }}>'자동화 점검'</span>이 요구됩니다.
+            </h2>
 
-                <div className="mt-8 max-w-md p-6 rounded-xl border border-slate-200 bg-white">
-                  <div className="text-[10px] font-mono tracking-wider mb-3" style={{ color: 'var(--brand)' }}>
-                    LEGAL BASIS
-                  </div>
-                  <div className="text-sm font-semibold text-slate-900 mb-1">
-                    행정기관 및 공공기관 정보시스템 안정성 고시
-                  </div>
-                  <div className="text-[11px] font-mono text-slate-500 mb-4">
-                    제12조 정보시스템 예방점검 체계
-                  </div>
-                  <blockquote className="text-sm text-slate-600 leading-relaxed border-l-2 pl-4 py-1" style={{ borderColor: 'var(--brand)' }}>
-                    <span className="text-slate-400">— 중략 — </span>
-                    중앙행정기관등의 장은 예방점검 수행 시,
-                    <strong className="font-semibold text-slate-900"> 수작업으로 인한 누락 및 오류를 방지</strong>하고
-                    정확성·신뢰성을 확보하기 위하여
-                    <strong className="font-semibold text-slate-900"> 자동화된 점검 도구 또는 시스템을 활용</strong>하도록
-                    노력하여야 한다.
-                  </blockquote>
-                </div>
-              </div>
-
-              <div className="space-y-5">
-                {[
-                  {
-                    n: '01',
-                    t: '공공기관 정보시스템 운영 조직',
-                    d: '행정안전부 기준의 정보시스템 예방점검을 정기적으로 수행해야 하는 중앙행정기관·지자체·공공기관·공기업·출연기관의 IT 운영팀',
-                    scenarios: ['행정안전부 기준 대응', '정기 운영 보고', '시스템 자산 실사'],
-                  },
-                  {
-                    n: '02',
-                    t: '컴플라이언스·보안·감사 대응 조직',
-                    d: '내외부 감사, 경영평가, 인증심사에 반복적으로 대응해야 하는 컴플라이언스·정보보안·내부감사 담당 조직',
-                    scenarios: ['감사원 대응', '경영평가 준비', 'ISMS·CSAP 대응'],
-                  },
-                  {
-                    n: '03',
-                    t: '다수 시스템 점검이 필요한 조직',
-                    d: '여러 개의 시스템·장비·데이터베이스를 동시에 운영하며 점검 범위가 넓고 업무 부하가 높은 조직',
-                    scenarios: ['다중 시스템 운영', '통합 현황 관리', '담당자 분산 환경'],
-                  },
-                ].map((t, i) => (
-                  <div key={i} className="card-hover bg-white border border-slate-200 rounded-xl p-8">
-                    <div className="flex items-start gap-6">
-                      <div className="font-mono text-xs text-slate-400 pt-1.5">{t.n}</div>
-                      <div className="flex-1">
-                        <h3 className="text-xl font-semibold text-slate-900">{t.t}</h3>
-                        <p className="mt-3 text-slate-600 leading-relaxed">{t.d}</p>
-                        <div className="mt-5 flex flex-wrap gap-2">
-                          {t.scenarios.map((s, si) => (
-                            <span key={si} className="text-xs font-medium px-2.5 py-1 rounded-full" style={{ background: 'var(--bg-alt)', color: 'var(--navy)' }}>
-                              {s}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
+            {/* Document-styled regulatory notice */}
+            <div className="mt-14 mx-auto max-w-2xl text-left">
+              <div className="bg-white border border-slate-300 shadow-[0_30px_60px_-30px_rgba(11,31,58,0.25)]">
+                {/* Document letterhead */}
+                <div className="flex items-center justify-between px-6 py-3 border-b border-slate-200" style={{ background: 'var(--navy)' }}>
+                  <div className="flex items-center gap-2.5">
+                    <Landmark className="w-4 h-4 text-white" strokeWidth={1.75} />
+                    <div className="text-[10px] font-mono tracking-[0.22em] text-white uppercase">
+                      행정안전부 고시 · NOTICE
                     </div>
                   </div>
-                ))}
+                  <div className="text-[10px] font-mono text-slate-300">제2026-23호</div>
+                </div>
+
+                {/* Document body */}
+                <div className="px-8 md:px-10 py-9">
+                  <div className="text-[11px] font-mono text-slate-500 mb-2 tracking-wider">
+                    2026.4.13. 시행
+                  </div>
+                  <h3 className="text-lg md:text-xl font-semibold text-slate-900 leading-snug">
+                    행정기관 및 공공기관<br />정보시스템 안정성 고시
+                  </h3>
+                  <div className="mt-2 text-sm text-slate-600">
+                    제2장 정보시스템 운영·관리
+                  </div>
+
+                  <div className="mt-7 pt-7 border-t border-slate-200">
+                    <div className="text-sm font-semibold text-slate-900 mb-4">
+                      제12조 (정보시스템 예방점검 체계)
+                    </div>
+                    <p className="text-[13px] font-mono text-slate-400 mb-3">— 중략 —</p>
+                    <p className="text-slate-700 leading-loose">
+                      ② 중앙행정기관등의 장은 제1항에 따른 예방점검 수행 시,
+                      <strong className="font-semibold" style={{ color: 'var(--navy)' }}> 수작업으로 인한 누락 및 오류를 방지</strong>하고
+                      점검 결과의 정확성과 신뢰성을 확보하기 위하여
+                      <strong className="font-semibold" style={{ color: 'var(--brand)' }}> 자동화된 점검 도구 또는 시스템을 활용</strong>하도록
+                      노력하여야 한다.
+                    </p>
+                  </div>
+
+                  {/* Document footer with seal */}
+                  <div className="mt-9 pt-6 border-t border-slate-100 flex items-center justify-between">
+                    <div className="text-[11px] font-mono text-slate-500">
+                      행정안전부 장관
+                    </div>
+                    <div
+                      className="w-14 h-14 rounded-full border-2 flex items-center justify-center text-[8px] font-mono leading-tight text-center opacity-70"
+                      style={{
+                        borderColor: 'var(--brand)',
+                        color: 'var(--brand)',
+                        transform: 'rotate(-8deg)',
+                      }}
+                    >
+                      <span>고시<br />SEAL</span>
+                    </div>
+                  </div>
+                </div>
               </div>
+            </div>
+
+            {/* Body text below the document */}
+            <div className="mt-16 max-w-2xl mx-auto text-slate-600 leading-loose" style={{ wordBreak: 'keep-all' }}>
+              <p>
+                기존의 <strong className="font-semibold text-slate-900">수작업 중심 점검 방식</strong>은
+                점검 누락, 오류 발생, 결과 신뢰성 저하 등의 한계를 가지고 있습니다.
+              </p>
+              <p className="mt-6">
+                이러한 문제를 해결하기 위해
+                정부 기준에서도 <strong className="font-semibold text-slate-900">자동화 기반 점검 체계 도입</strong>을 명확히 요구하고 있으며,
+                이에 따라 <strong className="font-semibold" style={{ color: 'var(--brand)' }}>점검 방식의 전환이 필요한 시점</strong>입니다.
+              </p>
             </div>
           </div>
         </section>
