@@ -1,5 +1,5 @@
 // src/SpecBridgeAnnotation.tsx
-import { useCallback as useCallback5, useEffect as useEffect11, useMemo as useMemo2, useRef as useRef4, useState as useState12 } from "react";
+import { useCallback as useCallback5, useEffect as useEffect11, useMemo as useMemo3, useRef as useRef4, useState as useState12 } from "react";
 
 // src/AnnotList.tsx
 import { useState } from "react";
@@ -336,7 +336,7 @@ function AnnotList({
 }
 
 // src/AnnotPanel.tsx
-import { useEffect, useLayoutEffect, useRef, useState as useState2 } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState as useState2 } from "react";
 
 // src/Markdown.tsx
 import { Fragment as Fragment2, jsx as jsx2 } from "react/jsx-runtime";
@@ -600,6 +600,10 @@ function AnnotPanel({
   const [saved, setSaved] = useState2(false);
   const [newComment, setNewComment] = useState2("");
   const [threadOpen, setThreadOpen] = useState2(false);
+  const [mentionQuery, setMentionQuery] = useState2("");
+  const [showMention, setShowMention] = useState2(false);
+  const [mentionStart, setMentionStart] = useState2(0);
+  const [mentionIndex, setMentionIndex] = useState2(0);
   const [pos, setPos] = useState2(null);
   const noteRef = useRef(null);
   const commentInputRef = useRef(null);
@@ -735,11 +739,56 @@ function AnnotPanel({
   const handleSelectLabel = (labelId) => {
     onUpdate(pin.id, { labelId });
   };
+  const allAuthors = useMemo(() => {
+    const set = /* @__PURE__ */ new Set();
+    for (const p of pins) {
+      if (p.author) set.add(p.author);
+      for (const c of p.comments) if (c.author) set.add(c.author);
+    }
+    return Array.from(set);
+  }, [pins]);
+  const filteredMentions = useMemo(() => {
+    if (!showMention) return [];
+    if (!mentionQuery) return allAuthors;
+    const q = mentionQuery.toLowerCase();
+    return allAuthors.filter((a) => a.toLowerCase().includes(q));
+  }, [showMention, mentionQuery, allAuthors]);
+  const handleSelectMention = (author) => {
+    const before = newComment.slice(0, mentionStart);
+    const after = newComment.slice(mentionStart + 1 + mentionQuery.length);
+    const inserted = `${before}@${author} ${after}`;
+    setNewComment(inserted);
+    setShowMention(false);
+    setMentionIndex(0);
+    const newCursor = mentionStart + 1 + author.length + 1;
+    setTimeout(() => {
+      const el = commentInputRef.current;
+      if (el) {
+        el.focus();
+        el.setSelectionRange(newCursor, newCursor);
+      }
+    }, 0);
+  };
+  const handleCommentChange = (e) => {
+    const val = e.target.value;
+    setNewComment(val);
+    const cursor = e.target.selectionStart ?? val.length;
+    const m = val.slice(0, cursor).match(/@([^\s@]*)$/);
+    if (m) {
+      setMentionQuery(m[1]);
+      setMentionStart(cursor - m[0].length);
+      setShowMention(true);
+      setMentionIndex(0);
+    } else {
+      setShowMention(false);
+    }
+  };
   const handleSubmitComment = () => {
     const t = newComment.trim();
     if (!t || !currentAuthor) return;
     onAddComment(pin.id, t);
     setNewComment("");
+    setShowMention(false);
   };
   const closeBtnStyle = {
     background: "transparent",
@@ -1128,14 +1177,97 @@ function AnnotPanel({
                 /* @__PURE__ */ jsx3("div", { ref: commentsEndRef })
               ] }),
               /* @__PURE__ */ jsx3("div", { style: { padding: "8px 10px 10px", flexShrink: 0, borderTop: `1px solid ${DARK.brd}`, background: DARK.bg }, children: /* @__PURE__ */ jsxs2("div", { style: { position: "relative" }, children: [
+                showMention && filteredMentions.length > 0 && /* @__PURE__ */ jsx3(
+                  "div",
+                  {
+                    className: "sb-scroll",
+                    style: {
+                      position: "absolute",
+                      bottom: "100%",
+                      left: 0,
+                      right: 0,
+                      marginBottom: 4,
+                      background: "#242424",
+                      border: `1px solid ${DARK.brd2}`,
+                      borderRadius: 8,
+                      boxShadow: "0 4px 16px rgba(0,0,0,.5)",
+                      maxHeight: 160,
+                      overflowY: "auto",
+                      zIndex: 10002
+                    },
+                    children: filteredMentions.map((author, idx) => /* @__PURE__ */ jsxs2(
+                      "button",
+                      {
+                        onMouseDown: (e) => {
+                          e.preventDefault();
+                          handleSelectMention(author);
+                        },
+                        style: {
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 8,
+                          width: "100%",
+                          padding: "7px 10px",
+                          background: idx === mentionIndex ? "rgba(255,255,255,.08)" : "transparent",
+                          border: "none",
+                          color: DARK.txt,
+                          fontSize: 12,
+                          cursor: "pointer",
+                          textAlign: "left",
+                          fontFamily: "inherit",
+                          boxSizing: "border-box"
+                        },
+                        children: [
+                          /* @__PURE__ */ jsx3("span", { style: {
+                            display: "inline-flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            width: 20,
+                            height: 20,
+                            borderRadius: 4,
+                            fontSize: 10,
+                            fontWeight: 700,
+                            background: `${getAvatarColor(author)}22`,
+                            color: getAvatarColor(author),
+                            border: `1px solid ${getAvatarColor(author)}44`,
+                            flexShrink: 0
+                          }, children: author[0]?.toUpperCase() }),
+                          /* @__PURE__ */ jsx3("span", { children: author })
+                        ]
+                      },
+                      author
+                    ))
+                  }
+                ),
                 /* @__PURE__ */ jsx3(
                   "textarea",
                   {
                     ref: commentInputRef,
                     className: "sb-scroll",
                     value: newComment,
-                    onChange: (e) => setNewComment(e.target.value),
+                    onChange: handleCommentChange,
                     onKeyDown: (e) => {
+                      if (showMention && filteredMentions.length > 0) {
+                        if (e.key === "ArrowDown") {
+                          e.preventDefault();
+                          setMentionIndex((i) => Math.min(i + 1, filteredMentions.length - 1));
+                          return;
+                        }
+                        if (e.key === "ArrowUp") {
+                          e.preventDefault();
+                          setMentionIndex((i) => Math.max(i - 1, 0));
+                          return;
+                        }
+                        if (e.key === "Enter" || e.key === "Tab") {
+                          e.preventDefault();
+                          handleSelectMention(filteredMentions[mentionIndex]);
+                          return;
+                        }
+                        if (e.key === "Escape") {
+                          setShowMention(false);
+                          return;
+                        }
+                      }
                       if ((e.metaKey || e.ctrlKey) && e.key === "Enter") handleSubmitComment();
                       if (e.key === "Escape") onClose();
                     },
@@ -4313,7 +4445,7 @@ var localStorageAdapter = {
 };
 
 // src/useAnnotations.ts
-import { useCallback, useEffect as useEffect7, useMemo, useState as useState8 } from "react";
+import { useCallback, useEffect as useEffect7, useMemo as useMemo2, useState as useState8 } from "react";
 function useAnnotations(pageId, storage) {
   const [allAnnots, setAllAnnots] = useState8({});
   const [loading, setLoading] = useState8(true);
@@ -4328,7 +4460,7 @@ function useAnnotations(pageId, storage) {
       cancelled = true;
     };
   }, [storage]);
-  const pins = useMemo(() => allAnnots[pageId] ?? [], [allAnnots, pageId]);
+  const pins = useMemo2(() => allAnnots[pageId] ?? [], [allAnnots, pageId]);
   const replacePin = useCallback((pin) => {
     setAllAnnots((prev) => {
       const out = {};
@@ -4825,8 +4957,8 @@ function SpecBridgeAnnotation({
     resolvePin,
     reopenPin
   } = useAnnotations(pageId, storage);
-  const labelById = useMemo2(() => new Map(labels.map((l) => [l.id, l])), [labels]);
-  const visiblePins = useMemo2(() => {
+  const labelById = useMemo3(() => new Map(labels.map((l) => [l.id, l])), [labels]);
+  const visiblePins = useMemo3(() => {
     let pins = allPagePins;
     if (currentSessionId !== null) {
       pins = pins.filter((p) => p.id === selectedId || p.sessionId === currentSessionId);
@@ -4839,11 +4971,11 @@ function SpecBridgeAnnotation({
     }
     return pins;
   }, [allPagePins, showResolved, selectedId, filterLabelIds, currentSessionId]);
-  const resolvedCountThisPage = useMemo2(
+  const resolvedCountThisPage = useMemo3(
     () => allPagePins.filter((p) => p.status === "resolved").length,
     [allPagePins]
   );
-  const sessionProgress = useMemo2(() => {
+  const sessionProgress = useMemo3(() => {
     const progress = {};
     for (const pins of Object.values(allAnnots)) {
       for (const pin of pins) {
@@ -4855,7 +4987,7 @@ function SpecBridgeAnnotation({
     }
     return progress;
   }, [allAnnots]);
-  const pinUsage = useMemo2(() => {
+  const pinUsage = useMemo3(() => {
     const usage = {};
     for (const list of Object.values(allAnnots)) {
       for (const p of list) {
