@@ -1144,8 +1144,8 @@ export default function App() {
               점검 체계화를 넘어 <span className="font-serif italic font-normal" style={{ color: '#7DD3FC' }}>AI 기반 운영 플랫폼</span>으로 진화
             </h2>
             <p className="mt-6 text-lg leading-relaxed max-w-3xl" style={{ color: '#94A3B8' }}>
-              점검 자동화에서 끝나는 것이 아니라, 축적된 데이터를 기반으로
-              운영 판단을 지원하는 <strong className="font-semibold text-slate-200">AI 플랫폼으로 확장</strong>해야 합니다.
+              점검 자동화로 데이터를 축적하고 이를 기반으로
+              운영 판단을 돕는 <strong className="font-semibold text-slate-200">AI 플랫폼으로 거듭납니다.</strong>
             </p>
 
             {/* Roadmap pill badge */}
