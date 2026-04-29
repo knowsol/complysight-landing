@@ -1158,26 +1158,20 @@ export default function App() {
               </div>
             </div>
 
-            {/* 4-stage roadmap (chevron flow) */}
-            <div className="mt-12 hidden lg:flex items-stretch gap-0 -mx-1">
-              {[
+            {/* 4-stage roadmap (chevron flow) — desktop */}
+            {(() => {
+              const stages = [
                 {
                   stage: '1단계 — 현재',
                   badgeBg: '#2563EB',
                   title: '예방점검체계 자동화',
-                  items: [
-                    '점검 결과 및 증적 자동 수집',
-                    '점검 보고서 자동 생성',
-                  ],
+                  items: ['점검 결과 및 증적 자동 수집', '점검 보고서 자동 생성'],
                 },
                 {
                   stage: '2단계 — 2026년',
                   badgeBg: '#1E40AF',
                   title: 'AI 기반 운영 지식화',
-                  items: [
-                    '자원별 매뉴얼 통합 학습',
-                    '운영/장애 내용 질의응답',
-                  ],
+                  items: ['자원별 매뉴얼 통합 학습', '운영/장애 내용 질의응답'],
                 },
                 {
                   stage: '3단계',
@@ -1193,50 +1187,85 @@ export default function App() {
                   stage: '4단계',
                   badgeBg: '#A855F7',
                   title: 'AI 기반 선제 관리',
-                  items: [
-                    '장애 징후 조기 탐지',
-                    '원인 근거 제공',
-                    '선제 점검/조치 장비 Top n 제공',
-                  ],
+                  items: ['장애 징후 조기 탐지', '원인 근거 제공', '선제 점검/조치 장비 Top n 제공'],
                 },
-              ].map((s, i, arr) => {
-                const isFirst = i === 0;
-                const isLast = i === arr.length - 1;
-                const clipPath = isFirst
-                  ? 'polygon(0 0, calc(100% - 28px) 0, 100% 50%, calc(100% - 28px) 100%, 0 100%)'
-                  : isLast
-                  ? 'polygon(0 0, 100% 0, 100% 100%, 0 100%, 28px 50%)'
-                  : 'polygon(0 0, calc(100% - 28px) 0, 100% 50%, calc(100% - 28px) 100%, 0 100%, 28px 50%)';
-                const padding = isFirst
-                  ? '28px 50px 28px 28px'
-                  : isLast
-                  ? '28px 28px 28px 50px'
-                  : '28px 50px 28px 50px';
-                return (
-                  <div key={i} className={`flex-1 ${i > 0 ? '-ml-3' : ''}`}>
-                    <div className="h-full" style={{ background: 'white', clipPath, padding }}>
-                      <div
-                        className="inline-block px-3 py-1 rounded text-[10px] font-bold tracking-wider text-white mb-3"
-                        style={{ background: s.badgeBg }}
-                      >
-                        {s.stage}
+              ];
+              return (
+                <div className="hidden lg:block mt-12">
+                  {/* Row 1: stage badges */}
+                  <div className="flex">
+                    {stages.map((s, i) => (
+                      <div key={i} className="flex-1 flex justify-center">
+                        <div
+                          className="px-4 py-1.5 rounded-md text-xs font-semibold text-white"
+                          style={{ background: s.badgeBg }}
+                        >
+                          {s.stage}
+                        </div>
                       </div>
-                      <h3 className="text-base md:text-lg font-semibold text-slate-900 mb-4 leading-snug" style={{ wordBreak: 'keep-all' }}>
-                        {s.title}
-                      </h3>
-                      <ul className="space-y-2">
-                        {s.items.map((it, ii) => (
-                          <li key={ii} className="flex items-start gap-2 text-xs text-slate-600 leading-relaxed" style={{ wordBreak: 'keep-all' }}>
-                            <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ background: s.badgeBg }} />
-                            <span>{it}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    ))}
                   </div>
-                );
-              })}
-            </div>
+
+                  {/* Row 2: chevron flow with title only (glassmorphism) */}
+                  <div className="flex items-stretch mt-3">
+                    {stages.map((s, i, arr) => {
+                      const isFirst = i === 0;
+                      const isLast = i === arr.length - 1;
+                      const clipPath = isFirst
+                        ? 'polygon(0 0, calc(100% - 28px) 0, 100% 50%, calc(100% - 28px) 100%, 0 100%)'
+                        : isLast
+                        ? 'polygon(0 0, 100% 0, 100% 100%, 0 100%, 28px 50%)'
+                        : 'polygon(0 0, calc(100% - 28px) 0, 100% 50%, calc(100% - 28px) 100%, 0 100%, 28px 50%)';
+                      const padding = isFirst
+                        ? '24px 50px 24px 24px'
+                        : isLast
+                        ? '24px 24px 24px 50px'
+                        : '24px 50px 24px 50px';
+                      return (
+                        <div key={i} className={`flex-1 ${i > 0 ? '-ml-3' : ''}`}>
+                          <div
+                            className="h-full flex items-center justify-center"
+                            style={{
+                              background: 'rgba(255, 255, 255, 0.06)',
+                              backdropFilter: 'blur(14px)',
+                              WebkitBackdropFilter: 'blur(14px)',
+                              boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.12), 0 10px 30px -10px rgba(0,0,0,0.3)',
+                              clipPath,
+                              padding,
+                              minHeight: '88px',
+                            }}
+                          >
+                            <h3 className="text-base md:text-lg font-semibold text-white text-center leading-snug" style={{ wordBreak: 'keep-all' }}>
+                              {s.title}
+                            </h3>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {/* Row 3: items per stage */}
+                  <div className="flex mt-8">
+                    {stages.map((s, i) => (
+                      <div key={i} className="flex-1 px-3">
+                        <ul className="space-y-2">
+                          {s.items.map((it, ii) => (
+                            <li
+                              key={ii}
+                              className="flex items-start gap-2 text-sm leading-relaxed"
+                              style={{ color: '#CBD5E1', wordBreak: 'keep-all' }}
+                            >
+                              <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ background: s.badgeBg }} />
+                              <span>{it}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })()}
 
             {/* Mobile/tablet fallback — vertical cards */}
             <div className="mt-12 grid md:grid-cols-2 gap-4 lg:hidden">
