@@ -339,7 +339,13 @@ function AnnotList({
 import { useEffect, useLayoutEffect, useMemo, useRef, useState as useState2 } from "react";
 
 // src/Markdown.tsx
-import { Fragment as Fragment2, jsx as jsx2 } from "react/jsx-runtime";
+import { Fragment as Fragment2, jsx as jsx2, jsxs as jsxs2 } from "react/jsx-runtime";
+function getMentionColor(name) {
+  const palette = ["#D97757", "#B85E3F", "#E8956D", "#C75B39", "#A0522D", "#CF7A5A", "#E8A87C", "#8B4513"];
+  let h = 0;
+  for (const ch of name) h = h * 31 + ch.charCodeAt(0) & 255;
+  return palette[h % palette.length];
+}
 var COLOR_MAP = {
   red: "#ef4444",
   green: "#34D399",
@@ -422,6 +428,33 @@ function parseInline(text, theme) {
           i = close + 1;
           continue;
         }
+      }
+    }
+    if (text[i] === "@") {
+      const nameMatch = text.slice(i + 1).match(/^[\w가-힣가-힣]+/);
+      if (nameMatch) {
+        flush();
+        const name = nameMatch[0];
+        const c = getMentionColor(name);
+        parts.push(
+          /* @__PURE__ */ jsxs2("span", { style: {
+            display: "inline-flex",
+            alignItems: "center",
+            padding: "1px 6px",
+            borderRadius: 3,
+            fontSize: "0.9em",
+            fontWeight: 600,
+            background: `${c}22`,
+            color: c,
+            border: `1px solid ${c}44`,
+            whiteSpace: "nowrap"
+          }, children: [
+            "@",
+            name
+          ] }, keyN++)
+        );
+        i += 1 + name.length;
+        continue;
       }
     }
     if (text[i] === "[") {
@@ -559,7 +592,7 @@ function Markdown({ children, theme = "light", style }) {
 }
 
 // src/AnnotPanel.tsx
-import { Fragment as Fragment3, jsx as jsx3, jsxs as jsxs2 } from "react/jsx-runtime";
+import { Fragment as Fragment3, jsx as jsx3, jsxs as jsxs3 } from "react/jsx-runtime";
 var PANEL_W_SINGLE = 400;
 var PANEL_W_DOUBLE = 680;
 var LEFT_COL_W = 360;
@@ -819,7 +852,7 @@ function AnnotPanel({
     background: DARK.bg3,
     color: DARK.txt
   };
-  return /* @__PURE__ */ jsxs2(
+  return /* @__PURE__ */ jsxs3(
     "div",
     {
       ref: panelRef,
@@ -874,7 +907,7 @@ function AnnotPanel({
             },
             children: panelMode === "view" ? (
               /* 상세보기 헤더: [번호원형] [작성자 · 날짜] [상태] spacer [...] [×] */
-              /* @__PURE__ */ jsxs2("div", { style: { display: "flex", alignItems: "center", gap: 7, minWidth: 0 }, children: [
+              /* @__PURE__ */ jsxs3("div", { style: { display: "flex", alignItems: "center", gap: 7, minWidth: 0 }, children: [
                 /* @__PURE__ */ jsx3(
                   "div",
                   {
@@ -901,9 +934,9 @@ function AnnotPanel({
                 })() }),
                 /* @__PURE__ */ jsx3("span", { style: { fontSize: 9, color: DARK.txL, flexShrink: 0, whiteSpace: "nowrap", paddingTop: 4 }, children: fmtTime(pin.createdAt) }),
                 /* @__PURE__ */ jsx3("div", { style: { flex: 1, minWidth: 0 } }),
-                /* @__PURE__ */ jsxs2("div", { style: { display: "flex", alignItems: "center", gap: 2, flexShrink: 0 }, children: [
-                  /* @__PURE__ */ jsxs2("div", { style: { position: "relative", flexShrink: 0 }, children: [
-                    /* @__PURE__ */ jsxs2(
+                /* @__PURE__ */ jsxs3("div", { style: { display: "flex", alignItems: "center", gap: 2, flexShrink: 0 }, children: [
+                  /* @__PURE__ */ jsxs3("div", { style: { position: "relative", flexShrink: 0 }, children: [
+                    /* @__PURE__ */ jsxs3(
                       "button",
                       {
                         onClick: () => setThreadOpen((v) => !v),
@@ -927,7 +960,7 @@ function AnnotPanel({
                     ),
                     showThreadTooltip && /* @__PURE__ */ jsx3("div", { style: { position: "absolute", bottom: "100%", left: "50%", transform: "translateX(-50%)", marginBottom: 6, background: "rgba(15,23,42,.95)", color: "rgba(255,255,255,.85)", fontSize: 10, fontWeight: 600, padding: "3px 8px", borderRadius: 5, whiteSpace: "nowrap", pointerEvents: "none", border: "1px solid rgba(255,255,255,.1)" }, children: "\uC2A4\uB808\uB4DC" })
                   ] }),
-                  /* @__PURE__ */ jsxs2("div", { ref: moreMenuRef, style: { position: "relative", flexShrink: 0 }, children: [
+                  /* @__PURE__ */ jsxs3("div", { ref: moreMenuRef, style: { position: "relative", flexShrink: 0 }, children: [
                     /* @__PURE__ */ jsx3(
                       "button",
                       {
@@ -937,7 +970,7 @@ function AnnotPanel({
                         children: "\xB7\xB7\xB7"
                       }
                     ),
-                    showMoreMenu && /* @__PURE__ */ jsxs2("div", { style: { position: "absolute", top: "calc(100% + 4px)", right: 0, background: DARK.bg3, border: `1px solid ${DARK.brd2}`, borderRadius: 9, padding: 4, zIndex: 10001, minWidth: 130, boxShadow: "0 8px 28px rgba(0,0,0,.45)" }, children: [
+                    showMoreMenu && /* @__PURE__ */ jsxs3("div", { style: { position: "absolute", top: "calc(100% + 4px)", right: 0, background: DARK.bg3, border: `1px solid ${DARK.brd2}`, borderRadius: 9, padding: 4, zIndex: 10001, minWidth: 130, boxShadow: "0 8px 28px rgba(0,0,0,.45)" }, children: [
                       /* @__PURE__ */ jsx3(
                         MoreMenuItem,
                         {
@@ -986,7 +1019,7 @@ function AnnotPanel({
               ] })
             ) : (
               /* 수정 헤더: [#N] [작성/수정하기] spacer [작성자·날짜] [×] */
-              /* @__PURE__ */ jsxs2("div", { style: { display: "flex", alignItems: "center", gap: 10, minWidth: 0 }, children: [
+              /* @__PURE__ */ jsxs3("div", { style: { display: "flex", alignItems: "center", gap: 10, minWidth: 0 }, children: [
                 /* @__PURE__ */ jsx3(
                   "div",
                   {
@@ -1008,7 +1041,7 @@ function AnnotPanel({
                 ),
                 /* @__PURE__ */ jsx3("span", { style: { fontSize: 13, fontWeight: 700 }, children: (pin.note ?? "").length > 0 ? "\uC218\uC815\uD558\uAE30" : "\uC791\uC131\uD558\uAE30" }),
                 /* @__PURE__ */ jsx3("div", { style: { flex: 1 } }),
-                /* @__PURE__ */ jsxs2("span", { style: { fontSize: 9, color: DARK.txL }, children: [
+                /* @__PURE__ */ jsxs3("span", { style: { fontSize: 9, color: DARK.txL }, children: [
                   pin.author,
                   " \xB7 ",
                   fmtTime(pin.createdAt)
@@ -1018,7 +1051,7 @@ function AnnotPanel({
             )
           }
         ),
-        /* @__PURE__ */ jsxs2("div", { style: { flex: 1, display: "flex", minHeight: 0 }, children: [
+        /* @__PURE__ */ jsxs3("div", { style: { flex: 1, display: "flex", minHeight: 0 }, children: [
           /* @__PURE__ */ jsx3(
             "div",
             {
@@ -1031,9 +1064,9 @@ function AnnotPanel({
               },
               children: panelMode === "view" ? (
                 /* ── 상세보기 ── */
-                /* @__PURE__ */ jsx3(Fragment3, { children: /* @__PURE__ */ jsxs2("div", { className: "sb-scroll", style: { flex: 1, overflowY: "auto", padding: "16px 18px" }, children: [
+                /* @__PURE__ */ jsx3(Fragment3, { children: /* @__PURE__ */ jsxs3("div", { className: "sb-scroll", style: { flex: 1, overflowY: "auto", padding: "16px 18px" }, children: [
                   /* @__PURE__ */ jsx3(StatusBadge, { resolved: isResolved, resolvedBy: pin.resolvedBy, resolvedAt: pin.resolvedAt }),
-                  (pin.note ?? "").length > 0 ? /* @__PURE__ */ jsx3(Markdown, { theme: "dark", style: { fontSize: 13, color: DARK.txt, lineHeight: 1.75 }, children: pin.note }) : /* @__PURE__ */ jsxs2("div", { style: { color: DARK.txL, fontSize: 12, textAlign: "center", padding: "28px 0" }, children: [
+                  (pin.note ?? "").length > 0 ? /* @__PURE__ */ jsx3(Markdown, { theme: "dark", style: { fontSize: 13, color: DARK.txt, lineHeight: 1.75 }, children: pin.note }) : /* @__PURE__ */ jsxs3("div", { style: { color: DARK.txL, fontSize: 12, textAlign: "center", padding: "28px 0" }, children: [
                     "\uB0B4\uC6A9\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.",
                     /* @__PURE__ */ jsx3("br", {}),
                     /* @__PURE__ */ jsx3(
@@ -1051,11 +1084,11 @@ function AnnotPanel({
                 ] }) })
               ) : (
                 /* ── 작성/수정하기 ── */
-                /* @__PURE__ */ jsx3(Fragment3, { children: /* @__PURE__ */ jsxs2("div", { style: { flex: 1, display: "flex", flexDirection: "column", minHeight: 0, padding: "12px 14px", gap: 10 }, children: [
-                  /* @__PURE__ */ jsx3("div", { style: { flexShrink: 0 }, children: /* @__PURE__ */ jsxs2("div", { style: { display: "flex", alignItems: "center", gap: 3, flexWrap: "wrap" }, children: [
+                /* @__PURE__ */ jsx3(Fragment3, { children: /* @__PURE__ */ jsxs3("div", { style: { flex: 1, display: "flex", flexDirection: "column", minHeight: 0, padding: "12px 14px", gap: 10 }, children: [
+                  /* @__PURE__ */ jsx3("div", { style: { flexShrink: 0 }, children: /* @__PURE__ */ jsxs3("div", { style: { display: "flex", alignItems: "center", gap: 3, flexWrap: "wrap" }, children: [
                     labels.length === 0 ? /* @__PURE__ */ jsx3("span", { style: { fontSize: 11, color: DARK.txL }, children: "\uB4F1\uB85D\uB41C \uB808\uC774\uBE14\uC774 \uC5C6\uC2B5\uB2C8\uB2E4." }) : labels.map((l) => {
                       const selected = pin.labelId === l.id;
-                      return /* @__PURE__ */ jsxs2(
+                      return /* @__PURE__ */ jsxs3(
                         "button",
                         {
                           onClick: () => handleSelectLabel(selected ? null : l.id),
@@ -1116,7 +1149,7 @@ function AnnotPanel({
                       }
                     )
                   ] }) }),
-                  /* @__PURE__ */ jsxs2("div", { style: { flex: 1, position: "relative", minHeight: 0, display: "flex", flexDirection: "column" }, children: [
+                  /* @__PURE__ */ jsxs3("div", { style: { flex: 1, position: "relative", minHeight: 0, display: "flex", flexDirection: "column" }, children: [
                     /* @__PURE__ */ jsx3(
                       MarkdownEditor,
                       {
@@ -1157,14 +1190,14 @@ function AnnotPanel({
               )
             }
           ),
-          showThread && /* @__PURE__ */ jsxs2(Fragment3, { children: [
+          showThread && /* @__PURE__ */ jsxs3(Fragment3, { children: [
             /* @__PURE__ */ jsx3("div", { style: { width: 1, background: DARK.brd, alignSelf: "stretch", flexShrink: 0 } }),
-            /* @__PURE__ */ jsxs2("div", { style: { flex: 1, display: "flex", flexDirection: "column", minWidth: 0, background: DARK.bg }, children: [
-              /* @__PURE__ */ jsxs2("div", { style: { padding: "11px 14px 9px", borderBottom: `1px solid ${DARK.brd}`, flexShrink: 0, display: "flex", alignItems: "center", gap: 6 }, children: [
+            /* @__PURE__ */ jsxs3("div", { style: { flex: 1, display: "flex", flexDirection: "column", minWidth: 0, background: DARK.bg }, children: [
+              /* @__PURE__ */ jsxs3("div", { style: { padding: "11px 14px 9px", borderBottom: `1px solid ${DARK.brd}`, flexShrink: 0, display: "flex", alignItems: "center", gap: 6 }, children: [
                 /* @__PURE__ */ jsx3("span", { style: { fontSize: 11, fontWeight: 700, color: DARK.txt }, children: "Comment" }),
                 pin.comments.length > 0 && /* @__PURE__ */ jsx3("span", { style: { fontSize: 10, color: DARK.txL, fontWeight: 500 }, children: pin.comments.length })
               ] }),
-              /* @__PURE__ */ jsxs2("div", { className: "sb-scroll", style: { flex: 1, overflowY: "auto", padding: "10px 12px", display: "flex", flexDirection: "column", gap: 2 }, children: [
+              /* @__PURE__ */ jsxs3("div", { className: "sb-scroll", style: { flex: 1, overflowY: "auto", padding: "10px 12px", display: "flex", flexDirection: "column", gap: 2 }, children: [
                 pin.comments.length === 0 ? /* @__PURE__ */ jsx3("div", { style: { fontSize: 11, color: DARK.txL, textAlign: "center", padding: "32px 0", opacity: 0.6 }, children: "\uC2A4\uB808\uB4DC\uB97C \uC2DC\uC791\uD574\uBCF4\uC138\uC694" }) : pin.comments.map((c) => /* @__PURE__ */ jsx3(
                   CommentItem,
                   {
@@ -1177,7 +1210,7 @@ function AnnotPanel({
                 )),
                 /* @__PURE__ */ jsx3("div", { ref: commentsEndRef })
               ] }),
-              /* @__PURE__ */ jsx3("div", { style: { padding: "8px 10px 10px", flexShrink: 0, borderTop: `1px solid ${DARK.brd}`, background: DARK.bg }, children: /* @__PURE__ */ jsxs2("div", { style: { position: "relative" }, children: [
+              /* @__PURE__ */ jsx3("div", { style: { padding: "8px 10px 10px", flexShrink: 0, borderTop: `1px solid ${DARK.brd}`, background: DARK.bg }, children: /* @__PURE__ */ jsxs3("div", { style: { position: "relative" }, children: [
                 showMention && filteredMentions.length > 0 && /* @__PURE__ */ jsx3(
                   "div",
                   {
@@ -1196,7 +1229,7 @@ function AnnotPanel({
                       overflowY: "auto",
                       zIndex: 10002
                     },
-                    children: filteredMentions.map((author, idx) => /* @__PURE__ */ jsxs2(
+                    children: filteredMentions.map((author, idx) => /* @__PURE__ */ jsxs3(
                       "button",
                       {
                         onMouseDown: (e) => {
@@ -1342,7 +1375,7 @@ function MoreMenuItem({
     fontFamily: "inherit",
     boxSizing: "border-box"
   };
-  return /* @__PURE__ */ jsxs2("button", { style: base, onMouseEnter: () => setHov(true), onMouseLeave: () => setHov(false), onClick, children: [
+  return /* @__PURE__ */ jsxs3("button", { style: base, onMouseEnter: () => setHov(true), onMouseLeave: () => setHov(false), onClick, children: [
     /* @__PURE__ */ jsx3("span", { style: { width: 14, textAlign: "center", fontSize: 13 }, children: icon }),
     /* @__PURE__ */ jsx3("span", { style: { flex: 1 }, children: label }),
     shortcut && /* @__PURE__ */ jsx3("span", { style: { fontSize: 9, color: "rgba(255,255,255,.28)", fontFamily: "monospace", marginLeft: 4 }, children: shortcut })
@@ -1350,7 +1383,7 @@ function MoreMenuItem({
 }
 function StatusBadge({ resolved, resolvedBy, resolvedAt }) {
   if (!resolved) return null;
-  return /* @__PURE__ */ jsx3("div", { style: { marginBottom: 12 }, children: /* @__PURE__ */ jsxs2(
+  return /* @__PURE__ */ jsx3("div", { style: { marginBottom: 12 }, children: /* @__PURE__ */ jsxs3(
     "span",
     {
       style: {
@@ -1406,6 +1439,10 @@ function mdToEditorHtml(md) {
     h = h.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
     h = h.replace(/\*(.+?)\*/g, "<em>$1</em>");
     h = h.replace(/`(.+?)`/g, "<code>$1</code>");
+    h = h.replace(/@([\w가-힣]+)/g, (_, name) => {
+      const c = getAvatarColor(name);
+      return `<span data-mention="${name}" style="display:inline-flex;align-items:center;padding:1px 5px;border-radius:3px;font-size:.9em;font-weight:600;background:${c}22;color:${c};border:1px solid ${c}44;white-space:nowrap;contenteditable:false;">@${name}</span>`;
+    });
     return h;
   };
   return md.split("\n").map((line) => {
@@ -1433,6 +1470,8 @@ function domToMd(root) {
       case "br":
         return "";
       case "span": {
+        const mention = node.getAttribute("data-mention");
+        if (mention) return `@${mention}`;
         const c = node.getAttribute("data-color");
         return c ? `{${c}:${inner}}` : inner;
       }
@@ -1517,14 +1556,24 @@ function MarkdownEditor({ value, onChange, onCtrlEnter, placeholder, style, clas
     const { node, offset: atOffset } = anchor;
     const endOffset = atOffset + 1 + mentionQuery.length;
     const text = node.textContent ?? "";
-    node.textContent = text.slice(0, atOffset) + `@${author} ` + text.slice(endOffset);
-    const newCursor = atOffset + 1 + author.length + 1;
+    const c = getAvatarColor(author);
+    const span = document.createElement("span");
+    span.setAttribute("data-mention", author);
+    span.setAttribute("contenteditable", "false");
+    span.style.cssText = `display:inline-flex;align-items:center;padding:1px 5px;border-radius:3px;font-size:.9em;font-weight:600;background:${c}22;color:${c};border:1px solid ${c}44;white-space:nowrap;`;
+    span.textContent = `@${author}`;
+    const beforeNode = document.createTextNode(text.slice(0, atOffset));
+    const afterNode = document.createTextNode("\xA0" + text.slice(endOffset));
+    const parent = node.parentNode;
+    parent.insertBefore(beforeNode, node);
+    parent.insertBefore(span, node);
+    parent.insertBefore(afterNode, node);
+    parent.removeChild(node);
     const range = document.createRange();
-    range.setStart(node, Math.min(newCursor, node.length));
+    range.setStart(afterNode, 1);
     range.collapse(true);
-    const sel = window.getSelection();
-    sel.removeAllRanges();
-    sel.addRange(range);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
     setShowMention(false);
     setMentionIndex(0);
     mentionAnchor.current = null;
@@ -1725,8 +1774,8 @@ function MarkdownEditor({ value, onChange, onCtrlEnter, placeholder, style, clas
     }
   };
   const { overflowY, cursor, paddingBottom, lineHeight, padding: _padding, ...wrapperStyle } = style ?? {};
-  return /* @__PURE__ */ jsxs2("div", { style: { display: "flex", flexDirection: "column", ...wrapperStyle, position: "relative" }, children: [
-    /* @__PURE__ */ jsxs2("div", { style: {
+  return /* @__PURE__ */ jsxs3("div", { style: { display: "flex", flexDirection: "column", ...wrapperStyle, position: "relative" }, children: [
+    /* @__PURE__ */ jsxs3("div", { style: {
       display: "flex",
       alignItems: "center",
       gap: 5,
@@ -1807,7 +1856,7 @@ function MarkdownEditor({ value, onChange, onCtrlEnter, placeholder, style, clas
           overflowY: "auto",
           zIndex: 10003
         },
-        children: filteredMentions.map((author, idx) => /* @__PURE__ */ jsxs2(
+        children: filteredMentions.map((author, idx) => /* @__PURE__ */ jsxs3(
           "button",
           {
             onMouseDown: (e) => {
@@ -1905,7 +1954,7 @@ function CommentItem({ comment, canEdit, onUpdate, onDelete }) {
     setEditing(false);
   };
   const labelColor = getAvatarColor(comment.author);
-  return /* @__PURE__ */ jsxs2(
+  return /* @__PURE__ */ jsxs3(
     "div",
     {
       onMouseEnter: () => setHov(true),
@@ -1916,7 +1965,7 @@ function CommentItem({ comment, canEdit, onUpdate, onDelete }) {
         background: hov ? "rgba(255,255,255,.03)" : "transparent"
       },
       children: [
-        /* @__PURE__ */ jsxs2("div", { style: { display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }, children: [
+        /* @__PURE__ */ jsxs3("div", { style: { display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }, children: [
           /* @__PURE__ */ jsx3("span", { style: {
             display: "inline-flex",
             alignItems: "center",
@@ -1931,7 +1980,7 @@ function CommentItem({ comment, canEdit, onUpdate, onDelete }) {
           }, children: comment.author }),
           /* @__PURE__ */ jsx3("span", { style: { fontSize: 9, color: DARK.txL }, children: fmtTime(comment.createdAt) }),
           comment.updatedAt && /* @__PURE__ */ jsx3("span", { style: { fontSize: 9, color: DARK.txL }, children: "(\uC218\uC815\uB428)" }),
-          canEdit && !editing && hov && /* @__PURE__ */ jsxs2("div", { style: { display: "flex", gap: 3, marginLeft: "auto" }, children: [
+          canEdit && !editing && hov && /* @__PURE__ */ jsxs3("div", { style: { display: "flex", gap: 3, marginLeft: "auto" }, children: [
             /* @__PURE__ */ jsx3(
               "button",
               {
@@ -1955,7 +2004,7 @@ function CommentItem({ comment, canEdit, onUpdate, onDelete }) {
             )
           ] })
         ] }),
-        editing ? /* @__PURE__ */ jsxs2(Fragment3, { children: [
+        editing ? /* @__PURE__ */ jsxs3(Fragment3, { children: [
           /* @__PURE__ */ jsx3(
             "textarea",
             {
@@ -1974,7 +2023,7 @@ function CommentItem({ comment, canEdit, onUpdate, onDelete }) {
               }
             }
           ),
-          /* @__PURE__ */ jsxs2("div", { style: { display: "flex", gap: 4, marginTop: 4 }, children: [
+          /* @__PURE__ */ jsxs3("div", { style: { display: "flex", gap: 4, marginTop: 4 }, children: [
             /* @__PURE__ */ jsx3("button", { onClick: () => {
               setDraft(comment.text);
               setEditing(false);
@@ -1990,7 +2039,7 @@ function CommentItem({ comment, canEdit, onUpdate, onDelete }) {
 // src/AnnotPin.tsx
 import { createPortal } from "react-dom";
 import { useEffect as useEffect2, useState as useState3 } from "react";
-import { Fragment as Fragment4, jsx as jsx4, jsxs as jsxs3 } from "react/jsx-runtime";
+import { Fragment as Fragment4, jsx as jsx4, jsxs as jsxs4 } from "react/jsx-runtime";
 function timeAgo(iso) {
   const diff = Date.now() - new Date(iso).getTime();
   if (diff < 6e4) return "\uBC29\uAE08";
@@ -2135,7 +2184,7 @@ function AnnotPin({
       children: /* @__PURE__ */ jsx4("span", { style: { color: "#fff", fontSize: 10, fontWeight: 700, lineHeight: 1 }, children: num })
     }
   );
-  return /* @__PURE__ */ jsxs3(Fragment4, { children: [
+  return /* @__PURE__ */ jsxs4(Fragment4, { children: [
     /* @__PURE__ */ jsx4(
       "div",
       {
@@ -2167,7 +2216,7 @@ function AnnotPin({
       }
     ),
     expanded && typeof document !== "undefined" && createPortal(
-      /* @__PURE__ */ jsxs3(
+      /* @__PURE__ */ jsxs4(
         "div",
         {
           onMouseDown,
@@ -2199,7 +2248,7 @@ function AnnotPin({
           },
           children: [
             Badge,
-            /* @__PURE__ */ jsxs3(
+            /* @__PURE__ */ jsxs4(
               "div",
               {
                 style: {
@@ -2215,7 +2264,7 @@ function AnnotPin({
                   transition: "opacity 0.32s ease-out, transform 0.32s ease-out"
                 },
                 children: [
-                  /* @__PURE__ */ jsxs3("div", { style: { display: "flex", alignItems: "center", gap: 5, minWidth: 0 }, children: [
+                  /* @__PURE__ */ jsxs4("div", { style: { display: "flex", alignItems: "center", gap: 5, minWidth: 0 }, children: [
                     /* @__PURE__ */ jsx4(
                       "span",
                       {
@@ -2282,9 +2331,9 @@ function AnnotPin({
                       children: renderInlineMarkdown(pin.note)
                     }
                   ),
-                  hasComments && /* @__PURE__ */ jsxs3(Fragment4, { children: [
+                  hasComments && /* @__PURE__ */ jsxs4(Fragment4, { children: [
                     /* @__PURE__ */ jsx4("div", { style: { height: 1, background: "rgba(255,255,255,.08)", margin: "2px 0" } }),
-                    /* @__PURE__ */ jsxs3("div", { style: { display: "flex", alignItems: "center", gap: 5, color: "rgba(255,255,255,.45)" }, children: [
+                    /* @__PURE__ */ jsxs4("div", { style: { display: "flex", alignItems: "center", gap: 5, color: "rgba(255,255,255,.45)" }, children: [
                       /* @__PURE__ */ jsx4("svg", { width: "11", height: "11", viewBox: "0 0 16 16", fill: "none", style: { color: "#93c5fd" }, children: /* @__PURE__ */ jsx4("path", { d: "M13 1H3C2.45 1 2 1.45 2 2v8c0 .55.45 1 1 1h2.5l2.5 3 2.5-3H13c.55 0 1-.45 1-1V2c0-.55-.45-1-1-1z", fill: "currentColor" }) }),
                       /* @__PURE__ */ jsx4("span", { style: { fontSize: 9, fontWeight: 600, color: "rgba(255,255,255,.55)" }, children: pin.comments.length })
                     ] })
@@ -2307,16 +2356,16 @@ import { useEffect as useEffect3, useRef as useRef2, useState as useState4 } fro
 var SDK_VERSION = true ? "0.7.16" : "0.7.16";
 
 // src/AnnotationToolbar.tsx
-import { Fragment as Fragment5, jsx as jsx5, jsxs as jsxs4 } from "react/jsx-runtime";
-var IPlus = () => /* @__PURE__ */ jsxs4("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2.2", strokeLinecap: "round", strokeLinejoin: "round", children: [
+import { Fragment as Fragment5, jsx as jsx5, jsxs as jsxs5 } from "react/jsx-runtime";
+var IPlus = () => /* @__PURE__ */ jsxs5("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2.2", strokeLinecap: "round", strokeLinejoin: "round", children: [
   /* @__PURE__ */ jsx5("line", { x1: "12", y1: "5", x2: "12", y2: "19" }),
   /* @__PURE__ */ jsx5("line", { x1: "5", y1: "12", x2: "19", y2: "12" })
 ] });
-var IClose = () => /* @__PURE__ */ jsxs4("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2.2", strokeLinecap: "round", strokeLinejoin: "round", children: [
+var IClose = () => /* @__PURE__ */ jsxs5("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2.2", strokeLinecap: "round", strokeLinejoin: "round", children: [
   /* @__PURE__ */ jsx5("line", { x1: "18", y1: "6", x2: "6", y2: "18" }),
   /* @__PURE__ */ jsx5("line", { x1: "6", y1: "6", x2: "18", y2: "18" })
 ] });
-var IList = () => /* @__PURE__ */ jsxs4("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [
+var IList = () => /* @__PURE__ */ jsxs5("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [
   /* @__PURE__ */ jsx5("line", { x1: "8", y1: "6", x2: "21", y2: "6" }),
   /* @__PURE__ */ jsx5("line", { x1: "8", y1: "12", x2: "21", y2: "12" }),
   /* @__PURE__ */ jsx5("line", { x1: "8", y1: "18", x2: "21", y2: "18" }),
@@ -2324,13 +2373,13 @@ var IList = () => /* @__PURE__ */ jsxs4("svg", { width: "14", height: "14", view
   /* @__PURE__ */ jsx5("line", { x1: "3", y1: "12", x2: "3.01", y2: "12" }),
   /* @__PURE__ */ jsx5("line", { x1: "3", y1: "18", x2: "3.01", y2: "18" })
 ] });
-var IDownload = () => /* @__PURE__ */ jsxs4("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [
+var IDownload = () => /* @__PURE__ */ jsxs5("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [
   /* @__PURE__ */ jsx5("path", { d: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" }),
   /* @__PURE__ */ jsx5("polyline", { points: "7 10 12 15 17 10" }),
   /* @__PURE__ */ jsx5("line", { x1: "12", y1: "15", x2: "12", y2: "3" })
 ] });
 function TBtn({ icon, label, active, activeColor = "#3B82F6", badge, disabled, onClick, title, dataGuide }) {
-  return /* @__PURE__ */ jsxs4(
+  return /* @__PURE__ */ jsxs5(
     "button",
     {
       onClick,
@@ -2437,7 +2486,7 @@ function UpdateModal({
         zIndex: 2e4,
         fontFamily: FONT_FAMILY
       },
-      children: /* @__PURE__ */ jsxs4(
+      children: /* @__PURE__ */ jsxs5(
         "div",
         {
           onClick: (e) => e.stopPropagation(),
@@ -2450,17 +2499,17 @@ function UpdateModal({
             boxShadow: "0 24px 64px rgba(0,0,0,.6)"
           },
           children: [
-            /* @__PURE__ */ jsxs4("div", { style: { display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 18 }, children: [
-              /* @__PURE__ */ jsxs4("div", { children: [
+            /* @__PURE__ */ jsxs5("div", { style: { display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 18 }, children: [
+              /* @__PURE__ */ jsxs5("div", { children: [
                 /* @__PURE__ */ jsx5("div", { style: { fontSize: 15, fontWeight: 700, color: "#fbbf24", marginBottom: 4 }, children: "\u{1F680} \uC0C8 \uBC84\uC804 \uC5C5\uB370\uC774\uD2B8 \uC548\uB0B4" }),
-                /* @__PURE__ */ jsxs4("div", { style: { fontSize: 12, color: "rgba(255,255,255,.5)" }, children: [
+                /* @__PURE__ */ jsxs5("div", { style: { fontSize: 12, color: "rgba(255,255,255,.5)" }, children: [
                   "\uD604\uC7AC\xA0",
-                  /* @__PURE__ */ jsxs4("span", { style: { fontFamily: "monospace", color: "rgba(255,255,255,.75)" }, children: [
+                  /* @__PURE__ */ jsxs5("span", { style: { fontFamily: "monospace", color: "rgba(255,255,255,.75)" }, children: [
                     "v",
                     currentVersion
                   ] }),
                   "\xA0\u2192\xA0\uCD5C\uC2E0\xA0",
-                  /* @__PURE__ */ jsxs4("span", { style: { fontFamily: "monospace", color: "#34d399", fontWeight: 700 }, children: [
+                  /* @__PURE__ */ jsxs5("span", { style: { fontFamily: "monospace", color: "#34d399", fontWeight: 700 }, children: [
                     "v",
                     latestVersion
                   ] })
@@ -2476,7 +2525,7 @@ function UpdateModal({
               )
             ] }),
             /* @__PURE__ */ jsx5("div", { style: { fontSize: 11, color: "rgba(255,255,255,.4)", marginBottom: 8 }, children: "\uC544\uB798 \uBA85\uB839\uC5B4\uB85C \uC5C5\uADF8\uB808\uC774\uB4DC \uD6C4 \uC571\uC744 \uC7AC\uBC30\uD3EC\uD558\uC138\uC694:" }),
-            [{ label: "pnpm", cmd: gitCmd }, { label: "npm", cmd: npmCmd }].map(({ label, cmd }) => /* @__PURE__ */ jsxs4("div", { style: { background: "#1e293b", borderRadius: 4, padding: "10px 12px", marginBottom: 8, display: "flex", alignItems: "center", gap: 8, border: "1px solid rgba(255,255,255,.06)" }, children: [
+            [{ label: "pnpm", cmd: gitCmd }, { label: "npm", cmd: npmCmd }].map(({ label, cmd }) => /* @__PURE__ */ jsxs5("div", { style: { background: "#1e293b", borderRadius: 4, padding: "10px 12px", marginBottom: 8, display: "flex", alignItems: "center", gap: 8, border: "1px solid rgba(255,255,255,.06)" }, children: [
               /* @__PURE__ */ jsx5("span", { style: { fontSize: 9, fontWeight: 700, color: "#64748b", width: 30, flexShrink: 0, textTransform: "uppercase" }, children: label }),
               /* @__PURE__ */ jsx5("code", { style: { flex: 1, fontSize: 11, color: "#a5f3fc", fontFamily: "monospace", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }, children: cmd }),
               /* @__PURE__ */ jsx5(
@@ -2496,21 +2545,21 @@ function UpdateModal({
   );
 }
 var STATUS_CYCLE = ["active", "done", "pending"];
-var IEdit = () => /* @__PURE__ */ jsxs4("svg", { width: "10", height: "10", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [
+var IEdit = () => /* @__PURE__ */ jsxs5("svg", { width: "10", height: "10", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [
   /* @__PURE__ */ jsx5("path", { d: "M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" }),
   /* @__PURE__ */ jsx5("path", { d: "M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" })
 ] });
 var IBookmark = ({ size = 13 }) => /* @__PURE__ */ jsx5("svg", { width: size, height: size, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: /* @__PURE__ */ jsx5("path", { d: "M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" }) });
-var IDesktop = ({ size = 12 }) => /* @__PURE__ */ jsxs4("svg", { width: size, height: size, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [
+var IDesktop = ({ size = 12 }) => /* @__PURE__ */ jsxs5("svg", { width: size, height: size, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [
   /* @__PURE__ */ jsx5("rect", { x: "2", y: "3", width: "20", height: "14", rx: "2" }),
   /* @__PURE__ */ jsx5("line", { x1: "8", y1: "21", x2: "16", y2: "21" }),
   /* @__PURE__ */ jsx5("line", { x1: "12", y1: "17", x2: "12", y2: "21" })
 ] });
-var ITablet = ({ size = 12 }) => /* @__PURE__ */ jsxs4("svg", { width: size, height: size, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [
+var ITablet = ({ size = 12 }) => /* @__PURE__ */ jsxs5("svg", { width: size, height: size, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [
   /* @__PURE__ */ jsx5("rect", { x: "4", y: "2", width: "16", height: "20", rx: "2" }),
   /* @__PURE__ */ jsx5("line", { x1: "12", y1: "18", x2: "12.01", y2: "18" })
 ] });
-var IMobile = ({ size = 12 }) => /* @__PURE__ */ jsxs4("svg", { width: size, height: size, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [
+var IMobile = ({ size = 12 }) => /* @__PURE__ */ jsxs5("svg", { width: size, height: size, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: [
   /* @__PURE__ */ jsx5("rect", { x: "5", y: "2", width: "14", height: "20", rx: "2" }),
   /* @__PURE__ */ jsx5("line", { x1: "12", y1: "18", x2: "12.01", y2: "18" })
 ] });
@@ -2558,7 +2607,7 @@ function SessionPickerItem({
   const sc = SESSION_STATUS_CONFIG[status];
   const vp = session.viewport ? SESSION_VIEWPORT_CONFIG[session.viewport] : null;
   const pct = progress && progress.total > 0 ? Math.round(progress.resolved / progress.total * 100) : 0;
-  return /* @__PURE__ */ jsxs4(
+  return /* @__PURE__ */ jsxs5(
     "div",
     {
       onClick,
@@ -2576,7 +2625,7 @@ function SessionPickerItem({
         transition: "background .12s"
       },
       children: [
-        /* @__PURE__ */ jsxs4("div", { style: { display: "flex", alignItems: "center", gap: 6 }, children: [
+        /* @__PURE__ */ jsxs5("div", { style: { display: "flex", alignItems: "center", gap: 6 }, children: [
           /* @__PURE__ */ jsx5("span", { style: { fontSize: 10, color: isActive ? "rgba(255,255,255,.5)" : "rgba(255,255,255,.18)", flexShrink: 0, width: 12, textAlign: "center" }, children: isActive ? "\u2713" : "" }),
           vp && /* @__PURE__ */ jsx5("span", { style: { color: "rgba(255,255,255,.45)", flexShrink: 0, display: "flex", alignItems: "center" }, title: vp.label, children: VIEWPORT_ICON[session.viewport ?? ""] ?? null }),
           /* @__PURE__ */ jsx5("span", { style: { flex: 1, fontSize: 12, color: isActive ? "rgba(255,255,255,.88)" : "rgba(255,255,255,.55)", fontWeight: isActive ? 600 : 400, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", fontFamily: FONT_FAMILY }, children: session.name }),
@@ -2647,7 +2696,7 @@ function SessionPickerItem({
               children: "\uC0AD\uC81C"
             }
           ),
-          confirming && /* @__PURE__ */ jsxs4("div", { onClick: (e) => e.stopPropagation(), style: { display: "flex", gap: 4, alignItems: "center", flexShrink: 0 }, children: [
+          confirming && /* @__PURE__ */ jsxs5("div", { onClick: (e) => e.stopPropagation(), style: { display: "flex", gap: 4, alignItems: "center", flexShrink: 0 }, children: [
             /* @__PURE__ */ jsx5("span", { style: { fontSize: 9, color: "#f87171", fontFamily: FONT_FAMILY, whiteSpace: "nowrap" }, children: "\uC0AD\uC81C\uD560\uAE4C\uC694?" }),
             /* @__PURE__ */ jsx5(
               "button",
@@ -2670,15 +2719,15 @@ function SessionPickerItem({
             )
           ] })
         ] }),
-        progress && progress.total > 0 && /* @__PURE__ */ jsx5("div", { style: { marginTop: 6, paddingLeft: 18 }, children: /* @__PURE__ */ jsxs4("div", { style: { display: "flex", alignItems: "center", gap: 6, marginBottom: 3 }, children: [
+        progress && progress.total > 0 && /* @__PURE__ */ jsx5("div", { style: { marginTop: 6, paddingLeft: 18 }, children: /* @__PURE__ */ jsxs5("div", { style: { display: "flex", alignItems: "center", gap: 6, marginBottom: 3 }, children: [
           /* @__PURE__ */ jsx5("div", { style: { flex: 1, height: 3, background: "rgba(255,255,255,.18)", borderRadius: 2, overflow: "hidden" }, children: /* @__PURE__ */ jsx5("div", { style: { width: `${pct}%`, height: "100%", background: pct === 100 ? "#16a34a" : COLORS.pri, borderRadius: 2, transition: "width .3s" } }) }),
-          /* @__PURE__ */ jsxs4("span", { style: { fontSize: 9, color: "rgba(255,255,255,.3)", flexShrink: 0, fontFamily: FONT_FAMILY }, children: [
+          /* @__PURE__ */ jsxs5("span", { style: { fontSize: 9, color: "rgba(255,255,255,.3)", flexShrink: 0, fontFamily: FONT_FAMILY }, children: [
             progress.resolved,
             "/",
             progress.total
           ] })
         ] }) }),
-        editing && /* @__PURE__ */ jsxs4("div", { onClick: (e) => e.stopPropagation(), style: { marginTop: 8, paddingLeft: 18 }, children: [
+        editing && /* @__PURE__ */ jsxs5("div", { onClick: (e) => e.stopPropagation(), style: { marginTop: 8, paddingLeft: 18 }, children: [
           /* @__PURE__ */ jsx5(
             "input",
             {
@@ -2709,7 +2758,7 @@ function SessionPickerItem({
           ),
           /* @__PURE__ */ jsx5("div", { style: { display: "flex", gap: 4, marginBottom: 6 }, children: Object.entries(SESSION_VIEWPORT_CONFIG).map(([vp2, cfg]) => {
             const isVpActive = editViewport === vp2;
-            return /* @__PURE__ */ jsxs4(
+            return /* @__PURE__ */ jsxs5(
               "button",
               {
                 onClick: (e) => {
@@ -2740,7 +2789,7 @@ function SessionPickerItem({
               vp2
             );
           }) }),
-          /* @__PURE__ */ jsxs4("div", { style: { display: "flex", gap: 5 }, children: [
+          /* @__PURE__ */ jsxs5("div", { style: { display: "flex", gap: 5 }, children: [
             /* @__PURE__ */ jsx5(
               "button",
               {
@@ -2803,8 +2852,8 @@ function SessionPicker({
     setCreating(false);
     setOpen(false);
   };
-  return /* @__PURE__ */ jsxs4("div", { ref, style: { position: "relative", flexShrink: 0 }, children: [
-    /* @__PURE__ */ jsxs4(
+  return /* @__PURE__ */ jsxs5("div", { ref, style: { position: "relative", flexShrink: 0 }, children: [
+    /* @__PURE__ */ jsxs5(
       "button",
       {
         onClick: () => setOpen((v) => !v),
@@ -2845,7 +2894,7 @@ function SessionPicker({
         ]
       }
     ),
-    open && /* @__PURE__ */ jsxs4(
+    open && /* @__PURE__ */ jsxs5(
       "div",
       {
         style: {
@@ -2866,7 +2915,7 @@ function SessionPicker({
         children: [
           /* @__PURE__ */ jsx5("div", { style: { padding: "8px 12px 6px", fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,.3)", letterSpacing: ".5px", textTransform: "uppercase" }, children: "\uAC80\uD1A0 \uD68C\uCC28" }),
           /* @__PURE__ */ jsx5("div", { style: { height: 1, background: "rgba(255,255,255,.07)" } }),
-          /* @__PURE__ */ jsxs4(
+          /* @__PURE__ */ jsxs5(
             "div",
             {
               onClick: () => {
@@ -2915,7 +2964,7 @@ function SessionPicker({
             s.id
           )),
           /* @__PURE__ */ jsx5("div", { style: { height: 1, background: "rgba(255,255,255,.07)", margin: "2px 0" } }),
-          creating ? /* @__PURE__ */ jsxs4("div", { style: { padding: "8px 10px" }, children: [
+          creating ? /* @__PURE__ */ jsxs5("div", { style: { padding: "8px 10px" }, children: [
             /* @__PURE__ */ jsx5(
               "input",
               {
@@ -2951,7 +3000,7 @@ function SessionPicker({
             ),
             /* @__PURE__ */ jsx5("div", { style: { display: "flex", gap: 4, marginBottom: 8 }, children: Object.entries(SESSION_VIEWPORT_CONFIG).map(([vp, cfg]) => {
               const isVpActive = newViewport === vp;
-              return /* @__PURE__ */ jsxs4(
+              return /* @__PURE__ */ jsxs5(
                 "button",
                 {
                   onClick: () => setNewViewport(isVpActive ? null : vp),
@@ -2979,7 +3028,7 @@ function SessionPicker({
                 vp
               );
             }) }),
-            /* @__PURE__ */ jsxs4("div", { style: { display: "flex", gap: 6 }, children: [
+            /* @__PURE__ */ jsxs5("div", { style: { display: "flex", gap: 6 }, children: [
               /* @__PURE__ */ jsx5(
                 "button",
                 {
@@ -3001,7 +3050,7 @@ function SessionPicker({
                 }
               )
             ] })
-          ] }) : /* @__PURE__ */ jsxs4(
+          ] }) : /* @__PURE__ */ jsxs5(
             "button",
             {
               onClick: () => setCreating(true),
@@ -3040,7 +3089,7 @@ function SessionPicker({
   ] });
 }
 function SBLogo({ size = 28 }) {
-  return /* @__PURE__ */ jsxs4("svg", { width: size, height: size, viewBox: "-10 -10 170 172", fill: "none", style: { display: "block", flexShrink: 0 }, children: [
+  return /* @__PURE__ */ jsxs5("svg", { width: size, height: size, viewBox: "-10 -10 170 172", fill: "none", style: { display: "block", flexShrink: 0 }, children: [
     /* @__PURE__ */ jsx5("path", { opacity: "0.69", d: "M111.309 79.6218C116.002 96.9372 100.191 112.84 82.8489 108.247L21.3533 91.961C4.01096 87.3681 -1.85607 65.7239 10.7927 53.0015L55.6448 7.88791C68.2936 -4.83456 89.9715 0.906559 94.6651 18.2219L111.309 79.6218Z", fill: "#3078FF" }),
     /* @__PURE__ */ jsx5("path", { opacity: "0.5", d: "M101.327 142.828C86.0562 152.245 66.3188 141.599 65.7993 123.666L64.723 86.5136C64.2035 68.5809 83.2915 56.8106 99.0814 65.3271L131.795 82.9713C147.585 91.4877 148.234 113.904 132.964 123.32L101.327 142.828Z", fill: "#4CD3FF" })
   ] });
@@ -3074,8 +3123,8 @@ function AnnotationToolbar({
 }) {
   const [showUpdateModal, setShowUpdateModal] = useState4(false);
   const hasUpdate = isNewer(latestSdkVersion ?? null, SDK_VERSION);
-  return /* @__PURE__ */ jsxs4("div", { style: { position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 1e4, fontFamily: FONT_FAMILY }, children: [
-    enabled && adding && /* @__PURE__ */ jsxs4("div", { style: { display: "flex", justifyContent: "center", marginBottom: 6, pointerEvents: "none" }, children: [
+  return /* @__PURE__ */ jsxs5("div", { style: { position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 1e4, fontFamily: FONT_FAMILY }, children: [
+    enabled && adding && /* @__PURE__ */ jsxs5("div", { style: { display: "flex", justifyContent: "center", marginBottom: 6, pointerEvents: "none" }, children: [
       /* @__PURE__ */ jsx5(
         "div",
         {
@@ -3096,7 +3145,7 @@ function AnnotationToolbar({
       ),
       /* @__PURE__ */ jsx5("style", { children: `@keyframes specbridgeTbHint{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}` })
     ] }),
-    /* @__PURE__ */ jsxs4(
+    /* @__PURE__ */ jsxs5(
       "div",
       {
         style: {
@@ -3112,7 +3161,7 @@ function AnnotationToolbar({
           gap: 0
         },
         children: [
-          /* @__PURE__ */ jsxs4(
+          /* @__PURE__ */ jsxs5(
             "div",
             {
               style: {
@@ -3122,7 +3171,7 @@ function AnnotationToolbar({
                 gap: 7
               },
               children: [
-                /* @__PURE__ */ jsxs4("div", { style: { position: "relative", flexShrink: 0 }, children: [
+                /* @__PURE__ */ jsxs5("div", { style: { position: "relative", flexShrink: 0 }, children: [
                   /* @__PURE__ */ jsx5(
                     "div",
                     {
@@ -3144,7 +3193,7 @@ function AnnotationToolbar({
                       children: /* @__PURE__ */ jsx5(SBLogo, { size: 28 })
                     }
                   ),
-                  showLogoTip && /* @__PURE__ */ jsxs4(
+                  showLogoTip && /* @__PURE__ */ jsxs5(
                     "div",
                     {
                       style: {
@@ -3187,7 +3236,7 @@ function AnnotationToolbar({
                     }
                   )
                 ] }),
-                /* @__PURE__ */ jsxs4(
+                /* @__PURE__ */ jsxs5(
                   "button",
                   {
                     onClick: hasUpdate ? () => setShowUpdateModal(true) : void 0,
@@ -3195,10 +3244,10 @@ function AnnotationToolbar({
                     style: { background: "transparent", border: "none", padding: 0, cursor: hasUpdate ? "pointer" : "default", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 3 },
                     children: [
                       /* @__PURE__ */ jsx5("span", { style: { fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,.7)", letterSpacing: ".2px", lineHeight: 1, whiteSpace: "nowrap" }, children: "SpecBridge" }),
-                      /* @__PURE__ */ jsxs4("div", { style: { display: "flex", alignItems: "center", gap: 1 }, children: [
+                      /* @__PURE__ */ jsxs5("div", { style: { display: "flex", alignItems: "center", gap: 1 }, children: [
                         /* @__PURE__ */ jsx5("span", { style: { fontSize: 9, fontWeight: 700, color: COLORS.pri, lineHeight: 1 }, children: "Beta" }),
                         /* @__PURE__ */ jsx5("span", { style: { fontSize: 9, fontFamily: "monospace", color: hasUpdate ? "#fbbf24" : "rgba(255,255,255,.55)", lineHeight: 1 }, children: shortVer(SDK_VERSION) }),
-                        hasUpdate && /* @__PURE__ */ jsxs4("span", { style: { fontSize: 7, fontWeight: 700, background: "#f59e0b", color: "#0f172a", borderRadius: 3, padding: "1px 3px", lineHeight: 1.4, whiteSpace: "nowrap" }, children: [
+                        hasUpdate && /* @__PURE__ */ jsxs5("span", { style: { fontSize: 7, fontWeight: 700, background: "#f59e0b", color: "#0f172a", borderRadius: 3, padding: "1px 3px", lineHeight: 1.4, whiteSpace: "nowrap" }, children: [
                           "\u2191 ",
                           shortVer(latestSdkVersion ?? "")
                         ] })
@@ -3206,7 +3255,7 @@ function AnnotationToolbar({
                     ]
                   }
                 ),
-                enabled && sessions && onSelectSession && onCreateSession && onDeleteSession && /* @__PURE__ */ jsxs4(Fragment5, { children: [
+                enabled && sessions && onSelectSession && onCreateSession && onDeleteSession && /* @__PURE__ */ jsxs5(Fragment5, { children: [
                   /* @__PURE__ */ jsx5("div", { style: { width: 1, height: 22, background: "rgba(255,255,255,.18)", flexShrink: 0, marginLeft: 4 } }),
                   /* @__PURE__ */ jsx5(
                     SessionPicker,
@@ -3227,7 +3276,7 @@ function AnnotationToolbar({
           ),
           /* @__PURE__ */ jsx5("div", { "data-guide": "sb-label-filter", style: { flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", gap: 3 }, children: enabled && labels && labels.length > 0 && (() => {
             const allActive = !filterLabelIds || filterLabelIds.size === 0;
-            return /* @__PURE__ */ jsxs4(Fragment5, { children: [
+            return /* @__PURE__ */ jsxs5(Fragment5, { children: [
               /* @__PURE__ */ jsx5(
                 "button",
                 {
@@ -3268,7 +3317,7 @@ function AnnotationToolbar({
               labels.map((l) => {
                 const active = filterLabelIds?.has(l.id) ?? false;
                 const color = l.color || FALLBACK_LABEL_COLOR;
-                return /* @__PURE__ */ jsxs4(
+                return /* @__PURE__ */ jsxs5(
                   "button",
                   {
                     onClick: () => onToggleLabelFilter?.(l.id),
@@ -3313,8 +3362,8 @@ function AnnotationToolbar({
               })
             ] });
           })() }),
-          /* @__PURE__ */ jsxs4("div", { style: { flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 3 }, children: [
-            enabled && /* @__PURE__ */ jsxs4(Fragment5, { children: [
+          /* @__PURE__ */ jsxs5("div", { style: { flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 3 }, children: [
+            enabled && /* @__PURE__ */ jsxs5(Fragment5, { children: [
               /* @__PURE__ */ jsx5(
                 TBtn,
                 {
@@ -3350,7 +3399,7 @@ function AnnotationToolbar({
                 }
               )
             ] }),
-            /* @__PURE__ */ jsxs4(
+            /* @__PURE__ */ jsxs5(
               "button",
               {
                 onClick: onToggleEnabled,
@@ -3375,7 +3424,7 @@ function AnnotationToolbar({
                   fontFamily: FONT_FAMILY
                 },
                 children: [
-                  /* @__PURE__ */ jsxs4("svg", { width: "13", height: "13", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", style: { flexShrink: 0 }, children: [
+                  /* @__PURE__ */ jsxs5("svg", { width: "13", height: "13", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", style: { flexShrink: 0 }, children: [
                     /* @__PURE__ */ jsx5("path", { d: "M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z" }),
                     /* @__PURE__ */ jsx5("circle", { cx: "12", cy: "10", r: "3" })
                   ] }),
@@ -3383,7 +3432,7 @@ function AnnotationToolbar({
                 ]
               }
             ),
-            /* @__PURE__ */ jsxs4(
+            /* @__PURE__ */ jsxs5(
               "button",
               {
                 onClick: onEditAuthor,
@@ -3417,7 +3466,7 @@ function AnnotationToolbar({
                   e.currentTarget.style.borderColor = author ? "rgba(255,255,255,.07)" : "rgba(251,191,36,.4)";
                 },
                 children: [
-                  /* @__PURE__ */ jsxs4("svg", { width: "13", height: "13", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", style: { flexShrink: 0 }, children: [
+                  /* @__PURE__ */ jsxs5("svg", { width: "13", height: "13", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", style: { flexShrink: 0 }, children: [
                     /* @__PURE__ */ jsx5("path", { d: "M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" }),
                     /* @__PURE__ */ jsx5("circle", { cx: "12", cy: "7", r: "4" })
                   ] }),
@@ -3442,7 +3491,7 @@ function AnnotationToolbar({
 
 // src/AuthorModal.tsx
 import { useEffect as useEffect4, useRef as useRef3, useState as useState5 } from "react";
-import { jsx as jsx6, jsxs as jsxs5 } from "react/jsx-runtime";
+import { jsx as jsx6, jsxs as jsxs6 } from "react/jsx-runtime";
 function AuthorModal({
   currentAuthor,
   currentDefaultLabelId,
@@ -3482,7 +3531,7 @@ function AuthorModal({
         background: "rgba(0,0,0,.55)",
         fontFamily: FONT_FAMILY
       },
-      children: /* @__PURE__ */ jsxs5(
+      children: /* @__PURE__ */ jsxs6(
         "div",
         {
           style: {
@@ -3527,14 +3576,14 @@ function AuthorModal({
                 }
               }
             ),
-            /* @__PURE__ */ jsxs5("label", { style: { display: "block", fontSize: 11, fontWeight: 600, color: DARK.txS, marginBottom: 8 }, children: [
+            /* @__PURE__ */ jsxs6("label", { style: { display: "block", fontSize: 11, fontWeight: 600, color: DARK.txS, marginBottom: 8 }, children: [
               "\uAE30\uBCF8 \uB808\uC774\uBE14",
               /* @__PURE__ */ jsx6("span", { style: { fontWeight: 400, color: DARK.txL, marginLeft: 6 }, children: "(\uBC88\uD638 \uCD94\uAC00 \uC2DC \uC790\uB3D9 \uC120\uD0DD)" })
             ] }),
             /* @__PURE__ */ jsx6("div", { style: { display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 16 }, children: labels.map((l) => {
               const active = selectedLabelId === l.id;
               const color = l.color || FALLBACK_LABEL_COLOR;
-              return /* @__PURE__ */ jsxs5(
+              return /* @__PURE__ */ jsxs6(
                 "button",
                 {
                   onClick: () => setSelectedLabelId(l.id),
@@ -3561,7 +3610,7 @@ function AuthorModal({
                 l.id
               );
             }) }),
-            activeLabel && /* @__PURE__ */ jsxs5(
+            activeLabel && /* @__PURE__ */ jsxs6(
               "div",
               {
                 style: {
@@ -3584,7 +3633,7 @@ function AuthorModal({
                 ]
               }
             ),
-            /* @__PURE__ */ jsxs5("div", { style: { display: "flex", gap: 8 }, children: [
+            /* @__PURE__ */ jsxs6("div", { style: { display: "flex", gap: 8 }, children: [
               /* @__PURE__ */ jsx6(
                 "button",
                 {
@@ -3634,7 +3683,7 @@ function AuthorModal({
 
 // src/LabelManagerModal.tsx
 import { useState as useState6, useEffect as useEffect5 } from "react";
-import { Fragment as Fragment6, jsx as jsx7, jsxs as jsxs6 } from "react/jsx-runtime";
+import { Fragment as Fragment6, jsx as jsx7, jsxs as jsxs7 } from "react/jsx-runtime";
 function LabelManagerModal({ labels, pinUsage, onAdd, onUpdate, onDelete, onClose }) {
   const [newName, setNewName] = useState6("");
   const [newColor, setNewColor] = useState6(LABEL_COLOR_PRESETS[0]);
@@ -3679,7 +3728,7 @@ function LabelManagerModal({ labels, pinUsage, onAdd, onUpdate, onDelete, onClos
         background: "rgba(0,0,0,.55)"
       },
       onClick: onClose,
-      children: /* @__PURE__ */ jsxs6(
+      children: /* @__PURE__ */ jsxs7(
         "div",
         {
           onClick: (e) => e.stopPropagation(),
@@ -3695,7 +3744,7 @@ function LabelManagerModal({ labels, pinUsage, onAdd, onUpdate, onDelete, onClos
             overflow: "hidden"
           },
           children: [
-            /* @__PURE__ */ jsxs6(
+            /* @__PURE__ */ jsxs7(
               "div",
               {
                 style: {
@@ -3708,7 +3757,7 @@ function LabelManagerModal({ labels, pinUsage, onAdd, onUpdate, onDelete, onClos
                   flexShrink: 0
                 },
                 children: [
-                  /* @__PURE__ */ jsxs6("div", { children: [
+                  /* @__PURE__ */ jsxs7("div", { children: [
                     /* @__PURE__ */ jsx7("div", { style: { fontSize: 13, fontWeight: 700, color: DARK.txt }, children: "\u{1F3F7}\uFE0F \uB808\uC774\uBE14 \uAD00\uB9AC" }),
                     /* @__PURE__ */ jsx7("div", { style: { fontSize: 10, color: DARK.txL, marginTop: 2 }, children: "\uC804\uCCB4 \uD398\uC774\uC9C0\uC5D0 \uACF5\uD1B5 \uC801\uC6A9\uB429\uB2C8\uB2E4" })
                   ] }),
@@ -3742,7 +3791,7 @@ function LabelManagerModal({ labels, pinUsage, onAdd, onUpdate, onDelete, onClos
               },
               label.id
             )) }),
-            /* @__PURE__ */ jsxs6(
+            /* @__PURE__ */ jsxs7(
               "div",
               {
                 style: {
@@ -3753,7 +3802,7 @@ function LabelManagerModal({ labels, pinUsage, onAdd, onUpdate, onDelete, onClos
                 },
                 children: [
                   /* @__PURE__ */ jsx7("div", { style: { fontSize: 11, fontWeight: 600, color: DARK.txS, marginBottom: 6 }, children: "+ \uB808\uC774\uBE14 \uCD94\uAC00" }),
-                  /* @__PURE__ */ jsxs6("div", { style: { display: "flex", gap: 6, alignItems: "center" }, children: [
+                  /* @__PURE__ */ jsxs7("div", { style: { display: "flex", gap: 6, alignItems: "center" }, children: [
                     /* @__PURE__ */ jsx7(ColorDot, { color: newColor, onChange: setNewColor, title: "\uC0C9\uC0C1 \uC120\uD0DD" }),
                     /* @__PURE__ */ jsx7(
                       "input",
@@ -3814,7 +3863,7 @@ function LabelRow({ label, usage, onUpdate, onDelete }) {
     }
     onDelete();
   };
-  return /* @__PURE__ */ jsxs6(
+  return /* @__PURE__ */ jsxs7(
     "div",
     {
       style: {
@@ -3861,7 +3910,7 @@ function LabelRow({ label, usage, onUpdate, onDelete }) {
             children: label.name
           }
         ),
-        /* @__PURE__ */ jsxs6("span", { style: { fontSize: 10, color: usage > 0 ? DARK.txS : DARK.txL, minWidth: 40, textAlign: "right" }, children: [
+        /* @__PURE__ */ jsxs7("span", { style: { fontSize: 10, color: usage > 0 ? DARK.txS : DARK.txL, minWidth: 40, textAlign: "right" }, children: [
           usage,
           "\uAC1C \uC0AC\uC6A9"
         ] }),
@@ -3888,7 +3937,7 @@ function LabelRow({ label, usage, onUpdate, onDelete }) {
 }
 function ColorDot({ color, onChange, title }) {
   const [open, setOpen] = useState6(false);
-  return /* @__PURE__ */ jsxs6("div", { style: { position: "relative" }, children: [
+  return /* @__PURE__ */ jsxs7("div", { style: { position: "relative" }, children: [
     /* @__PURE__ */ jsx7(
       "button",
       {
@@ -3906,7 +3955,7 @@ function ColorDot({ color, onChange, title }) {
         }
       }
     ),
-    open && /* @__PURE__ */ jsxs6(Fragment6, { children: [
+    open && /* @__PURE__ */ jsxs7(Fragment6, { children: [
       /* @__PURE__ */ jsx7("div", { onClick: () => setOpen(false), style: { position: "fixed", inset: 0, zIndex: 1 } }),
       /* @__PURE__ */ jsx7(
         "div",
@@ -3952,8 +4001,8 @@ function ColorDot({ color, onChange, title }) {
 
 // src/OnboardingGuide.tsx
 import { useEffect as useEffect6, useState as useState7 } from "react";
-import { Fragment as Fragment7, jsx as jsx8, jsxs as jsxs7 } from "react/jsx-runtime";
-var SB_LOGO_PATHS = /* @__PURE__ */ jsxs7(Fragment7, { children: [
+import { Fragment as Fragment7, jsx as jsx8, jsxs as jsxs8 } from "react/jsx-runtime";
+var SB_LOGO_PATHS = /* @__PURE__ */ jsxs8(Fragment7, { children: [
   /* @__PURE__ */ jsx8("path", { opacity: "0.69", d: "M111.309 79.6218C116.002 96.9372 100.191 112.84 82.8489 108.247L21.3533 91.961C4.01096 87.3681 -1.85607 65.7239 10.7927 53.0015L55.6448 7.88791C68.2936 -4.83456 89.9715 0.906559 94.6651 18.2219L111.309 79.6218Z", fill: "#3078FF" }),
   /* @__PURE__ */ jsx8("path", { opacity: "0.5", d: "M101.327 142.828C86.0562 152.245 66.3188 141.599 65.7993 123.666L64.723 86.5136C64.2035 68.5809 83.2915 56.8106 99.0814 65.3271L131.795 82.9713C147.585 91.4877 148.234 113.904 132.964 123.32L101.327 142.828Z", fill: "#4CD3FF" })
 ] });
@@ -3985,7 +4034,7 @@ var STEPS = [
     target: null
   },
   {
-    icon: /* @__PURE__ */ jsxs7(GIcon, { children: [
+    icon: /* @__PURE__ */ jsxs8(GIcon, { children: [
       /* @__PURE__ */ jsx8("path", { d: "M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" }),
       /* @__PURE__ */ jsx8("circle", { cx: "12", cy: "7", r: "4" })
     ] }),
@@ -3995,7 +4044,7 @@ var STEPS = [
     target: "sb-author"
   },
   {
-    icon: /* @__PURE__ */ jsxs7(GIcon, { children: [
+    icon: /* @__PURE__ */ jsxs8(GIcon, { children: [
       /* @__PURE__ */ jsx8("path", { d: "M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z" }),
       /* @__PURE__ */ jsx8("circle", { cx: "12", cy: "10", r: "3" })
     ] }),
@@ -4005,7 +4054,7 @@ var STEPS = [
     target: "sb-annotation"
   },
   {
-    icon: /* @__PURE__ */ jsxs7(GIcon, { children: [
+    icon: /* @__PURE__ */ jsxs8(GIcon, { children: [
       /* @__PURE__ */ jsx8("line", { x1: "12", y1: "5", x2: "12", y2: "19" }),
       /* @__PURE__ */ jsx8("line", { x1: "5", y1: "12", x2: "19", y2: "12" })
     ] }),
@@ -4015,7 +4064,7 @@ var STEPS = [
     target: "sb-add-pin"
   },
   {
-    icon: /* @__PURE__ */ jsxs7(GIcon, { children: [
+    icon: /* @__PURE__ */ jsxs8(GIcon, { children: [
       /* @__PURE__ */ jsx8("line", { x1: "8", y1: "6", x2: "21", y2: "6" }),
       /* @__PURE__ */ jsx8("line", { x1: "8", y1: "12", x2: "21", y2: "12" }),
       /* @__PURE__ */ jsx8("line", { x1: "8", y1: "18", x2: "21", y2: "18" }),
@@ -4029,7 +4078,7 @@ var STEPS = [
     target: "sb-pin-list"
   },
   {
-    icon: /* @__PURE__ */ jsxs7(GIcon, { children: [
+    icon: /* @__PURE__ */ jsxs8(GIcon, { children: [
       /* @__PURE__ */ jsx8("path", { d: "M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z" }),
       /* @__PURE__ */ jsx8("path", { d: "M7 7h.01" })
     ] }),
@@ -4053,7 +4102,7 @@ var STEPS = [
     target: null
   },
   {
-    icon: /* @__PURE__ */ jsxs7(GIcon, { children: [
+    icon: /* @__PURE__ */ jsxs8(GIcon, { children: [
       /* @__PURE__ */ jsx8("rect", { width: "20", height: "16", x: "2", y: "4", rx: "2" }),
       /* @__PURE__ */ jsx8("path", { d: "M6 8h.001M10 8h.001M14 8h.001M18 8h.001M8 12h.001M12 12h.001M16 12h.001M7 16h10" })
     ] }),
@@ -4100,7 +4149,7 @@ function OnboardingGuide({ onClose }) {
     setStep((v) => v + 1);
   };
   const handlePrev = () => setStep((v) => v - 1);
-  return /* @__PURE__ */ jsxs7(Fragment7, { children: [
+  return /* @__PURE__ */ jsxs8(Fragment7, { children: [
     /* @__PURE__ */ jsx8(
       "div",
       {
@@ -4132,7 +4181,7 @@ function OnboardingGuide({ onClose }) {
         }
       }
     ),
-    /* @__PURE__ */ jsxs7(
+    /* @__PURE__ */ jsxs8(
       "div",
       {
         onClick: (e) => e.stopPropagation(),
@@ -4231,12 +4280,12 @@ function OnboardingGuide({ onClose }) {
             color: "rgba(255,255,255,.48)",
             lineHeight: 1.75
           }, children: current.desc }),
-          /* @__PURE__ */ jsxs7("div", { style: { textAlign: "center", fontSize: 10, color: "rgba(255,255,255,.22)", marginBottom: 10, flexShrink: 0 }, children: [
+          /* @__PURE__ */ jsxs8("div", { style: { textAlign: "center", fontSize: 10, color: "rgba(255,255,255,.22)", marginBottom: 10, flexShrink: 0 }, children: [
             step + 1,
             " / ",
             STEPS.length
           ] }),
-          /* @__PURE__ */ jsxs7("div", { style: { display: "flex", gap: 8, marginBottom: 10, flexShrink: 0 }, children: [
+          /* @__PURE__ */ jsxs8("div", { style: { display: "flex", gap: 8, marginBottom: 10, flexShrink: 0 }, children: [
             step > 0 && /* @__PURE__ */ jsx8(
               "button",
               {
@@ -4282,7 +4331,7 @@ function OnboardingGuide({ onClose }) {
               }
             )
           ] }),
-          /* @__PURE__ */ jsxs7(
+          /* @__PURE__ */ jsxs8(
             "label",
             {
               style: {
@@ -4956,7 +5005,7 @@ function useSessions(storage) {
 }
 
 // src/SpecBridgeAnnotation.tsx
-import { Fragment as Fragment8, jsx as jsx9, jsxs as jsxs8 } from "react/jsx-runtime";
+import { Fragment as Fragment8, jsx as jsx9, jsxs as jsxs9 } from "react/jsx-runtime";
 var LAYER_ID = "specbridge-annot-layer";
 var CONTAINER_ID = "specbridge-annot-container";
 var PIN_LAYER_ID = "specbridge-pin-layer";
@@ -5322,7 +5371,7 @@ function SpecBridgeAnnotation({
       handleSelectSession(sessions[0].id);
     }
   }, [sessions, currentSessionId, handleSelectSession]);
-  return /* @__PURE__ */ jsxs8(
+  return /* @__PURE__ */ jsxs9(
     "div",
     {
       id: CONTAINER_ID,
@@ -5398,7 +5447,7 @@ function SpecBridgeAnnotation({
         enabled && selectedId && (() => {
           const selectedPin = allPagePins.find((p) => p.id === selectedId);
           if (!selectedPin) return null;
-          return /* @__PURE__ */ jsxs8(Fragment8, { children: [
+          return /* @__PURE__ */ jsxs9(Fragment8, { children: [
             /* @__PURE__ */ jsx9(
               "div",
               {

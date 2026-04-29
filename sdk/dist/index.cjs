@@ -384,6 +384,12 @@ var import_react2 = require("react");
 
 // src/Markdown.tsx
 var import_jsx_runtime2 = require("react/jsx-runtime");
+function getMentionColor(name) {
+  const palette = ["#D97757", "#B85E3F", "#E8956D", "#C75B39", "#A0522D", "#CF7A5A", "#E8A87C", "#8B4513"];
+  let h = 0;
+  for (const ch of name) h = h * 31 + ch.charCodeAt(0) & 255;
+  return palette[h % palette.length];
+}
 var COLOR_MAP = {
   red: "#ef4444",
   green: "#34D399",
@@ -466,6 +472,33 @@ function parseInline(text, theme) {
           i = close + 1;
           continue;
         }
+      }
+    }
+    if (text[i] === "@") {
+      const nameMatch = text.slice(i + 1).match(/^[\w가-힣가-힣]+/);
+      if (nameMatch) {
+        flush();
+        const name = nameMatch[0];
+        const c = getMentionColor(name);
+        parts.push(
+          /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("span", { style: {
+            display: "inline-flex",
+            alignItems: "center",
+            padding: "1px 6px",
+            borderRadius: 3,
+            fontSize: "0.9em",
+            fontWeight: 600,
+            background: `${c}22`,
+            color: c,
+            border: `1px solid ${c}44`,
+            whiteSpace: "nowrap"
+          }, children: [
+            "@",
+            name
+          ] }, keyN++)
+        );
+        i += 1 + name.length;
+        continue;
       }
     }
     if (text[i] === "[") {
@@ -1450,6 +1483,10 @@ function mdToEditorHtml(md) {
     h = h.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
     h = h.replace(/\*(.+?)\*/g, "<em>$1</em>");
     h = h.replace(/`(.+?)`/g, "<code>$1</code>");
+    h = h.replace(/@([\w가-힣]+)/g, (_, name) => {
+      const c = getAvatarColor(name);
+      return `<span data-mention="${name}" style="display:inline-flex;align-items:center;padding:1px 5px;border-radius:3px;font-size:.9em;font-weight:600;background:${c}22;color:${c};border:1px solid ${c}44;white-space:nowrap;contenteditable:false;">@${name}</span>`;
+    });
     return h;
   };
   return md.split("\n").map((line) => {
@@ -1477,6 +1514,8 @@ function domToMd(root) {
       case "br":
         return "";
       case "span": {
+        const mention = node.getAttribute("data-mention");
+        if (mention) return `@${mention}`;
         const c = node.getAttribute("data-color");
         return c ? `{${c}:${inner}}` : inner;
       }
@@ -1561,14 +1600,24 @@ function MarkdownEditor({ value, onChange, onCtrlEnter, placeholder, style, clas
     const { node, offset: atOffset } = anchor;
     const endOffset = atOffset + 1 + mentionQuery.length;
     const text = node.textContent ?? "";
-    node.textContent = text.slice(0, atOffset) + `@${author} ` + text.slice(endOffset);
-    const newCursor = atOffset + 1 + author.length + 1;
+    const c = getAvatarColor(author);
+    const span = document.createElement("span");
+    span.setAttribute("data-mention", author);
+    span.setAttribute("contenteditable", "false");
+    span.style.cssText = `display:inline-flex;align-items:center;padding:1px 5px;border-radius:3px;font-size:.9em;font-weight:600;background:${c}22;color:${c};border:1px solid ${c}44;white-space:nowrap;`;
+    span.textContent = `@${author}`;
+    const beforeNode = document.createTextNode(text.slice(0, atOffset));
+    const afterNode = document.createTextNode("\xA0" + text.slice(endOffset));
+    const parent = node.parentNode;
+    parent.insertBefore(beforeNode, node);
+    parent.insertBefore(span, node);
+    parent.insertBefore(afterNode, node);
+    parent.removeChild(node);
     const range = document.createRange();
-    range.setStart(node, Math.min(newCursor, node.length));
+    range.setStart(afterNode, 1);
     range.collapse(true);
-    const sel = window.getSelection();
-    sel.removeAllRanges();
-    sel.addRange(range);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
     setShowMention(false);
     setMentionIndex(0);
     mentionAnchor.current = null;
