@@ -800,10 +800,9 @@ export default function App() {
         {/* =========== §7 LEGAL MANDATE =========== */}
         <section className="py-32">
           <div className="max-w-7xl mx-auto px-6">
-            {/* Headline (left-aligned) */}
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.25]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
-              행정안전부 기준, 이제<br />
-              <span className="font-serif italic font-normal" style={{ color: 'var(--brand)' }}>'자동화 점검'</span>이 요구됩니다.
+            {/* Headline (centered, one line) */}
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight leading-[1.3] text-center" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
+              행정안전부 기준, 이제 <span className="font-serif italic font-normal whitespace-nowrap" style={{ color: 'var(--brand)' }}>'자동화 점검'</span>이 요구됩니다.
             </h2>
 
             {/* Document + body text in 2 columns */}
