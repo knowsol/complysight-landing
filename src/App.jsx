@@ -130,13 +130,9 @@ export default function App() {
                   <span>2026, 범정부 예방점검체계 의무화 시대</span>
                 </div>
 
-                <h1 className="mt-8 text-xl md:text-2xl leading-snug tracking-tight font-semibold fade-up-2" style={{ color: 'var(--navy)' }}>
-                  데이터 <span className="font-serif italic font-normal" style={{ color: 'var(--brand)' }}>자동수집</span>
+                <h1 className="mt-8 text-xl md:text-2xl font-semibold leading-snug fade-up-2" style={{ color: 'var(--navy)' }}>
+                  공공기관 정보시스템 예방점검<span style={{ color: 'var(--brand)' }}>체계</span> 자동화 솔루션
                 </h1>
-
-                <p className="mt-5 text-xl md:text-2xl font-semibold leading-snug fade-up-3" style={{ color: 'var(--navy)' }}>
-                  공공기관 정보시스템 예방점검 자동화 솔루션
-                </p>
 
                 <p className="mt-8 text-lg text-slate-600 leading-relaxed max-w-xl fade-up-3">
                   행정안전부 정보시스템 예방점검 기준을 반영하여
