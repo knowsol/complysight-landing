@@ -135,9 +135,8 @@ export default function App() {
                 </h1>
 
                 <p className="mt-8 text-lg text-slate-600 leading-relaxed max-w-xl fade-up-3">
-                  행정안전부 정보시스템 예방점검 기준을 반영하여
-                  점검, 증적 관리, 보고서 작성,<br />
-                  감사 대응까지 공공기관 예방점검 업무 전반을 자동화하는 솔루션입니다.
+                  행정기관 및 공공기관 정보시스템 안정성 고시(제2026-23호, 2026.4.13. 시행)를 반영하여<br />
+                  자원점검, 증적, 보고서, 감사대응까지 한 번에 해결하는 예방점검체계관리 솔루션입니다.
                 </p>
 
                 <div className="mt-10 flex flex-wrap items-center gap-3 fade-up-4">
@@ -152,15 +151,15 @@ export default function App() {
                 <div className="mt-10 flex flex-wrap items-center gap-6 text-xs text-slate-500 fade-up-4">
                   <div className="flex items-center gap-1.5">
                     <Check className="w-3.5 h-3.5" style={{ color: 'var(--accent)' }} />
-                    행정안전부 기준 반영
+                    행정안전부 고시 100% 반영
                   </div>
                   <div className="flex items-center gap-1.5">
                     <Check className="w-3.5 h-3.5" style={{ color: 'var(--accent)' }} />
-                    기관 맞춤 PoC 지원
+                    점검기준 및 항목 내장
                   </div>
                   <div className="flex items-center gap-1.5">
                     <Check className="w-3.5 h-3.5" style={{ color: 'var(--accent)' }} />
-                    온프레미스·클라우드 모두 지원
+                    빠른 도입 및 운영
                   </div>
                 </div>
               </div>
@@ -283,7 +282,7 @@ export default function App() {
                 {
                   icon: RefreshCcw,
                   t: '반복되는 보고서 작성',
-                  d: '월간·분기·감사 보고서를 매번 처음부터 수작업으로 작성합니다. 담당자 한 명이 며칠씩 매달려야 하는 비효율이 반복됩니다.',
+                  d: '정기 보고서(일, 월, 분기 등), 감사 보고서를 매번 처음부터 수작업으로 작성합니다. 담당자 한 명이 며칠씩 매달려야 하는 비효율이 반복됩니다.',
                   impact: '본래 기획·개선 업무 집중 불가',
                 },
                 {
@@ -339,7 +338,7 @@ export default function App() {
                   BEFORE · 개별 관리 · 수동 관리
                 </div>
                 <div className="flex items-center gap-1.5">
-                  {['기준 해석', '수동 점검', '수기 분석', '엑셀 편집', '수치 모니터링', '수기 보고', '수동 조치', '이력 추적'].map((t, i, arr) => (
+                  {['기준 해석', '수동 점검', '육안 판별', '수기 보고서 작성', '수치 모니터링', '수기 보고', '수동 조치', '이력 추적'].map((t, i, arr) => (
                     <React.Fragment key={i}>
                       <div className="flex-1 min-w-0 px-2 py-2.5 rounded border border-slate-200 bg-white text-center">
                         <div className="text-[11px] text-slate-500 truncate">{t}</div>
@@ -369,8 +368,9 @@ export default function App() {
                     { t: '기준 내재화', icon: BookCheck, auto: true },
                     { t: '데이터 확보', icon: Database, auto: true },
                     { t: '상태 판별', icon: Gauge, auto: true },
-                    { t: '리포트 생성', icon: FileSearch, auto: false },
-                    { t: '점검 이력 자동 기록', icon: FileCheck, auto: true },
+                    { t: '리포트 생성', icon: FileCheck, auto: true },
+                    { t: '리포트 제출', icon: FileSearch, auto: false },
+                    { t: '점검 이력 자동 기록', icon: BookCheck, auto: true },
                   ].map((s, i, arr) => (
                     <React.Fragment key={i}>
                       <div
@@ -433,7 +433,7 @@ export default function App() {
                       </div>
                     </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-slate-900 tracking-tight">데이터 자동 확보</h3>
+                  <h3 className="text-xl font-semibold text-slate-900 tracking-tight">점검 데이터 자동 확보</h3>
                   <div className="mt-1 text-xs font-mono tracking-wider text-slate-400">자동 수집률</div>
                   <ul className="mt-5 space-y-2.5">
                     {[
@@ -768,22 +768,22 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="max-w-3xl mb-20">
               <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.15] text-white" style={{ wordBreak: 'keep-all' }}>
-                도입 이후,<br />
-                <span className="font-serif italic font-normal text-slate-400">달라진 예방점검 업무</span>를 확인하세요.
+                도입 이후, <span className="font-serif italic font-normal text-slate-400">예방점검 업무</span>는<br />
+                체계적으로 운영됩니다.
               </h2>
               <p className="mt-8 text-slate-300 leading-relaxed text-lg max-w-2xl">
-                단순한 기능 도입이 아니라, 조직의 예방점검 운영 체계 자체가 바뀝니다.
+                점검 수행부터 보고서 작성까지 예방점검 업무 전 과정이 자동화됩니다.
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {[
-                { icon: RefreshCcw, t: '반복 업무 감소', d: '수집·분석·보고서 작성 등 반복되던 수작업이 자동화됩니다.' },
-                { icon: Target, t: '점검 정확도 향상', d: 'Human Error가 제거되고, 시스템이 동일 기준으로 판단합니다.' },
-                { icon: Layers, t: '관리 일원화', d: '흩어진 점검 정보가 하나의 대시보드에서 일원화됩니다.' },
-                { icon: ShieldCheck, t: '감사·사후 대응 용이', d: '이력과 증적이 자동 보관되어 언제든 즉시 제시할 수 있습니다.' },
-                { icon: BookCheck, t: '업무 표준화', d: '담당자가 바뀌어도 동일한 기준과 절차로 점검이 이어집니다.' },
-                { icon: TrendingUp, t: '본질 업무 집중', d: '담당자는 결과 검토와 개선 기획 등 본질적 업무에 집중합니다.' },
+                { icon: RefreshCcw, t: '반복 점검 업무 감소', d: '정기 점검, 결과 취합, 보고서 작성 등 반복적인 예방점검 업무를 자동화합니다.' },
+                { icon: Target, t: '점검 기준 일관성 확보', d: '사전에 정의된 점검 기준에 따라 시스템이 동일한 방식으로 점검 결과를 판단합니다.' },
+                { icon: Layers, t: '점검 현황 통합 관리', d: '시스템별·자원별 점검 현황과 조치 상태를 하나의 대시보드에서 확인합니다.' },
+                { icon: ShieldCheck, t: '감사·사후 대응 용이', d: '점검 결과와 조치 이력이 자동 저장되어 감사·사후 대응 자료로 활용할 수 있습니다.' },
+                { icon: BookCheck, t: '예방점검 업무 표준화', d: '담당자가 바뀌어도 동일한 절차와 기준으로 예방점검 업무를 수행할 수 있습니다.' },
+                { icon: TrendingUp, t: '본연의 업무 집중', d: '담당자는 반복 점검 업무에서 벗어나, 시스템의 안정적 운영과 개선에 집중합니다.' },
               ].map((e, i) => (
                 <div key={i} className="p-8 rounded-2xl border border-white/10 transition-all hover:bg-white/[0.03] hover:border-white/20">
                   <div className="w-11 h-11 rounded-lg flex items-center justify-center mb-6" style={{ background: 'rgba(37, 99, 235, 0.15)' }}>
@@ -856,6 +856,33 @@ export default function App() {
           </div>
         </section>
 
+        {/* =========== §8 REGULATION (고시 인용) =========== */}
+        <section className="py-32" style={{ background: 'var(--bg-alt)' }}>
+          <div className="max-w-4xl mx-auto px-6">
+            <div className="bg-white border border-slate-200 rounded-2xl p-10 md:p-12">
+              <div className="text-xs font-mono tracking-wider mb-6" style={{ color: 'var(--brand)' }}>
+                LEGAL BASIS
+              </div>
+              <div className="text-lg md:text-xl font-semibold text-slate-900 mb-2">
+                &lt;행정기관 및 공공기관 정보시스템 안정성 고시&gt;
+              </div>
+              <div className="text-sm font-mono text-slate-500 mb-8">
+                제2장 정보시스템 운영·관리 / 제12조(정보시스템 예방점검 체계)
+              </div>
+              <blockquote className="border-l-4 pl-6 py-2 text-slate-700 leading-relaxed" style={{ borderColor: 'var(--brand)' }}>
+                <p className="text-sm text-slate-500 mb-3">— 중략 —</p>
+                <p>
+                  ② 중앙행정기관등의 장은 제1항에 따른 예방점검 수행 시,
+                  <strong className="font-semibold text-slate-900"> 수작업으로 인한 누락 및 오류를 방지</strong>하고,
+                  점검 결과의 정확성과 신뢰성을 확보하기 위하여
+                  <strong className="font-semibold text-slate-900"> 자동화된 점검 도구 또는 시스템을 활용</strong>하도록
+                  노력하여야 한다.
+                </p>
+              </blockquote>
+            </div>
+          </div>
+        </section>
+
         {/* =========== §9 CTA =========== */}
         <section className="py-32 relative overflow-hidden" style={{ background: 'var(--navy)' }}>
           <div className="absolute inset-0" style={{
@@ -863,15 +890,10 @@ export default function App() {
           }} />
 
           <div className="relative max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.15] text-white">
-              예방점검 업무를<br />
-              더 <span className="font-serif italic font-normal" style={{ color: 'var(--brand-2)' }}>정확하고 효율적</span>으로<br />
-              운영하고 싶다면,
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.2] text-white" style={{ wordBreak: 'keep-all' }}>
+              예방점검체계 의무화,<br />
+              <span className="font-serif italic font-normal" style={{ color: 'var(--brand-2)' }}>'컴플리사이트'</span>로 준비하세요
             </h2>
-            <p className="mt-8 text-slate-400 text-lg max-w-xl mx-auto leading-relaxed">
-              컴플리사이트를 확인해보세요.<br />
-              기관 환경에 맞춘 맞춤형 데모로 어떤 변화가 가능한지 직접 확인하실 수 있습니다.
-            </p>
 
             <div className="mt-12 flex flex-wrap items-center justify-center gap-3">
               <button className="px-7 py-4 bg-white text-slate-900 rounded-md text-sm font-semibold flex items-center gap-2 hover:bg-slate-100 transition">
@@ -892,7 +914,7 @@ export default function App() {
                 <span className="font-semibold tracking-tight text-[17px]" style={{ color: 'var(--navy)' }}>COMPLYSIGHT</span>
               </div>
               <p className="mt-4 text-sm text-slate-600 leading-relaxed max-w-sm">
-                공공기관·정보시스템 예방점검 업무를 자동화하는 컴플라이언스 솔루션.
+                공공기관 정보시스템 예방점검체계 자동화 솔루션
               </p>
               <div className="mt-6 text-xs text-slate-500 font-mono">
                 © 2026 Knowwhere Soft. All rights reserved.
