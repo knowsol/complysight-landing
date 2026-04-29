@@ -806,63 +806,102 @@ export default function App() {
             </h2>
 
             {/* Document + body text in 2 columns */}
-            <div className="mt-14 grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-16 items-center">
+            <div className="mt-14 grid lg:grid-cols-[0.95fr_1fr] gap-12 lg:gap-20 items-center">
 
-              {/* Document-styled regulatory notice */}
-              <div className="bg-white border border-slate-300 shadow-[0_30px_60px_-30px_rgba(11,31,58,0.25)]">
-                {/* Document letterhead */}
-                <div className="flex items-center justify-between px-6 py-3 border-b border-slate-200" style={{ background: 'var(--navy)' }}>
-                  <div className="flex items-center gap-2.5">
-                    <Landmark className="w-4 h-4 text-white" strokeWidth={1.75} />
-                    <div className="text-[10px] font-mono tracking-[0.22em] text-white uppercase">
-                      행정안전부 고시 · NOTICE
+              {/* Document-styled regulatory notice (with overlapping seal) */}
+              <div className="relative max-w-md">
+                <div className="bg-white border border-slate-300 shadow-[0_30px_60px_-30px_rgba(11,31,58,0.25)]">
+                  {/* Document letterhead */}
+                  <div className="flex items-center justify-between px-6 py-3 border-b border-slate-200" style={{ background: 'var(--navy)' }}>
+                    <div className="flex items-center gap-2.5">
+                      <Landmark className="w-4 h-4 text-white" strokeWidth={1.75} />
+                      <div className="text-[10px] font-mono tracking-[0.22em] text-white uppercase">
+                        행정안전부 고시 · NOTICE
+                      </div>
+                    </div>
+                    <div className="text-[10px] font-mono text-slate-300">제2026-23호</div>
+                  </div>
+
+                  {/* Document body */}
+                  <div className="px-7 md:px-9 py-8">
+                    <div className="text-[11px] font-mono text-slate-500 mb-2 tracking-wider">
+                      2026.4.13. 시행
+                    </div>
+                    <h3 className="text-base md:text-lg font-semibold text-slate-900 leading-snug whitespace-nowrap">
+                      행정기관 및 공공기관 정보시스템 안정성 고시
+                    </h3>
+                    <div className="mt-2 text-sm text-slate-600">
+                      제2장 정보시스템 운영·관리
+                    </div>
+
+                    <div className="mt-6 pt-6 border-t border-slate-200">
+                      <div className="text-sm font-semibold text-slate-900 mb-3">
+                        제12조 (정보시스템 예방점검 체계)
+                      </div>
+                      <p className="text-[13px] font-mono text-slate-400 mb-3">— 중략 —</p>
+                      <p className="text-slate-700 leading-loose text-[15px]">
+                        ② 중앙행정기관등의 장은 제1항에 따른 예방점검 수행 시,
+                        <strong className="font-semibold" style={{ color: 'var(--navy)' }}> 수작업으로 인한 누락 및 오류를 방지</strong>하고
+                        점검 결과의 정확성과 신뢰성을 확보하기 위하여
+                        <strong className="font-semibold" style={{ color: 'var(--brand)' }}> 자동화된 점검 도구 또는 시스템을 활용</strong>하도록
+                        노력하여야 한다.
+                      </p>
+                    </div>
+
+                    {/* Document footer */}
+                    <div className="mt-7 pt-5 border-t border-slate-100 flex items-center">
+                      <div className="text-[11px] font-mono text-slate-500">
+                        행정안전부 장관
+                      </div>
                     </div>
                   </div>
-                  <div className="text-[10px] font-mono text-slate-300">제2026-23호</div>
                 </div>
 
-                {/* Document body */}
-                <div className="px-8 md:px-10 py-9">
-                  <div className="text-[11px] font-mono text-slate-500 mb-2 tracking-wider">
-                    2026.4.13. 시행
-                  </div>
-                  <h3 className="text-base md:text-lg font-semibold text-slate-900 leading-snug whitespace-nowrap">
-                    행정기관 및 공공기관 정보시스템 안정성 고시
-                  </h3>
-                  <div className="mt-2 text-sm text-slate-600">
-                    제2장 정보시스템 운영·관리
-                  </div>
-
-                  <div className="mt-7 pt-7 border-t border-slate-200">
-                    <div className="text-sm font-semibold text-slate-900 mb-4">
-                      제12조 (정보시스템 예방점검 체계)
-                    </div>
-                    <p className="text-[13px] font-mono text-slate-400 mb-3">— 중략 —</p>
-                    <p className="text-slate-700 leading-loose">
-                      ② 중앙행정기관등의 장은 제1항에 따른 예방점검 수행 시,
-                      <strong className="font-semibold" style={{ color: 'var(--navy)' }}> 수작업으로 인한 누락 및 오류를 방지</strong>하고
-                      점검 결과의 정확성과 신뢰성을 확보하기 위하여
-                      <strong className="font-semibold" style={{ color: 'var(--brand)' }}> 자동화된 점검 도구 또는 시스템을 활용</strong>하도록
-                      노력하여야 한다.
-                    </p>
-                  </div>
-
-                  {/* Document footer with seal */}
-                  <div className="mt-9 pt-6 border-t border-slate-100 flex items-center justify-between">
-                    <div className="text-[11px] font-mono text-slate-500">
-                      행정안전부 장관
-                    </div>
-                    <div
-                      className="w-14 h-14 rounded-full border-2 flex items-center justify-center text-[8px] font-mono leading-tight text-center opacity-70"
-                      style={{
-                        borderColor: 'var(--brand)',
-                        color: 'var(--brand)',
-                        transform: 'rotate(-8deg)',
-                      }}
-                    >
-                      <span>고시<br />SEAL</span>
-                    </div>
-                  </div>
+                {/* Big stamp seal — overlapping outside the document */}
+                <div
+                  className="absolute pointer-events-none"
+                  style={{
+                    bottom: '-32px',
+                    right: '-36px',
+                    width: '160px',
+                    height: '160px',
+                    transform: 'rotate(-12deg)',
+                    filter: 'drop-shadow(0 6px 18px rgba(220, 38, 38, 0.18))',
+                  }}
+                  aria-hidden="true"
+                >
+                  <svg viewBox="0 0 160 160" className="w-full h-full">
+                    <defs>
+                      <filter id="rough-ink">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3" />
+                        <feDisplacementMap in="SourceGraphic" scale="1.2" />
+                      </filter>
+                    </defs>
+                    <g style={{ color: '#C0392B' }} filter="url(#rough-ink)" opacity="0.85">
+                      {/* Outer ring */}
+                      <circle cx="80" cy="80" r="72" fill="none" stroke="currentColor" strokeWidth="4" />
+                      {/* Inner ring */}
+                      <circle cx="80" cy="80" r="60" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                      {/* Top arc text path */}
+                      <defs>
+                        <path id="seal-top" d="M 80 80 m -52 0 a 52 52 0 1 1 104 0" />
+                        <path id="seal-bottom" d="M 80 80 m -52 0 a 52 52 0 1 0 104 0" />
+                      </defs>
+                      <text fill="currentColor" fontFamily="'JetBrains Mono', monospace" fontSize="10" letterSpacing="3" fontWeight="600">
+                        <textPath href="#seal-top" startOffset="50%" textAnchor="middle">행정안전부 · MOIS</textPath>
+                      </text>
+                      <text fill="currentColor" fontFamily="'JetBrains Mono', monospace" fontSize="9" letterSpacing="2" fontWeight="500">
+                        <textPath href="#seal-bottom" startOffset="50%" textAnchor="middle">2026 · OFFICIAL NOTICE</textPath>
+                      </text>
+                      {/* Center stamp text */}
+                      <text x="80" y="74" textAnchor="middle" fill="currentColor" fontFamily="'Fraunces', serif" fontSize="22" fontWeight="700" letterSpacing="2">고시</text>
+                      <text x="80" y="96" textAnchor="middle" fill="currentColor" fontFamily="'JetBrains Mono', monospace" fontSize="9" fontWeight="600" letterSpacing="2">SEAL</text>
+                      <text x="80" y="112" textAnchor="middle" fill="currentColor" fontFamily="'JetBrains Mono', monospace" fontSize="8" fontWeight="500" letterSpacing="1">제2026-23호</text>
+                      {/* Decorative center cross marks */}
+                      <line x1="80" y1="38" x2="80" y2="44" stroke="currentColor" strokeWidth="1.5" />
+                      <line x1="80" y1="116" x2="80" y2="122" stroke="currentColor" strokeWidth="1.5" />
+                    </g>
+                  </svg>
                 </div>
               </div>
 
