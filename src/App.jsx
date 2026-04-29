@@ -251,7 +251,7 @@ export default function App() {
         </section>
 
         {/* =========== §1.5 MANDATE OVERVIEW =========== */}
-        <section className="py-32" style={{ background: 'var(--bg-alt)' }}>
+        <section className="py-32">
           <div className="max-w-7xl mx-auto px-6">
             <h2 className="text-4xl md:text-5xl lg:text-[56px] font-semibold tracking-tight leading-[1.15]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
               2026년, 모든 공공기관<br />
@@ -366,7 +366,7 @@ export default function App() {
         </section>
 
         {/* =========== §1.7 SCOPE (3분야 8항목 + 대상 시스템) =========== */}
-        <section className="py-32">
+        <section className="py-32" style={{ background: 'var(--bg-alt)' }}>
           <div className="max-w-7xl mx-auto px-6">
             <h2 className="text-4xl md:text-5xl lg:text-[56px] font-semibold tracking-tight leading-[1.15]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
               3개 분야 8개 점검항목이 점검 <span style={{ color: 'var(--brand)' }}>의무화</span> 되었습니다.
