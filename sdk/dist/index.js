@@ -84,6 +84,11 @@ var SESSION_VIEWPORT_CONFIG = {
 
 // src/AnnotList.tsx
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+function isMentioned(pin, author) {
+  const pat = `@${author}`;
+  if (pin.note.includes(pat)) return true;
+  return pin.comments.some((c) => c.text.includes(pat));
+}
 function AnnotList({
   pins,
   labels,
@@ -92,6 +97,7 @@ function AnnotList({
   hoveredId,
   showResolved,
   resolvedCount,
+  currentAuthor,
   onSelect,
   onHover,
   onToggleShowResolved,
@@ -99,8 +105,11 @@ function AnnotList({
 }) {
   const labelById = new Map(labels.map((l) => [l.id, l]));
   const [authorFilter, setAuthorFilter] = useState(null);
+  const [mentionOnly, setMentionOnly] = useState(false);
   const uniqueAuthors = Array.from(new Set(pins.map((p) => p.author).filter((a) => !!a)));
-  const filteredPins = authorFilter ? pins.filter((p) => p.author === authorFilter) : pins;
+  const byAuthor = authorFilter ? pins.filter((p) => p.author === authorFilter) : pins;
+  const filteredPins = mentionOnly && currentAuthor ? byAuthor.filter((p) => isMentioned(p, currentAuthor)) : byAuthor;
+  const mentionCount = currentAuthor ? pins.filter((p) => isMentioned(p, currentAuthor)).length : 0;
   return /* @__PURE__ */ jsxs(
     "div",
     {
@@ -156,34 +165,64 @@ function AnnotList({
               filteredPins.length,
               "\uAC1C"
             ] }),
-            resolvedCount > 0 && /* @__PURE__ */ jsxs(
-              "button",
-              {
-                onClick: onToggleShowResolved,
-                title: showResolved ? "\uD574\uACB0\uB41C \uD56D\uBAA9 \uC228\uAE30\uAE30" : "\uD574\uACB0\uB41C \uD56D\uBAA9 \uBCF4\uAE30",
-                style: {
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 4,
-                  padding: "3px 8px",
-                  borderRadius: 2,
-                  border: `1px solid ${showResolved ? "rgba(22,163,74,.5)" : DARK.brd}`,
-                  background: showResolved ? "rgba(22,163,74,.15)" : "rgba(255,255,255,.04)",
-                  color: showResolved ? "#4ade80" : DARK.txL,
-                  fontSize: 10,
-                  fontWeight: 600,
-                  cursor: "pointer",
-                  transition: "all .15s"
-                },
-                children: [
-                  /* @__PURE__ */ jsx("span", { style: { fontSize: 11 }, children: showResolved ? "\u2713" : "\u25CB" }),
-                  /* @__PURE__ */ jsxs("span", { children: [
-                    "\uD574\uACB0 ",
-                    resolvedCount
-                  ] })
-                ]
-              }
-            )
+            /* @__PURE__ */ jsxs("div", { style: { display: "flex", alignItems: "center", gap: 5 }, children: [
+              currentAuthor && mentionCount > 0 && /* @__PURE__ */ jsxs(
+                "button",
+                {
+                  onClick: () => setMentionOnly((v) => !v),
+                  title: mentionOnly ? "\uC804\uCCB4 \uBCF4\uAE30" : "\uB0B4\uAC00 \uBA58\uC158\uB41C \uD56D\uBAA9\uB9CC \uBCF4\uAE30",
+                  style: {
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 4,
+                    padding: "3px 8px",
+                    borderRadius: 2,
+                    border: `1px solid ${mentionOnly ? "rgba(217,119,87,.6)" : DARK.brd}`,
+                    background: mentionOnly ? "rgba(217,119,87,.18)" : "rgba(255,255,255,.04)",
+                    color: mentionOnly ? "#D97757" : DARK.txL,
+                    fontSize: 10,
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    transition: "all .15s"
+                  },
+                  children: [
+                    /* @__PURE__ */ jsx("span", { children: "@" }),
+                    /* @__PURE__ */ jsxs("span", { children: [
+                      "\uBA58\uC158 ",
+                      mentionCount
+                    ] })
+                  ]
+                }
+              ),
+              resolvedCount > 0 && /* @__PURE__ */ jsxs(
+                "button",
+                {
+                  onClick: onToggleShowResolved,
+                  title: showResolved ? "\uD574\uACB0\uB41C \uD56D\uBAA9 \uC228\uAE30\uAE30" : "\uD574\uACB0\uB41C \uD56D\uBAA9 \uBCF4\uAE30",
+                  style: {
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 4,
+                    padding: "3px 8px",
+                    borderRadius: 2,
+                    border: `1px solid ${showResolved ? "rgba(22,163,74,.5)" : DARK.brd}`,
+                    background: showResolved ? "rgba(22,163,74,.15)" : "rgba(255,255,255,.04)",
+                    color: showResolved ? "#4ade80" : DARK.txL,
+                    fontSize: 10,
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    transition: "all .15s"
+                  },
+                  children: [
+                    /* @__PURE__ */ jsx("span", { style: { fontSize: 11 }, children: showResolved ? "\u2713" : "\u25CB" }),
+                    /* @__PURE__ */ jsxs("span", { children: [
+                      "\uD574\uACB0 ",
+                      resolvedCount
+                    ] })
+                  ]
+                }
+              )
+            ] })
           ] }),
           uniqueAuthors.length > 0 && /* @__PURE__ */ jsx("div", { style: { marginTop: 8 }, children: /* @__PURE__ */ jsxs(
             "select",
@@ -219,7 +258,7 @@ function AnnotList({
               marginTop: 36,
               lineHeight: 1.8
             },
-            children: authorFilter ? "\uC120\uD0DD\uD55C \uC791\uC131\uC790\uC758 \uD540\uC774 \uC5C6\uC2B5\uB2C8\uB2E4." : /* @__PURE__ */ jsxs(Fragment, { children: [
+            children: mentionOnly ? `@${currentAuthor}\uB85C \uBA58\uC158\uB41C \uD56D\uBAA9\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.` : authorFilter ? "\uC120\uD0DD\uD55C \uC791\uC131\uC790\uC758 \uD540\uC774 \uC5C6\uC2B5\uB2C8\uB2E4." : /* @__PURE__ */ jsxs(Fragment, { children: [
               /* @__PURE__ */ jsx("br", {}),
               "\uC544\uC9C1 \uCD94\uAC00\uB41C \uB808\uC774\uBE14\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.",
               /* @__PURE__ */ jsx("br", {}),
@@ -5438,6 +5477,7 @@ function SpecBridgeAnnotation({
             hoveredId,
             showResolved,
             resolvedCount: resolvedCountThisPage,
+            currentAuthor: author,
             onSelect: (id) => setSelectedId(id),
             onHover: (id) => setHoveredId(id ?? null),
             onToggleShowResolved: () => setShowResolved((v) => !v),

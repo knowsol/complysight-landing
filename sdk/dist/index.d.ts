@@ -200,12 +200,13 @@ interface Props$2 {
     hoveredId?: string | null;
     showResolved: boolean;
     resolvedCount: number;
+    currentAuthor?: string;
     onSelect: (id: string) => void;
     onHover?: (id: string | null) => void;
     onToggleShowResolved: () => void;
     onClose: () => void;
 }
-declare function AnnotList({ pins, labels, pageId, selectedId, hoveredId, showResolved, resolvedCount, onSelect, onHover, onToggleShowResolved, onClose, }: Props$2): react_jsx_runtime.JSX.Element;
+declare function AnnotList({ pins, labels, pageId, selectedId, hoveredId, showResolved, resolvedCount, currentAuthor, onSelect, onHover, onToggleShowResolved, onClose, }: Props$2): react_jsx_runtime.JSX.Element;
 
 interface Props$1 {
     currentAuthor: string;
