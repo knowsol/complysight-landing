@@ -915,8 +915,7 @@ export default function App() {
                   행정안전부 <strong className="font-semibold text-slate-900">「정보시스템 운영·관리」 고시</strong>에 따라, 정보시스템 예방점검 수행 시 수작업으로 인한 누락과 오류를 방지하고 점검 결과의 정확성과 신뢰성을 확보하기 위해 <strong className="font-semibold" style={{ color: 'var(--brand)' }}>자동화된 점검 도구 또는 시스템 활용</strong>이 요구되고 있습니다.
                 </p>
                 <p className="mt-6 text-lg">
-                  이러한 문제를 해결하기 위해
-                  정부 기준에서도 <strong className="font-semibold text-slate-900">자동화 기반 점검 체계 도입</strong>을 명확히 요구하고 있으며,
+                  이처럼 정부 기준에서도 <strong className="font-semibold text-slate-900">자동화 기반 점검 체계 도입</strong>을 명확히 요구하고 있으며,
                   이에 따라 <strong className="font-semibold" style={{ color: 'var(--brand)' }}>점검 방식의 전환이 필요한 시점</strong>입니다.
                 </p>
               </div>
