@@ -908,6 +908,12 @@ export default function App() {
               {/* Body text beside the document */}
               <div className="text-slate-600 leading-loose" style={{ wordBreak: 'keep-all' }}>
                 <p className="text-lg">
+                  행정안전부 <strong className="font-semibold text-slate-900">「정보시스템 운영·관리」 고시</strong>에 따라,
+                  정보시스템 예방점검 수행 시 수작업으로 인한 누락과 오류를 방지하고
+                  점검 결과의 정확성과 신뢰성을 확보하기 위해
+                  <strong className="font-semibold" style={{ color: 'var(--brand)' }}> 자동화된 점검 도구 또는 시스템 활용</strong>이 요구되고 있습니다.
+                </p>
+                <p className="mt-6 text-lg">
                   기존의 <strong className="font-semibold text-slate-900">수작업 중심 점검 방식</strong>은
                   점검 누락, 오류 발생, 결과 신뢰성 저하 등의 한계를 가지고 있습니다.
                 </p>
