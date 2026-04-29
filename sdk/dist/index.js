@@ -166,11 +166,11 @@ function AnnotList({
               "\uAC1C"
             ] }),
             /* @__PURE__ */ jsxs("div", { style: { display: "flex", alignItems: "center", gap: 5 }, children: [
-              currentAuthor && mentionCount > 0 && /* @__PURE__ */ jsxs(
+              currentAuthor && /* @__PURE__ */ jsxs(
                 "button",
                 {
-                  onClick: () => setMentionOnly((v) => !v),
-                  title: mentionOnly ? "\uC804\uCCB4 \uBCF4\uAE30" : "\uB0B4\uAC00 \uBA58\uC158\uB41C \uD56D\uBAA9\uB9CC \uBCF4\uAE30",
+                  onClick: () => mentionCount > 0 && setMentionOnly((v) => !v),
+                  title: mentionCount === 0 ? "\uBA58\uC158\uB41C \uD56D\uBAA9 \uC5C6\uC74C" : mentionOnly ? "\uC804\uCCB4 \uBCF4\uAE30" : "\uB0B4\uAC00 \uBA58\uC158\uB41C \uD56D\uBAA9\uB9CC \uBCF4\uAE30",
                   style: {
                     display: "flex",
                     alignItems: "center",
@@ -179,18 +179,25 @@ function AnnotList({
                     borderRadius: 2,
                     border: `1px solid ${mentionOnly ? "rgba(217,119,87,.6)" : DARK.brd}`,
                     background: mentionOnly ? "rgba(217,119,87,.18)" : "rgba(255,255,255,.04)",
-                    color: mentionOnly ? "#D97757" : DARK.txL,
+                    color: mentionOnly ? "#D97757" : mentionCount === 0 ? DARK.txS : DARK.txL,
                     fontSize: 10,
                     fontWeight: 600,
-                    cursor: "pointer",
-                    transition: "all .15s"
+                    cursor: mentionCount > 0 ? "pointer" : "default",
+                    transition: "all .15s",
+                    opacity: mentionCount === 0 ? 0.5 : 1
                   },
                   children: [
-                    /* @__PURE__ */ jsx("span", { children: "@" }),
-                    /* @__PURE__ */ jsxs("span", { children: [
-                      "\uBA58\uC158 ",
-                      mentionCount
-                    ] })
+                    /* @__PURE__ */ jsx("span", { children: "@\uBA58\uC158" }),
+                    mentionCount > 0 && /* @__PURE__ */ jsx("span", { style: {
+                      background: mentionOnly ? "#D97757" : "rgba(217,119,87,.4)",
+                      color: "#fff",
+                      borderRadius: 10,
+                      padding: "0 5px",
+                      fontSize: 9,
+                      fontWeight: 700,
+                      minWidth: 14,
+                      textAlign: "center"
+                    }, children: mentionCount })
                   ]
                 }
               ),
