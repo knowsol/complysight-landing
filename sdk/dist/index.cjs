@@ -573,7 +573,7 @@ function Markdown({ children, theme = "light", style }) {
         i++;
       }
       elements.push(
-        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("ul", { style: { margin: "3px 0", paddingLeft: 18, lineHeight: 1.6 }, children: items }, `ul${i}`)
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("ul", { style: { margin: "3px 0", paddingLeft: 18, lineHeight: 1.6, listStyle: "disc" }, children: items }, `ul${i}`)
       );
       continue;
     }
@@ -585,7 +585,7 @@ function Markdown({ children, theme = "light", style }) {
         i++;
       }
       elements.push(
-        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("ol", { style: { margin: "3px 0", paddingLeft: 18, lineHeight: 1.6 }, children: items }, `ol${i}`)
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("ol", { style: { margin: "3px 0", paddingLeft: 18, lineHeight: 1.6, listStyle: "decimal" }, children: items }, `ol${i}`)
       );
       continue;
     }
@@ -1382,7 +1382,7 @@ var MD_PALETTE = ["#f87171", "#fb923c", "#fbbf24", "#4ade80", "#60a5fa", "#a78bf
 function MarkdownEditor({ value, onChange, onCtrlEnter, placeholder, style, className, editorRef }) {
   const inner = (0, import_react2.useRef)(null);
   const ref = editorRef ?? inner;
-  const lastMd = (0, import_react2.useRef)("");
+  const lastMd = (0, import_react2.useRef)(null);
   const composing = (0, import_react2.useRef)(false);
   const [hovColor, setHovColor] = (0, import_react2.useState)(null);
   (0, import_react2.useEffect)(() => {
@@ -1526,6 +1526,12 @@ function MarkdownEditor({ value, onChange, onCtrlEnter, placeholder, style, clas
         emit();
         return;
       }
+    }
+    if (e.key === "Enter" && e.shiftKey) {
+      e.preventDefault();
+      document.execCommand("insertParagraph");
+      emit();
+      return;
     }
     if (e.key === "Enter" && !e.shiftKey) {
       const block = getCaretBlock();
