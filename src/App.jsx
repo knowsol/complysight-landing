@@ -1192,22 +1192,8 @@ export default function App() {
               ];
               return (
                 <div className="hidden lg:block mt-12">
-                  {/* Row 1: stage badges */}
-                  <div className="flex">
-                    {stages.map((s, i) => (
-                      <div key={i} className="flex-1 flex justify-center">
-                        <div
-                          className="px-4 py-1.5 rounded-md text-xs font-semibold text-white"
-                          style={{ background: s.badgeBg }}
-                        >
-                          {s.stage}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Row 2: chevron flow with title only (glassmorphism) */}
-                  <div className="flex items-stretch mt-3">
+                  {/* Row 1: chevron flow with stage label + title (glassmorphism, left-aligned) */}
+                  <div className="flex items-stretch">
                     {stages.map((s, i, arr) => {
                       const isFirst = i === 0;
                       const isLast = i === arr.length - 1;
@@ -1217,14 +1203,14 @@ export default function App() {
                         ? 'polygon(0 0, 100% 0, 100% 100%, 0 100%, 28px 50%)'
                         : 'polygon(0 0, calc(100% - 28px) 0, 100% 50%, calc(100% - 28px) 100%, 0 100%, 28px 50%)';
                       const padding = isFirst
-                        ? '24px 50px 24px 24px'
+                        ? '24px 50px 24px 28px'
                         : isLast
-                        ? '24px 24px 24px 50px'
-                        : '24px 50px 24px 50px';
+                        ? '24px 28px 24px 56px'
+                        : '24px 50px 24px 56px';
                       return (
                         <div key={i} className={`flex-1 ${i > 0 ? '-ml-3' : ''}`}>
                           <div
-                            className="h-full flex items-center justify-center"
+                            className="h-full flex flex-col justify-center"
                             style={{
                               background: 'rgba(255, 255, 255, 0.06)',
                               backdropFilter: 'blur(14px)',
@@ -1232,10 +1218,16 @@ export default function App() {
                               boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.12), 0 10px 30px -10px rgba(0,0,0,0.3)',
                               clipPath,
                               padding,
-                              minHeight: '88px',
+                              minHeight: '108px',
                             }}
                           >
-                            <h3 className="text-base md:text-lg font-semibold text-white text-center leading-snug" style={{ wordBreak: 'keep-all' }}>
+                            <div
+                              className="text-[11px] font-mono tracking-wider mb-2"
+                              style={{ color: s.badgeBg, wordBreak: 'keep-all' }}
+                            >
+                              {s.stage}
+                            </div>
+                            <h3 className="text-base md:text-lg font-semibold text-white leading-snug" style={{ wordBreak: 'keep-all' }}>
                               {s.title}
                             </h3>
                           </div>
@@ -1244,7 +1236,7 @@ export default function App() {
                     })}
                   </div>
 
-                  {/* Row 3: items per stage */}
+                  {/* Row 2: items per stage */}
                   <div className="flex mt-8">
                     {stages.map((s, i) => (
                       <div key={i} className="flex-1 px-3">
