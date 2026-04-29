@@ -266,7 +266,7 @@ export default function App() {
                   적용대상
                 </div>
                 <div className="mt-5">
-                  <p className="text-xl md:text-2xl text-slate-900 font-semibold leading-snug" style={{ wordBreak: 'keep-all' }}>
+                  <p className="text-base md:text-lg text-slate-900 font-semibold leading-snug" style={{ wordBreak: 'keep-all' }}>
                     범정부 정보시스템 인프라(HW·시스템SW) 운영기관
                   </p>
                   <ul className="mt-3 text-sm text-slate-600 space-y-1">
