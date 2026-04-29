@@ -369,12 +369,11 @@ export default function App() {
         <section className="pt-28 pb-32" style={{ background: 'var(--bg-alt)' }}>
           <div className="max-w-7xl mx-auto px-6">
             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight leading-[1.2] text-center" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
-              3개 분야 8개 점검항목이<br />
-              점검 <span style={{ color: 'var(--brand)' }}>의무화</span> 되었습니다.
+              3개 분야 8개 점검항목이 점검 <span style={{ color: 'var(--brand)' }}>의무화</span> 되었습니다.
             </h2>
             <p className="mt-6 text-lg text-slate-600 leading-relaxed max-w-4xl mx-auto text-center" style={{ wordBreak: 'keep-all' }}>
-              3개 분야(<strong className="font-semibold text-slate-900">일상점검, 특별점검, 구조진단</strong>)
-              8개 점검항목(상태 점검, 서비스 점검, 유효성 점검, 오프라인 점검, 이중화 점검, 성능 점검, 업무집중기간 점검, 구조진단 및 개선)
+              3개 분야(<strong className="font-semibold text-slate-900">일상점검, 특별점검, 구조진단</strong>) 8개 점검항목<br />
+              (상태 점검, 서비스 점검, 유효성 점검, 오프라인 점검, 이중화 점검, 성능 점검, 업무집중기간 점검, 구조진단 및 개선)
             </p>
 
             <div className="mt-14 grid md:grid-cols-3 gap-5">
