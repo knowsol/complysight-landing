@@ -1142,14 +1142,9 @@ export default function App() {
               운영 판단을 돕는 <strong className="font-semibold text-slate-200">AI 플랫폼으로 거듭납니다.</strong>
             </p>
 
-            {/* Roadmap pill badge */}
-            <div className="mt-12 inline-block">
-              <div
-                className="px-6 py-2.5 rounded-full text-sm font-semibold text-white"
-                style={{ background: 'linear-gradient(135deg, #2563EB, #7C3AED)' }}
-              >
-                컴플리사이트 AI 미래비전과 단계별 확장 로드맵
-              </div>
+            {/* Roadmap label */}
+            <div className="mt-14 text-sm font-semibold" style={{ color: '#7DD3FC' }}>
+              컴플리사이트 AI 미래비전과 단계별 확장 로드맵
             </div>
 
             {/* 4-stage roadmap (chevron flow) — desktop */}
@@ -1185,7 +1180,7 @@ export default function App() {
                 },
               ];
               return (
-                <div className="hidden lg:block mt-12">
+                <div className="hidden lg:block mt-4">
                   {/* Row 1: chevron flow with stage label + title (glassmorphism, left-aligned) */}
                   <div className="flex items-stretch">
                     {stages.map((s, i, arr) => {
