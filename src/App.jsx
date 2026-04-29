@@ -443,7 +443,7 @@ export default function App() {
         </section>
 
         {/* =========== §2 PROBLEM =========== */}
-        <section className="py-32" style={{ background: 'var(--bg-alt)' }}>
+        <section className="py-32">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-20">
               <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1]" style={{ color: 'var(--navy)' }}>
