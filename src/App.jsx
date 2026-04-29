@@ -1158,8 +1158,8 @@ export default function App() {
               </div>
             </div>
 
-            {/* 4-stage roadmap */}
-            <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {/* 4-stage roadmap (chevron flow) */}
+            <div className="mt-12 hidden lg:flex items-stretch gap-0 -mx-1">
               {[
                 {
                   stage: '1단계 — 현재',
@@ -1199,39 +1199,87 @@ export default function App() {
                     '선제 점검/조치 장비 Top n 제공',
                   ],
                 },
-              ].map((s, i, arr) => (
-                <div key={i} className="relative">
-                  {/* Connector arrow (desktop only) */}
-                  {i < arr.length - 1 && (
-                    <div className="hidden lg:block absolute top-1/2 -right-3 z-10 -translate-y-1/2">
-                      <svg width="20" height="20" viewBox="0 0 20 20">
-                        <path d="M4 10 L14 10 M9 5 L14 10 L9 15" stroke="#7DD3FC" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </div>
-                  )}
-
-                  {/* Stage badge */}
-                  <div className="flex justify-center">
-                    <div
-                      className="inline-block px-4 py-1.5 rounded-md text-xs font-semibold text-white -mb-3 relative z-10"
-                      style={{ background: s.badgeBg }}
-                    >
-                      {s.stage}
+              ].map((s, i, arr) => {
+                const isFirst = i === 0;
+                const isLast = i === arr.length - 1;
+                const clipPath = isFirst
+                  ? 'polygon(0 0, calc(100% - 28px) 0, 100% 50%, calc(100% - 28px) 100%, 0 100%)'
+                  : isLast
+                  ? 'polygon(0 0, 100% 0, 100% 100%, 0 100%, 28px 50%)'
+                  : 'polygon(0 0, calc(100% - 28px) 0, 100% 50%, calc(100% - 28px) 100%, 0 100%, 28px 50%)';
+                const padding = isFirst
+                  ? '28px 50px 28px 28px'
+                  : isLast
+                  ? '28px 28px 28px 50px'
+                  : '28px 50px 28px 50px';
+                return (
+                  <div key={i} className={`flex-1 ${i > 0 ? '-ml-3' : ''}`}>
+                    <div className="h-full" style={{ background: 'white', clipPath, padding }}>
+                      <div
+                        className="inline-block px-3 py-1 rounded text-[10px] font-bold tracking-wider text-white mb-3"
+                        style={{ background: s.badgeBg }}
+                      >
+                        {s.stage}
+                      </div>
+                      <h3 className="text-base md:text-lg font-semibold text-slate-900 mb-4 leading-snug" style={{ wordBreak: 'keep-all' }}>
+                        {s.title}
+                      </h3>
+                      <ul className="space-y-2">
+                        {s.items.map((it, ii) => (
+                          <li key={ii} className="flex items-start gap-2 text-xs text-slate-600 leading-relaxed" style={{ wordBreak: 'keep-all' }}>
+                            <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ background: s.badgeBg }} />
+                            <span>{it}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
+                );
+              })}
+            </div>
 
-                  {/* Stage card */}
-                  <div className="bg-white rounded-xl px-5 pt-7 pb-5 text-center shadow-[0_20px_40px_-20px_rgba(0,0,0,0.4)]">
-                    <h3 className="text-base md:text-lg font-semibold text-slate-900 leading-snug" style={{ wordBreak: 'keep-all' }}>
-                      {s.title}
-                    </h3>
+            {/* Mobile/tablet fallback — vertical cards */}
+            <div className="mt-12 grid md:grid-cols-2 gap-4 lg:hidden">
+              {[
+                {
+                  stage: '1단계 — 현재',
+                  badgeBg: '#2563EB',
+                  title: '예방점검체계 자동화',
+                  items: ['점검 결과 및 증적 자동 수집', '점검 보고서 자동 생성'],
+                },
+                {
+                  stage: '2단계 — 2026년',
+                  badgeBg: '#1E40AF',
+                  title: 'AI 기반 운영 지식화',
+                  items: ['자원별 매뉴얼 통합 학습', '운영/장애 내용 질의응답'],
+                },
+                {
+                  stage: '3단계',
+                  badgeBg: '#7C3AED',
+                  title: 'AI 기반 조치 추천',
+                  items: ['GraphRAG 기반 기능 고도화', '장애 상황별 대응 시나리오 추천', '내부 규정 등 다양한 분야까지 AI 에이전트 활용 확대'],
+                },
+                {
+                  stage: '4단계',
+                  badgeBg: '#A855F7',
+                  title: 'AI 기반 선제 관리',
+                  items: ['장애 징후 조기 탐지', '원인 근거 제공', '선제 점검/조치 장비 Top n 제공'],
+                },
+              ].map((s, i) => (
+                <div key={i} className="bg-white rounded-xl p-6">
+                  <div
+                    className="inline-block px-3 py-1 rounded text-[10px] font-bold tracking-wider text-white mb-3"
+                    style={{ background: s.badgeBg }}
+                  >
+                    {s.stage}
                   </div>
-
-                  {/* Items list */}
-                  <ul className="mt-5 space-y-2 text-left px-2">
+                  <h3 className="text-base md:text-lg font-semibold text-slate-900 mb-4 leading-snug" style={{ wordBreak: 'keep-all' }}>
+                    {s.title}
+                  </h3>
+                  <ul className="space-y-2">
                     {s.items.map((it, ii) => (
-                      <li key={ii} className="flex items-start gap-2 text-sm leading-relaxed" style={{ color: '#CBD5E1', wordBreak: 'keep-all' }}>
-                        <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ background: '#7DD3FC' }} />
+                      <li key={ii} className="flex items-start gap-2 text-xs text-slate-600 leading-relaxed" style={{ wordBreak: 'keep-all' }}>
+                        <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ background: s.badgeBg }} />
                         <span>{it}</span>
                       </li>
                     ))}
