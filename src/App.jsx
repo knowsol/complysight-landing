@@ -799,15 +799,17 @@ export default function App() {
 
         {/* =========== §7 LEGAL MANDATE =========== */}
         <section className="py-32">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            {/* Headline */}
+          <div className="max-w-7xl mx-auto px-6">
+            {/* Headline (left-aligned) */}
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.25]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
               행정안전부 기준, 이제<br />
               <span className="font-serif italic font-normal" style={{ color: 'var(--brand)' }}>'자동화 점검'</span>이 요구됩니다.
             </h2>
 
-            {/* Document-styled regulatory notice */}
-            <div className="mt-14 mx-auto max-w-2xl text-left">
+            {/* Document + body text in 2 columns */}
+            <div className="mt-14 grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-16 items-center">
+
+              {/* Document-styled regulatory notice */}
               <div className="bg-white border border-slate-300 shadow-[0_30px_60px_-30px_rgba(11,31,58,0.25)]">
                 {/* Document letterhead */}
                 <div className="flex items-center justify-between px-6 py-3 border-b border-slate-200" style={{ background: 'var(--navy)' }}>
@@ -825,8 +827,8 @@ export default function App() {
                   <div className="text-[11px] font-mono text-slate-500 mb-2 tracking-wider">
                     2026.4.13. 시행
                   </div>
-                  <h3 className="text-lg md:text-xl font-semibold text-slate-900 leading-snug">
-                    행정기관 및 공공기관<br />정보시스템 안정성 고시
+                  <h3 className="text-base md:text-lg font-semibold text-slate-900 leading-snug whitespace-nowrap">
+                    행정기관 및 공공기관 정보시스템 안정성 고시
                   </h3>
                   <div className="mt-2 text-sm text-slate-600">
                     제2장 정보시스템 운영·관리
@@ -864,19 +866,19 @@ export default function App() {
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Body text below the document */}
-            <div className="mt-16 max-w-2xl mx-auto text-slate-600 leading-loose" style={{ wordBreak: 'keep-all' }}>
-              <p>
-                기존의 <strong className="font-semibold text-slate-900">수작업 중심 점검 방식</strong>은
-                점검 누락, 오류 발생, 결과 신뢰성 저하 등의 한계를 가지고 있습니다.
-              </p>
-              <p className="mt-6">
-                이러한 문제를 해결하기 위해
-                정부 기준에서도 <strong className="font-semibold text-slate-900">자동화 기반 점검 체계 도입</strong>을 명확히 요구하고 있으며,
-                이에 따라 <strong className="font-semibold" style={{ color: 'var(--brand)' }}>점검 방식의 전환이 필요한 시점</strong>입니다.
-              </p>
+              {/* Body text beside the document */}
+              <div className="text-slate-600 leading-loose" style={{ wordBreak: 'keep-all' }}>
+                <p className="text-lg">
+                  기존의 <strong className="font-semibold text-slate-900">수작업 중심 점검 방식</strong>은
+                  점검 누락, 오류 발생, 결과 신뢰성 저하 등의 한계를 가지고 있습니다.
+                </p>
+                <p className="mt-6 text-lg">
+                  이러한 문제를 해결하기 위해
+                  정부 기준에서도 <strong className="font-semibold text-slate-900">자동화 기반 점검 체계 도입</strong>을 명확히 요구하고 있으며,
+                  이에 따라 <strong className="font-semibold" style={{ color: 'var(--brand)' }}>점검 방식의 전환이 필요한 시점</strong>입니다.
+                </p>
+              </div>
             </div>
           </div>
         </section>
