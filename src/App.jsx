@@ -127,7 +127,7 @@ export default function App() {
               <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 text-xs text-slate-600 fade-up-1">
                   <span className="w-1.5 h-1.5 rounded-full pulse-dot" style={{ background: 'var(--accent)' }} />
-                  <span>행정안전부 정보시스템 예방점검 기준 기반</span>
+                  <span>2026, 범정부 예방점검체계 의무화 시대</span>
                 </div>
 
                 <h1 className="mt-8 text-xl md:text-2xl leading-snug tracking-tight font-semibold fade-up-2" style={{ color: 'var(--navy)' }}>
