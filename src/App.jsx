@@ -447,8 +447,8 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-20">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.2]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
-                <span style={{ color: 'var(--brand)' }}>의무화</span>된 예방점검 체계,<br />
-                예방점검 업무 아직도 <span className="font-serif italic font-normal text-slate-500">수작업</span>으로 관리하고 계신가요?
+                <span style={{ color: 'var(--brand)' }}>의무화</span>된 예방점검 체계.<br />
+                예방점검 업무, 아직도 <span className="font-serif italic font-normal text-slate-500">수작업</span>으로 관리하고 계신가요?
               </h2>
               <p className="mt-8 text-slate-600 leading-relaxed text-lg">
                 매번 반복되는 예방점검 업무,<br />
