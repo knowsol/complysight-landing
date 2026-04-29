@@ -1472,7 +1472,7 @@ function MarkdownEditor({ value, onChange, onCtrlEnter, placeholder, style, clas
         transformBlock(block, "h2");
         return;
       }
-      if (text === "-") {
+      if (text === "-" || text === "*") {
         e.preventDefault();
         transformBlock(block, "li");
         return;
