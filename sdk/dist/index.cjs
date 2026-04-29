@@ -1168,6 +1168,7 @@ function AnnotPanel({
                         value: note,
                         onChange: setNote,
                         onCtrlEnter: handleSaveNote,
+                        mentionUsers: allAuthors,
                         placeholder: "\uAE30\uB2A5 \uC815\uCC45, \uC694\uAD6C\uC0AC\uD56D, \uC0AC\uC591 \uB4F1\uC744 \uC791\uC131\uD558\uC138\uC694.\n\n**\uAD75\uAC8C**, *\uAE30\uC6B8\uC784*, `\uCF54\uB4DC`\n# \uC81C\uBAA9, - \uBAA9\uB85D, > \uC778\uC6A9",
                         className: "sb-scroll sb-md-editor",
                         style: { ...inp, flex: 1, lineHeight: 1.65, minHeight: 0, paddingBottom: 32, overflowY: "auto", cursor: "text" }
@@ -1511,12 +1512,69 @@ function domToMd(root) {
   return lines.join("\n");
 }
 var MD_PALETTE = ["#f87171", "#fb923c", "#fbbf24", "#4ade80", "#60a5fa", "#a78bfa", "#f472b6"];
-function MarkdownEditor({ value, onChange, onCtrlEnter, placeholder, style, className, editorRef }) {
+function MarkdownEditor({ value, onChange, onCtrlEnter, placeholder, style, className, editorRef, mentionUsers }) {
   const inner = (0, import_react2.useRef)(null);
   const ref = editorRef ?? inner;
   const lastMd = (0, import_react2.useRef)(null);
   const composing = (0, import_react2.useRef)(false);
   const [hovColor, setHovColor] = (0, import_react2.useState)(null);
+  const [mentionQuery, setMentionQuery] = (0, import_react2.useState)("");
+  const [showMention, setShowMention] = (0, import_react2.useState)(false);
+  const [mentionIndex, setMentionIndex] = (0, import_react2.useState)(0);
+  const mentionAnchor = (0, import_react2.useRef)(null);
+  const filteredMentions = (0, import_react2.useMemo)(() => {
+    if (!showMention || !mentionUsers?.length) return [];
+    if (!mentionQuery) return mentionUsers;
+    const q = mentionQuery.toLowerCase();
+    return mentionUsers.filter((a) => a.toLowerCase().includes(q));
+  }, [showMention, mentionQuery, mentionUsers]);
+  const detectMention = () => {
+    const sel = window.getSelection();
+    if (!sel?.rangeCount) {
+      setShowMention(false);
+      return;
+    }
+    const range = sel.getRangeAt(0);
+    if (range.startContainer.nodeType !== Node.TEXT_NODE) {
+      setShowMention(false);
+      return;
+    }
+    const textNode = range.startContainer;
+    const textBefore = textNode.textContent.slice(0, range.startOffset);
+    const m = textBefore.match(/@([^\s@]*)$/);
+    if (m) {
+      mentionAnchor.current = { node: textNode, offset: range.startOffset - m[0].length };
+      setMentionQuery(m[1]);
+      setShowMention(true);
+      setMentionIndex(0);
+    } else {
+      setShowMention(false);
+      mentionAnchor.current = null;
+    }
+  };
+  const handleSelectMention = (author) => {
+    const anchor = mentionAnchor.current;
+    if (!anchor) {
+      setShowMention(false);
+      return;
+    }
+    const { node, offset: atOffset } = anchor;
+    const endOffset = atOffset + 1 + mentionQuery.length;
+    const text = node.textContent ?? "";
+    node.textContent = text.slice(0, atOffset) + `@${author} ` + text.slice(endOffset);
+    const newCursor = atOffset + 1 + author.length + 1;
+    const range = document.createRange();
+    range.setStart(node, Math.min(newCursor, node.length));
+    range.collapse(true);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    setShowMention(false);
+    setMentionIndex(0);
+    mentionAnchor.current = null;
+    emit();
+    ref.current?.focus();
+  };
   (0, import_react2.useEffect)(() => {
     const el = ref.current;
     if (!el || lastMd.current === value) return;
@@ -1635,6 +1693,27 @@ function MarkdownEditor({ value, onChange, onCtrlEnter, placeholder, style, clas
       return;
     }
     if (composing.current) return;
+    if (showMention && filteredMentions.length > 0) {
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        setMentionIndex((i) => Math.min(i + 1, filteredMentions.length - 1));
+        return;
+      }
+      if (e.key === "ArrowUp") {
+        e.preventDefault();
+        setMentionIndex((i) => Math.max(i - 1, 0));
+        return;
+      }
+      if (e.key === "Enter" || e.key === "Tab") {
+        e.preventDefault();
+        handleSelectMention(filteredMentions[mentionIndex]);
+        return;
+      }
+      if (e.key === "Escape") {
+        setShowMention(false);
+        return;
+      }
+    }
     if (e.key === " ") {
       const block = getCaretBlock();
       const text = (block?.textContent ?? "").replace(/\u200B/g, "").trim();
@@ -1690,7 +1769,7 @@ function MarkdownEditor({ value, onChange, onCtrlEnter, placeholder, style, clas
     }
   };
   const { overflowY, cursor, paddingBottom, lineHeight, padding: _padding, ...wrapperStyle } = style ?? {};
-  return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { style: { display: "flex", flexDirection: "column", ...wrapperStyle }, children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { style: { display: "flex", flexDirection: "column", ...wrapperStyle, position: "relative" }, children: [
     /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { style: {
       display: "flex",
       alignItems: "center",
@@ -1754,6 +1833,68 @@ function MarkdownEditor({ value, onChange, onCtrlEnter, placeholder, style, clas
         }
       )
     ] }),
+    showMention && filteredMentions.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+      "div",
+      {
+        className: "sb-scroll",
+        style: {
+          position: "absolute",
+          bottom: "100%",
+          left: 0,
+          right: 0,
+          marginBottom: 4,
+          background: "#242424",
+          border: `1px solid ${DARK.brd2}`,
+          borderRadius: 8,
+          boxShadow: "0 4px 16px rgba(0,0,0,.5)",
+          maxHeight: 160,
+          overflowY: "auto",
+          zIndex: 10003
+        },
+        children: filteredMentions.map((author, idx) => /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+          "button",
+          {
+            onMouseDown: (e) => {
+              e.preventDefault();
+              handleSelectMention(author);
+            },
+            style: {
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              width: "100%",
+              padding: "7px 10px",
+              background: idx === mentionIndex ? "rgba(255,255,255,.08)" : "transparent",
+              border: "none",
+              color: DARK.txt,
+              fontSize: 12,
+              cursor: "pointer",
+              textAlign: "left",
+              fontFamily: "inherit",
+              boxSizing: "border-box"
+            },
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { style: {
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: 20,
+                height: 20,
+                borderRadius: 4,
+                fontSize: 10,
+                fontWeight: 700,
+                flexShrink: 0,
+                background: `${getAvatarColor(author)}22`,
+                color: getAvatarColor(author),
+                border: `1px solid ${getAvatarColor(author)}44`
+              }, children: author[0]?.toUpperCase() }),
+              /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { children: author })
+            ]
+          },
+          author
+        ))
+      }
+    ),
     /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
       "div",
       {
@@ -1762,7 +1903,10 @@ function MarkdownEditor({ value, onChange, onCtrlEnter, placeholder, style, clas
         suppressContentEditableWarning: true,
         className,
         onInput: () => {
-          if (!composing.current) emit();
+          if (!composing.current) {
+            emit();
+            detectMention();
+          }
         },
         onKeyDown: handleKeyDown,
         onPaste: handlePaste,
