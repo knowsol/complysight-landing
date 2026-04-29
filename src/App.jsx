@@ -1129,12 +1129,6 @@ export default function App() {
               backgroundSize: '24px 24px',
             }}
           />
-          <div
-            className="absolute inset-0"
-            style={{
-              background: 'radial-gradient(ellipse 70% 50% at 70% 60%, rgba(37, 99, 235, 0.18), transparent 60%)',
-            }}
-          />
 
           <div className="relative max-w-7xl mx-auto px-6">
             <div className="text-[11px] font-mono tracking-[0.22em] uppercase mb-4" style={{ color: '#7DD3FC' }}>
