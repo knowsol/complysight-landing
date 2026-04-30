@@ -260,7 +260,29 @@ export default function App() {
 
             <div className="mt-14 grid md:grid-cols-2 gap-10 items-start">
 
-              {/* Left: 적용대상 */}
+              {/* Left: News snippet card (slightly tilted, like a clipping) */}
+              <div>
+                <div
+                  className="bg-white border border-slate-200 rounded-lg p-6 shadow-[0_15px_30px_-15px_rgba(11,31,58,0.18)]"
+                  style={{ transform: 'rotate(-1.5deg)' }}
+                >
+                  <p className="text-sm text-slate-700 leading-relaxed">
+                    2023년 <strong className="font-semibold">'새올'</strong>, <strong className="font-semibold">'정부24'</strong> 등
+                    주요 공공서비스 장애로 디지털 업무가 중단되며 정보시스템 안정성의 중요성이 부각되었습니다.
+                    이에 따라 2024년 행정안전부는
+                    <strong className="font-semibold text-slate-900"> 표준화된 정보시스템 예방점검 관리체계 도입</strong>을 공식화했습니다.
+                  </p>
+                  <div className="mt-4 pt-4 border-t border-slate-100 flex items-start gap-2.5">
+                    <Landmark className="w-4 h-4 mt-0.5 shrink-0" style={{ color: 'var(--navy)' }} strokeWidth={1.75} />
+                    <div className="text-[11px] font-mono text-slate-500 leading-snug">
+                      <div className="font-semibold text-slate-700">2024.10.08 행정안전부</div>
+                      <div className="mt-0.5">표준화된 '예방점검'과 '관리체계' 도입해 디지털 정부 안정화 강화</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: 적용대상 */}
               <div>
                 <div className="inline-block px-5 py-2 rounded-md text-sm font-semibold text-white" style={{ background: 'linear-gradient(135deg, var(--brand-2), var(--brand))' }}>
                   적용대상
@@ -280,28 +302,6 @@ export default function App() {
                       (2026.4.13 행정안전부 고시 제2026호-23호)
                     </li>
                   </ul>
-                </div>
-              </div>
-
-              {/* Right: News snippet card (slightly tilted, like a clipping) */}
-              <div>
-                <div
-                  className="bg-white border border-slate-200 rounded-lg p-6 shadow-[0_15px_30px_-15px_rgba(11,31,58,0.18)]"
-                  style={{ transform: 'rotate(-1.5deg)' }}
-                >
-                  <p className="text-sm text-slate-700 leading-relaxed">
-                    2023년 <strong className="font-semibold">'새올'</strong>, <strong className="font-semibold">'정부24'</strong> 등
-                    주요 공공서비스 장애로 디지털 업무가 중단되며 정보시스템 안정성의 중요성이 부각되었습니다.
-                    이에 따라 2024년 행정안전부는
-                    <strong className="font-semibold text-slate-900"> 표준화된 정보시스템 예방점검 관리체계 도입</strong>을 공식화했습니다.
-                  </p>
-                  <div className="mt-4 pt-4 border-t border-slate-100 flex items-start gap-2.5">
-                    <Landmark className="w-4 h-4 mt-0.5 shrink-0" style={{ color: 'var(--navy)' }} strokeWidth={1.75} />
-                    <div className="text-[11px] font-mono text-slate-500 leading-snug">
-                      <div className="font-semibold text-slate-700">2024.10.08 행정안전부</div>
-                      <div className="mt-0.5">표준화된 '예방점검'과 '관리체계' 도입해 디지털 정부 안정화 강화</div>
-                    </div>
-                  </div>
                 </div>
               </div>
 
