@@ -373,6 +373,9 @@ export default function App() {
         {/* =========== §1.7 SCOPE (3분야 8항목 + 대상 시스템) =========== */}
         <section className="py-32" style={{ background: 'var(--bg-alt)' }}>
           <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center text-xs font-mono tracking-[0.22em] mb-3" style={{ color: 'var(--brand)' }}>
+              적용 분야
+            </div>
             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight leading-[1.2] text-center" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
               3개 분야, 8개 점검항목
             </h2>
