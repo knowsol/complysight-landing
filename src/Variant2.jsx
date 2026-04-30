@@ -376,7 +376,7 @@ export default function Variant2() {
         {/* =========== §1.7 SCOPE (지원 대상 자원 - marquee) =========== */}
         <section className="pt-28 pb-32" style={{ background: 'var(--bg-alt)' }}>
           <div className="max-w-7xl mx-auto px-6">
-            <h3 className="text-lg md:text-xl font-semibold tracking-tight text-center" style={{ color: 'var(--navy)' }}>
+            <h3 className="text-lg md:text-xl font-semibold tracking-tight" style={{ color: 'var(--navy)' }}>
               지원 대상 자원 및 제품
             </h3>
 
