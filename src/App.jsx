@@ -131,7 +131,7 @@ export default function App() {
                 </div>
 
                 <h1 className="mt-8 text-xl md:text-2xl font-semibold leading-snug fade-up-2" style={{ color: 'var(--navy)' }}>
-                  공공기관 정보시스템 예방점검<span style={{ color: 'var(--brand)' }}>체계</span> 자동화 솔루션
+                  공공기관 정보시스템 예방점검체계 자동화 솔루션
                 </h1>
 
                 <p className="mt-8 text-lg text-slate-600 leading-relaxed max-w-xl fade-up-3">
