@@ -251,10 +251,12 @@ export default function Variant2() {
               의무화 적용 대상 <span style={{ color: 'var(--brand)' }}>확대</span>
             </h2>
 
-            {/* Regulation excerpt card (slightly tilted, like a clipping) */}
-            <div className="mt-12 max-w-2xl mx-auto">
+            {/* Regulation card + Inspection table side-by-side */}
+            <div className="mt-12 grid lg:grid-cols-[1fr_1.35fr] gap-6 items-start">
+              {/* Left: Regulation excerpt card (slightly tilted, like a clipping) */}
               <div
                 className="bg-white border border-slate-200 rounded-lg p-6 md:p-8 shadow-[0_15px_30px_-15px_rgba(11,31,58,0.18)]"
+                style={{ transform: 'rotate(-1.5deg)' }}
               >
                 <div className="flex items-center gap-2 mb-3">
                   <Landmark className="w-4 h-4 shrink-0" style={{ color: 'var(--navy)' }} strokeWidth={1.75} />
@@ -291,6 +293,65 @@ export default function Variant2() {
                   </div>
                 </div>
               </div>
+
+              {/* Right: Inspection table */}
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse text-sm bg-white border border-slate-200 rounded-lg overflow-hidden shadow-[0_20px_40px_-20px_rgba(11,31,58,0.12)]">
+                  <thead>
+                    <tr className="text-white" style={{ background: 'var(--navy)' }}>
+                      <th rowSpan="2" className="px-2 py-2 text-center text-[11px] font-semibold border-r border-white/10 w-[64px]">분야</th>
+                      <th rowSpan="2" className="px-2 py-2 text-center text-[11px] font-semibold border-r border-white/10 w-[68px]">주기</th>
+                      <th rowSpan="2" className="px-3 py-2 text-left text-[11px] font-semibold border-r border-white/10">예방점검 항목</th>
+                      <th colSpan="4" className="px-2 py-1.5 text-center text-[11px] font-semibold border-b border-white/10">정보시스템 등급</th>
+                    </tr>
+                    <tr className="text-white" style={{ background: 'var(--navy)' }}>
+                      <th className="px-1.5 py-1.5 text-center text-[10px] font-semibold border-r border-white/10 w-10">A1</th>
+                      <th className="px-1.5 py-1.5 text-center text-[10px] font-semibold border-r border-white/10 w-10">A2</th>
+                      <th className="px-1.5 py-1.5 text-center text-[10px] font-semibold border-r border-white/10 w-10">A3</th>
+                      <th className="px-1.5 py-1.5 text-center text-[10px] font-semibold w-10">A4</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      { area: '일상점검', areaRow: 3, cycle: '매일', num: '①', name: '상태 점검', desc: 'CPU/메모리/디스크 상태 등 이상 유무 점검', grades: ['필수','필수','필수','필수'] },
+                      { cycle: '매일', num: '②', name: '서비스 점검', desc: '메인 화면 접속여부 및 접속시간 점검', grades: ['필수','필수','필수','필수'] },
+                      { cycle: '매월', num: '③', name: '유효성 점검', desc: '인증서 유효기간, 도메인 종료일 등 점검', grades: ['필수','필수','필수','필수'] },
+                      { area: '특별점검', areaRow: 4, cycle: '매년', num: '④', name: '오프라인 점검', desc: '의도적 시스템 정지·재가동으로 이상유무 점검', grades: ['필수','필수','필수','권고'] },
+                      { cycle: '매년', num: '⑤', name: '다중화 점검', desc: '다중화된 장비·부품의 정상 동작 여부 점검', grades: ['필수','필수','필수','권고'] },
+                      { cycle: '매년', num: '⑥', name: '성능점검', desc: '부하 테스트 등으로 설정값 최적화 등 성능저하 요인 점검', grades: ['필수','필수','필수','권고'] },
+                      { cycle: '특정기간', num: '⑦', name: '업무집중기간 점검', desc: '서비스 집중 기간 중 사용량 증가에 따른 서비스 지연·중지 대비 사전 점검 및 집중 모니터링', grades: ['필수','필수','필수','권고'] },
+                      { area: '구조진단', areaRow: 1, cycle: '필요시', num: '⑧', name: '구조진단 및 개선', desc: '하드웨어, 시스템SW, 응용프로그램, 데이터베이스, 네트워크 등 전체 정보시스템 구조에 대한 진단 및 개선점 도출', grades: ['필수','필수','필수','—'] },
+                    ].map((r, i) => (
+                      <tr key={i} className="border-t border-slate-100">
+                        {r.area && (
+                          <td rowSpan={r.areaRow} className="px-2 py-2.5 text-center text-[11px] font-semibold text-slate-700 bg-slate-50 border-r border-slate-200">
+                            {r.area}
+                          </td>
+                        )}
+                        <td className="px-2 py-2.5 text-center text-[10px] text-slate-600 border-r border-slate-200">{r.cycle}</td>
+                        <td className="px-3 py-2.5 text-[12px] text-slate-700 border-r border-slate-200 leading-snug">
+                          <span className="font-semibold">{r.num} ({r.name})</span> {r.desc}
+                        </td>
+                        {r.grades.map((g, gi) => {
+                          const isRequired = g === '필수';
+                          const isDash = g === '—';
+                          return (
+                            <td
+                              key={gi}
+                              className={`px-1.5 py-2.5 text-center text-[10px] font-semibold ${gi < 3 ? 'border-r border-slate-200' : ''}`}
+                              style={{
+                                color: isRequired ? '#DC2626' : isDash ? '#94A3B8' : '#64748B',
+                              }}
+                            >
+                              {g}
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
 
             {/* Subtitle paragraph below regulation card */}
@@ -316,67 +377,8 @@ export default function Variant2() {
               (상태 점검, 서비스 점검, 유효성 점검, 오프라인 점검, 이중화 점검, 성능 점검, 업무집중기간 점검, 구조진단 및 개선)
             </p>
 
-            {/* Inspection table */}
-            <div className="mt-14 overflow-x-auto">
-              <table className="w-full border-collapse text-sm bg-white border border-slate-200 rounded-lg overflow-hidden shadow-[0_20px_40px_-20px_rgba(11,31,58,0.12)]">
-                <thead>
-                  <tr className="text-white" style={{ background: 'var(--navy)' }}>
-                    <th rowSpan="2" className="px-3 py-3 text-center text-xs font-semibold border-r border-white/10 w-[80px]">분야</th>
-                    <th rowSpan="2" className="px-3 py-3 text-center text-xs font-semibold border-r border-white/10 w-[88px]">주기</th>
-                    <th rowSpan="2" className="px-4 py-3 text-left text-xs font-semibold border-r border-white/10">예방점검 항목</th>
-                    <th colSpan="4" className="px-3 py-2 text-center text-xs font-semibold border-b border-white/10">정보시스템 등급</th>
-                  </tr>
-                  <tr className="text-white" style={{ background: 'var(--navy)' }}>
-                    <th className="px-2 py-2 text-center text-[11px] font-semibold border-r border-white/10 w-14">A1</th>
-                    <th className="px-2 py-2 text-center text-[11px] font-semibold border-r border-white/10 w-14">A2</th>
-                    <th className="px-2 py-2 text-center text-[11px] font-semibold border-r border-white/10 w-14">A3</th>
-                    <th className="px-2 py-2 text-center text-[11px] font-semibold w-14">A4</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    { area: '일상점검', areaRow: 3, cycle: '매일', num: '①', name: '상태 점검', desc: 'CPU/메모리/디스크 상태 등 이상 유무 점검', grades: ['필수','필수','필수','필수'] },
-                    { cycle: '매일', num: '②', name: '서비스 점검', desc: '메인 화면 접속여부 및 접속시간 점검', grades: ['필수','필수','필수','필수'] },
-                    { cycle: '매월', num: '③', name: '유효성 점검', desc: '인증서 유효기간, 도메인 종료일 등 점검', grades: ['필수','필수','필수','필수'] },
-                    { area: '특별점검', areaRow: 4, cycle: '매년', num: '④', name: '오프라인 점검', desc: '의도적 시스템 정지·재가동으로 이상유무 점검', grades: ['필수','필수','필수','권고'] },
-                    { cycle: '매년', num: '⑤', name: '다중화 점검', desc: '다중화된 장비·부품의 정상 동작 여부 점검', grades: ['필수','필수','필수','권고'] },
-                    { cycle: '매년', num: '⑥', name: '성능점검', desc: '부하 테스트 등으로 설정값 최적화 등 성능저하 요인 점검', grades: ['필수','필수','필수','권고'] },
-                    { cycle: '특정기간', num: '⑦', name: '업무집중기간 점검', desc: '서비스 집중 기간 중 사용량 증가에 따른 서비스 지연·중지 대비 사전 점검 및 집중 모니터링', grades: ['필수','필수','필수','권고'] },
-                    { area: '구조진단', areaRow: 1, cycle: '필요시', num: '⑧', name: '구조진단 및 개선', desc: '하드웨어, 시스템SW, 응용프로그램, 데이터베이스, 네트워크 등 전체 정보시스템 구조에 대한 진단 및 개선점 도출', grades: ['필수','필수','필수','—'] },
-                  ].map((r, i) => (
-                    <tr key={i} className="border-t border-slate-100">
-                      {r.area && (
-                        <td rowSpan={r.areaRow} className="px-3 py-3 text-center text-xs font-semibold text-slate-700 bg-slate-50 border-r border-slate-200">
-                          {r.area}
-                        </td>
-                      )}
-                      <td className="px-3 py-3 text-center text-[11px] text-slate-600 border-r border-slate-200">{r.cycle}</td>
-                      <td className="px-4 py-3 text-[13px] text-slate-700 border-r border-slate-200 leading-snug">
-                        <span className="font-semibold">{r.num} ({r.name})</span> {r.desc}
-                      </td>
-                      {r.grades.map((g, gi) => {
-                        const isRequired = g === '필수';
-                        const isDash = g === '—';
-                        return (
-                          <td
-                            key={gi}
-                            className={`px-2 py-3 text-center text-[11px] font-semibold ${gi < 3 ? 'border-r border-slate-200' : ''}`}
-                            style={{
-                              color: isRequired ? '#DC2626' : isDash ? '#94A3B8' : '#64748B',
-                            }}
-                          >
-                            {g}
-                          </td>
-                        );
-                      })}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
             {/* 적용 자원 — 3-column tables */}
-            <div className="mt-20">
+            <div className="mt-14">
               <div className="text-center text-xs font-mono tracking-[0.22em] mb-3" style={{ color: 'var(--brand)' }}>
                 적용 자원
               </div>
