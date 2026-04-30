@@ -284,25 +284,11 @@ export default function App() {
 
               {/* Right: 적용대상 */}
               <div>
-                <div className="inline-block px-5 py-2 rounded-md text-sm font-semibold text-white" style={{ background: 'linear-gradient(135deg, var(--brand-2), var(--brand))' }}>
-                  적용대상
-                </div>
-                <div className="mt-5">
-                  <p className="text-base md:text-lg text-slate-900 font-semibold leading-snug" style={{ wordBreak: 'keep-all' }}>
-                    범정부 정보시스템 인프라(HW·시스템SW) 운영기관
-                  </p>
-                  <ul className="mt-3 text-slate-600 space-y-1">
-                    <li className="flex items-start gap-2 text-base md:text-lg">
-                      <span className="text-slate-400 mt-1">•</span>
-                      <span>
-                        <strong className="font-bold text-slate-900">정보시스템 1, 2, 3, 4등급</strong> 모두 의무 적용
-                      </span>
-                    </li>
-                    <li className="ml-3.5 text-xs text-slate-500">
-                      (2026.4.13 행정안전부 고시 제2026호-23호)
-                    </li>
-                  </ul>
-                </div>
+                <p className="text-base md:text-lg text-slate-700 leading-relaxed" style={{ wordBreak: 'keep-all' }}>
+                  기존 <strong className="font-semibold text-slate-900">1·2등급 중심</strong>의 예방점검체계 적용 대상이
+                  2026년 4월 13일 시행 고시에 따라
+                  <strong className="font-bold" style={{ color: 'var(--brand)' }}> 정보시스템 1·2·3·4등급 전체</strong>로 확대되었습니다.
+                </p>
               </div>
 
             </div>
