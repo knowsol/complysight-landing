@@ -269,10 +269,12 @@ export default function App() {
                   <p className="text-base md:text-lg text-slate-900 font-semibold leading-snug" style={{ wordBreak: 'keep-all' }}>
                     범정부 정보시스템 인프라(HW·시스템SW) 운영기관
                   </p>
-                  <ul className="mt-3 text-sm text-slate-600 space-y-1">
-                    <li className="flex items-start gap-2">
-                      <span className="text-slate-400 mt-0.5">•</span>
-                      <span>정보시스템 1, 2, 3, 4등급 모두 의무 적용</span>
+                  <ul className="mt-3 text-slate-600 space-y-1">
+                    <li className="flex items-start gap-2 text-base md:text-lg">
+                      <span className="text-slate-400 mt-1">•</span>
+                      <span>
+                        <strong className="font-semibold" style={{ color: 'var(--brand)' }}>정보시스템 1, 2, 3, 4등급</strong> 모두 의무 적용
+                      </span>
                     </li>
                     <li className="ml-3.5 text-xs text-slate-500">
                       (2026.4.13 행정안전부 고시 제2026호-23호)
