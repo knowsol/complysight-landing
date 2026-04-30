@@ -303,8 +303,8 @@ export default function App() {
             {/* Subtitle paragraph below regulation card */}
             <p className="mt-12 text-base md:text-lg text-slate-700 leading-relaxed text-center max-w-3xl mx-auto" style={{ wordBreak: 'keep-all' }}>
               기존 <strong className="font-semibold text-slate-900">1·2등급 중심</strong>의 예방점검체계 적용 대상이
-              2026년 4월 13일 시행 고시에 따라
-              <strong className="font-bold" style={{ color: 'var(--brand)' }}> 정보시스템 1·2·3·4등급 전체</strong>로 확대되었습니다.
+              2026년 4월 13일 시행 고시에 따라<br />
+              <strong className="font-bold" style={{ color: 'var(--brand)' }}>정보시스템 1·2·3·4등급 전체</strong>로 확대되었습니다.
             </p>
           </div>
         </section>
