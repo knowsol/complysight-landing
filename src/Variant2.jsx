@@ -246,50 +246,56 @@ export default function Variant2() {
         {/* =========== §1.5 MANDATE OVERVIEW =========== */}
         <section className="pt-32 pb-28" style={{ background: 'var(--bg-alt)' }}>
           <div className="max-w-7xl mx-auto px-6">
-            <h2 className="text-4xl md:text-5xl lg:text-[56px] font-semibold tracking-tight leading-[1.15] text-center" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
-              2026년, 공공 정보시스템 예방점검체계<br />
-              의무화 적용 대상 <span style={{ color: 'var(--brand)' }}>확대</span>
+            <div className="text-xs font-mono tracking-[0.22em] mb-3 text-slate-500 uppercase">
+              제품 소개 · 핵심 현안
+            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-[56px] font-semibold tracking-tight leading-[1.15]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
+              2026년!! 모든 공공기관 예방점검체계 적용 <span style={{ color: 'var(--brand)' }}>의무화</span>
             </h2>
 
-            {/* Regulation card + Inspection table side-by-side */}
-            <div className="mt-12 grid lg:grid-cols-[1fr_1.35fr] gap-6 items-start">
-              {/* Left: Regulation excerpt card (slightly tilted, like a clipping) */}
-              <div
-                className="bg-white border border-slate-200 rounded-lg p-6 md:p-8 shadow-[0_15px_30px_-15px_rgba(11,31,58,0.18)]"
-                style={{ transform: 'rotate(1.5deg)' }}
-              >
-                <div className="flex items-center gap-2 mb-3">
-                  <Landmark className="w-4 h-4 shrink-0" style={{ color: 'var(--navy)' }} strokeWidth={1.75} />
-                  <div className="text-[11px] font-mono text-slate-500 tracking-wider">
-                    행정안전부 고시
-                  </div>
+            {/* Apply target + Inspection table side-by-side */}
+            <div className="mt-14 grid lg:grid-cols-[1fr_1.4fr] gap-10 items-start">
+              {/* Left: 적용대상 badge + grade info + news clipping */}
+              <div>
+                <div className="inline-block px-5 py-2 rounded-md text-sm font-semibold text-white" style={{ background: 'linear-gradient(135deg, var(--brand-2), var(--brand))' }}>
+                  적용대상
                 </div>
-                <div className="text-sm font-semibold text-slate-900 leading-snug">
-                  &lt;행정기관 및 공공기관 정보시스템 안정성 고시&gt;
-                </div>
-                <div className="mt-1 text-xs text-slate-600">
-                  제2장 정보시스템 운영·관리
-                </div>
-                <div className="mt-4 pt-4 border-t border-slate-100">
-                  <div className="text-sm font-semibold text-slate-900 mb-3">
-                    제12조 (정보시스템 예방점검 체계)
-                  </div>
-                  <div className="space-y-3 text-[13px] text-slate-700 leading-relaxed">
-                    <p>
-                      <span className="font-semibold mr-1">①</span>
-                      중앙행정기관등의 장은 별표 5의 기준에 따라 정보시스템의 예방점검 체계와 매뉴얼을 마련하고 이를 준수하여 소관 정보시스템을 관리하여야 한다.
-                    </p>
-                    <p>
-                      <span className="font-semibold mr-1">②</span>
-                      중앙행정기관등의 장은 제1항에 따른{' '}
-                      <span className="text-[15px] md:text-base font-semibold text-slate-900">
-                        예방점검 수행 시,
-                        <strong className="font-bold" style={{ color: 'var(--navy)' }}> 수작업으로 인한 누락 및 오류를 방지</strong>하고,
-                        점검 결과의 정확성과 신뢰성을 확보하기 위하여
-                        <strong className="font-bold" style={{ color: 'var(--brand)' }}> 자동화된 점검 도구 또는 시스템을 활용</strong>
+                <div className="mt-5">
+                  <p className="text-base md:text-lg text-slate-900 font-semibold leading-snug" style={{ wordBreak: 'keep-all' }}>
+                    범정부 정보시스템 인프라(HW·시스템SW) 운영기관
+                  </p>
+                  <ul className="mt-3 text-slate-600 space-y-1">
+                    <li className="flex items-start gap-2 text-base md:text-lg">
+                      <span className="text-slate-400 mt-1">•</span>
+                      <span>
+                        <strong className="font-bold text-slate-900">정보시스템 1, 2, 3, 4등급</strong> 모두 의무 적용
                       </span>
-                      하도록 노력하여야 한다.
+                    </li>
+                    <li className="ml-3.5 text-xs text-slate-500">
+                      (2026.4.13 행정안전부 고시 제2026호-23호)
+                    </li>
+                  </ul>
+                </div>
+
+                {/* News snippet card (slightly tilted, like a clipping) */}
+                <div className="mt-10">
+                  <div
+                    className="bg-white border border-slate-200 rounded-lg p-6 shadow-[0_15px_30px_-15px_rgba(11,31,58,0.18)]"
+                    style={{ transform: 'rotate(-1.5deg)' }}
+                  >
+                    <p className="text-sm text-slate-700 leading-relaxed">
+                      2023년 <strong className="font-semibold">'새올'</strong>, <strong className="font-semibold">'정부24'</strong> 등
+                      주요 공공서비스 장애로 디지털 업무가 중단되며 정보시스템 안정성의 중요성이 부각되었습니다.
+                      이에 따라 2024년 행정안전부는
+                      <strong className="font-semibold text-slate-900"> 표준화된 정보시스템 예방점검 관리체계 도입</strong>을 공식화했습니다.
                     </p>
+                    <div className="mt-4 pt-4 border-t border-slate-100 flex items-start gap-2.5">
+                      <Landmark className="w-4 h-4 mt-0.5 shrink-0" style={{ color: 'var(--navy)' }} strokeWidth={1.75} />
+                      <div className="text-[11px] font-mono text-slate-500 leading-snug">
+                        <div className="font-semibold text-slate-700">2024.10.08 행정안전부</div>
+                        <div className="mt-0.5">표준화된 '예방점검'과 '관리체계' 도입해 디지털 정부 안정화 강화</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -354,12 +360,6 @@ export default function Variant2() {
               </div>
             </div>
 
-            {/* Subtitle paragraph below regulation card */}
-            <p className="mt-12 text-base md:text-lg text-slate-700 leading-relaxed text-center max-w-3xl mx-auto" style={{ wordBreak: 'keep-all' }}>
-              기존 <strong className="font-semibold text-slate-900">1·2등급 중심</strong>의 예방점검체계 적용 대상이
-              2026년 4월 13일 시행 고시에 따라<br />
-              <strong className="font-bold" style={{ color: 'var(--brand)' }}>정보시스템 1·2·3·4등급 전체</strong>로 확대되었습니다.
-            </p>
           </div>
         </section>
 
