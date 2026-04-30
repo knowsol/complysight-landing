@@ -251,20 +251,20 @@ export default function Variant2() {
               의무화 적용 대상 <span style={{ color: 'var(--brand)' }}>확대</span>
             </h2>
 
-            {/* Subtitle paragraph */}
-            <p className="mt-8 text-base md:text-lg text-slate-700 leading-relaxed" style={{ wordBreak: 'keep-all' }}>
-              기존 <strong className="font-semibold text-slate-900">1·2등급 중심</strong>의 예방점검체계 적용 대상이
-              2026년 4월 13일 시행 고시에 따라<br />
-              <strong className="font-bold" style={{ color: 'var(--brand)' }}>정보시스템 1·2·3·4등급 전체</strong>로 확대되었습니다.
-            </p>
+            {/* Left column (subtitle + regulation card) | Right column (inspection table) */}
+            <div className="mt-12 grid lg:grid-cols-[1fr_1.4fr] gap-10 items-start">
+              {/* Left: Subtitle paragraph + regulation card */}
+              <div>
+                <p className="text-base md:text-lg text-slate-700 leading-relaxed" style={{ wordBreak: 'keep-all' }}>
+                  기존 <strong className="font-semibold text-slate-900">1·2등급 중심</strong>의 예방점검체계 적용 대상이
+                  2026년 4월 13일 시행 고시에 따라
+                  <strong className="font-bold" style={{ color: 'var(--brand)' }}> 정보시스템 1·2·3·4등급 전체</strong>로 확대되었습니다.
+                </p>
 
-            {/* Regulation card + Inspection table side-by-side */}
-            <div className="mt-14 grid lg:grid-cols-[1fr_1.4fr] gap-10 items-start">
-              {/* Left: Regulation excerpt card (slightly tilted, like a clipping) */}
-              <div
-                className="bg-white border border-slate-200 rounded-lg p-6 md:p-8 shadow-[0_15px_30px_-15px_rgba(11,31,58,0.18)]"
-                style={{ transform: 'rotate(1.5deg)' }}
-              >
+                <div
+                  className="mt-8 bg-white border border-slate-200 rounded-lg p-6 md:p-8 shadow-[0_15px_30px_-15px_rgba(11,31,58,0.18)]"
+                  style={{ transform: 'rotate(1.5deg)' }}
+                >
                 <div className="flex items-center gap-2 mb-3">
                   <Landmark className="w-4 h-4 shrink-0" style={{ color: 'var(--navy)' }} strokeWidth={1.75} />
                   <div className="text-[11px] font-mono text-slate-500 tracking-wider">
@@ -299,6 +299,7 @@ export default function Variant2() {
                     </p>
                   </div>
                 </div>
+              </div>
               </div>
 
               {/* Right: Inspection table */}
