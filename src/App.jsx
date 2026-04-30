@@ -378,69 +378,6 @@ export default function App() {
               (상태 점검, 서비스 점검, 유효성 점검, 오프라인 점검, 이중화 점검, 성능 점검, 업무집중기간 점검, 구조진단 및 개선)
             </p>
 
-            <div className="mt-14 grid md:grid-cols-3 gap-5">
-              {[
-                {
-                  title: '인프라',
-                  color: 'var(--brand)',
-                  rows: [
-                    { label: '서버(OS)', items: ['LIN**', 'AIX', 'Solaris'] },
-                    { label: 'DBMS', items: ['ORA***', 'MS***', 'CUB***'] },
-                    { label: '클라우드', items: [] },
-                  ],
-                },
-                {
-                  title: '네트워크 · 데이터',
-                  color: 'var(--accent)',
-                  rows: [
-                    { label: 'WEB', items: ['Apa**', 'Web***'] },
-                    { label: '네트워크', items: ['CIS**', 'JUNI***'] },
-                    { label: '스토리지', items: ['DE**', 'HITA***'] },
-                  ],
-                },
-                {
-                  title: '애플리케이션 · 백업',
-                  color: 'var(--navy)',
-                  rows: [
-                    { label: 'WAS', items: ['Tom**', 'JE**', 'Jbo**'] },
-                    { label: '보안', items: ['시큐**', '프****'] },
-                    { label: '백업', items: ['Comm****', 'Acro***'] },
-                  ],
-                },
-              ].map((col, ci) => (
-                <div key={ci} className="bg-white border border-slate-200 rounded-xl overflow-hidden card-hover">
-                  <div className="px-5 py-3 text-sm font-semibold text-white" style={{ background: col.color }}>
-                    {col.title}
-                  </div>
-                  <div className="divide-y divide-slate-100">
-                    {col.rows.map((r, ri) => (
-                      <div key={ri} className="grid grid-cols-[100px_1fr]">
-                        <div className="px-4 py-4 text-sm font-semibold text-slate-700 bg-slate-50 border-r border-slate-100 flex items-center">
-                          {r.label}
-                        </div>
-                        <div className="px-4 py-4">
-                          {r.items.length > 0 ? (
-                            <div className="flex flex-wrap gap-1.5">
-                              {r.items.map((it, ii) => (
-                                <span key={ii} className="inline-block text-xs font-mono px-2 py-1 rounded bg-slate-100 text-slate-700">
-                                  {it}
-                                </span>
-                              ))}
-                            </div>
-                          ) : (
-                            <span className="text-xs text-slate-400">—</span>
-                          )}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-6 text-xs text-slate-500">
-              ※ 클라우드 운영환경 구성에 따라 점검 항목은 조정 가능
-            </div>
           </div>
         </section>
 
