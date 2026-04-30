@@ -131,7 +131,7 @@ export default function Variant2() {
                 </h1>
 
                 <p className="mt-8 text-lg text-slate-600 leading-relaxed max-w-xl fade-up-3">
-                  행정기관 및 공공기관 정보시스템 안정성 고시(제2026-23호, 2026.4.13. 시행)를 반영하여<br />
+                  행정기관 및 공공기관 정보시스템 안정성 고시(제2026-23호, 2026.4.13. 시행)를 반영하여
                   자원점검, 증적, 보고서, 감사대응까지 한 번에 해결하는 예방점검체계관리 솔루션입니다.
                 </p>
 
@@ -308,7 +308,7 @@ export default function Variant2() {
               {/* Right: Inspection table */}
               <div>
                 <div className="text-sm md:text-base font-semibold text-right mb-3" style={{ color: 'var(--navy)' }}>
-                  <span style={{ color: 'var(--brand)' }}>3개 분야, 8개</span> 점검 항목
+                  정보시스템 예방점검 3개분야, 8개점검 항목
                 </div>
                 <div className="overflow-x-auto">
                 <table className="w-full border-collapse text-sm bg-white border border-slate-200 rounded-lg overflow-hidden shadow-[0_20px_40px_-20px_rgba(11,31,58,0.12)]">
@@ -374,7 +374,7 @@ export default function Variant2() {
         </section>
 
         {/* =========== §1.7 SCOPE (지원 대상 자원 - marquee) =========== */}
-        <section className="pt-28 pb-32" style={{ background: 'var(--bg-alt)' }}>
+        <section className="pt-12 pb-32" style={{ background: 'var(--bg-alt)' }}>
           <div className="max-w-7xl mx-auto px-6">
             <h3 className="text-sm md:text-base font-semibold tracking-tight" style={{ color: 'var(--navy)' }}>
               지원 대상 자원 및 제품
