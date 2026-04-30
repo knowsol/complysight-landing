@@ -289,11 +289,14 @@ export default function App() {
                       </p>
                       <p>
                         <span className="font-semibold mr-1">②</span>
-                        중앙행정기관등의 장은 제1항에 따른 예방점검 수행 시,
-                        <strong className="font-semibold" style={{ color: 'var(--navy)' }}> 수작업으로 인한 누락 및 오류를 방지</strong>하고,
-                        점검 결과의 정확성과 신뢰성을 확보하기 위하여
-                        <strong className="font-semibold" style={{ color: 'var(--brand)' }}> 자동화된 점검 도구 또는 시스템을 활용</strong>하도록
-                        노력하여야 한다.
+                        중앙행정기관등의 장은 제1항에 따른{' '}
+                        <span className="text-[15px] md:text-base font-semibold text-slate-900">
+                          예방점검 수행 시,
+                          <strong className="font-bold" style={{ color: 'var(--navy)' }}> 수작업으로 인한 누락 및 오류를 방지</strong>하고,
+                          점검 결과의 정확성과 신뢰성을 확보하기 위하여
+                          <strong className="font-bold" style={{ color: 'var(--brand)' }}> 자동화된 점검 도구 또는 시스템을 활용</strong>
+                        </span>
+                        하도록 노력하여야 한다.
                       </p>
                     </div>
                   </div>
