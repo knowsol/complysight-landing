@@ -256,7 +256,7 @@ export default function Variant2() {
               {/* Left: Regulation excerpt card (slightly tilted, like a clipping) */}
               <div
                 className="bg-white border border-slate-200 rounded-lg p-6 md:p-8 shadow-[0_15px_30px_-15px_rgba(11,31,58,0.18)]"
-                style={{ transform: 'rotate(-1.5deg)' }}
+                style={{ transform: 'rotate(1.5deg)' }}
               >
                 <div className="flex items-center gap-2 mb-3">
                   <Landmark className="w-4 h-4 shrink-0" style={{ color: 'var(--navy)' }} strokeWidth={1.75} />
