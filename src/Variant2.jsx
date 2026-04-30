@@ -425,7 +425,7 @@ export default function Variant2() {
         {/* =========== §2 PROBLEM =========== */}
         <section className="py-32">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="max-w-3xl mb-20">
+            <div className="max-w-3xl mx-auto mb-20 text-center">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.2]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
                 <span style={{ color: 'var(--brand)' }}>의무화</span>된 예방점검 체계,<br />
                 아직도 <span className="font-serif italic font-normal text-slate-500">수작업</span>으로 관리하고 계신가요?
