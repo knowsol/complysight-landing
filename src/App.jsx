@@ -273,7 +273,7 @@ export default function App() {
                     <li className="flex items-start gap-2 text-base md:text-lg">
                       <span className="text-slate-400 mt-1">•</span>
                       <span>
-                        <strong className="font-semibold" style={{ color: 'var(--brand)' }}>정보시스템 1, 2, 3, 4등급</strong> 모두 의무 적용
+                        <strong className="font-bold text-slate-900">정보시스템 1, 2, 3, 4등급</strong> 모두 의무 적용
                       </span>
                     </li>
                     <li className="ml-3.5 text-xs text-slate-500">
