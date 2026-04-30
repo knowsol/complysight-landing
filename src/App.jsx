@@ -516,10 +516,6 @@ export default function App() {
                 컴플리사이트는 기존의 개별 수작업 중심 점검 방식을 벗어나,<br />
                 <strong className="font-semibold text-slate-900">점검 기준 설정부터 리포트 생성까지 전 과정을 자동화</strong>합니다.
               </p>
-              <p className="mt-6 text-slate-600 leading-relaxed text-lg">
-                운영 효율성과 점검 정확도를 동시에 높이는<br />
-                <strong className="font-semibold text-slate-900">통합 예방점검 관리체계</strong>를 구현합니다.
-              </p>
             </div>
 
             {/* Before / After Comparison */}
