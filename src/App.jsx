@@ -264,7 +264,7 @@ export default function App() {
               <div>
                 <div
                   className="bg-white border border-slate-200 rounded-lg p-6 shadow-[0_15px_30px_-15px_rgba(11,31,58,0.18)]"
-                  style={{ transform: 'rotate(-1.5deg)' }}
+                  style={{ transform: 'rotate(1.5deg)' }}
                 >
                   <p className="text-sm text-slate-700 leading-relaxed">
                     2023년 <strong className="font-semibold">'새올'</strong>, <strong className="font-semibold">'정부24'</strong> 등
