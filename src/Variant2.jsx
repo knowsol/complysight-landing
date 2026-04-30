@@ -258,7 +258,7 @@ export default function Variant2() {
             <div className="mt-12 grid lg:grid-cols-[1fr_1.4fr] gap-10 items-start">
               {/* Left: Subtitle paragraph + regulation card */}
               <div>
-                <p className="text-base md:text-lg text-slate-700 leading-relaxed" style={{ wordBreak: 'keep-all' }}>
+                <p className="text-lg md:text-xl text-slate-700 leading-relaxed" style={{ wordBreak: 'keep-all' }}>
                   기존 <strong className="font-semibold text-slate-900">1·2등급 중심</strong>의 예방점검체계 적용 대상이
                   2026년 4월 13일 시행 고시에 따라
                   <strong className="font-bold" style={{ color: 'var(--brand)' }}> 정보시스템 1·2·3·4등급 전체</strong>로 확대되었습니다.
@@ -307,7 +307,7 @@ export default function Variant2() {
 
               {/* Right: Inspection table */}
               <div>
-                <div className="text-base md:text-lg font-semibold text-right mb-3" style={{ color: 'var(--navy)' }}>
+                <div className="text-sm md:text-base font-semibold text-right mb-3" style={{ color: 'var(--navy)' }}>
                   <span style={{ color: 'var(--brand)' }}>3개 분야, 8개</span> 점검 항목
                 </div>
                 <div className="overflow-x-auto">
@@ -376,7 +376,7 @@ export default function Variant2() {
         {/* =========== §1.7 SCOPE (지원 대상 자원 - marquee) =========== */}
         <section className="pt-28 pb-32" style={{ background: 'var(--bg-alt)' }}>
           <div className="max-w-7xl mx-auto px-6">
-            <h3 className="text-lg md:text-xl font-semibold tracking-tight" style={{ color: 'var(--navy)' }}>
+            <h3 className="text-sm md:text-base font-semibold tracking-tight" style={{ color: 'var(--navy)' }}>
               지원 대상 자원 및 제품
             </h3>
 
