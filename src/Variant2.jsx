@@ -373,19 +373,8 @@ export default function Variant2() {
         {/* =========== §1.7 SCOPE (3분야 8항목 + 대상 시스템) =========== */}
         <section className="pt-28 pb-32" style={{ background: 'var(--bg-alt)' }}>
           <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center text-xs font-mono tracking-[0.22em] mb-3" style={{ color: 'var(--brand)' }}>
-              적용 분야
-            </div>
-            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight leading-[1.2] text-center" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
-              3개 분야, 8개 점검항목
-            </h2>
-            <p className="mt-6 text-lg text-slate-600 leading-relaxed max-w-4xl mx-auto text-center" style={{ wordBreak: 'keep-all' }}>
-              3개 분야(<strong className="font-semibold text-slate-900">일상점검, 특별점검, 구조진단</strong>) 8개 점검항목<br />
-              (상태 점검, 서비스 점검, 유효성 점검, 오프라인 점검, 이중화 점검, 성능 점검, 업무집중기간 점검, 구조진단 및 개선)
-            </p>
-
             {/* 적용 자원 — 3-column tables */}
-            <div className="mt-14">
+            <div>
               <div className="text-center text-xs font-mono tracking-[0.22em] mb-3" style={{ color: 'var(--brand)' }}>
                 적용 자원
               </div>
