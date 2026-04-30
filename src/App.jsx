@@ -443,6 +443,67 @@ export default function App() {
               </table>
             </div>
 
+            {/* 적용 자원 — 3-column tables */}
+            <div className="mt-20">
+              <div className="text-center text-xs font-mono tracking-[0.22em] mb-3" style={{ color: 'var(--brand)' }}>
+                적용 자원
+              </div>
+              <h3 className="text-2xl md:text-3xl font-semibold tracking-tight leading-[1.2] text-center" style={{ color: 'var(--navy)' }}>
+                지원 대상 자원 및 제품
+              </h3>
+
+              <div className="mt-12 grid md:grid-cols-3 gap-5">
+                {[
+                  [
+                    { label: '서버(OS)', items: ['LIN**', 'AIX', 'Solaris'] },
+                    { label: 'DBMS', items: ['ORA***', 'MS***', 'CUB***'] },
+                    { label: '클라우드', items: [] },
+                  ],
+                  [
+                    { label: 'WEB', items: ['Apa**', 'Web***'] },
+                    { label: '네트워크', items: ['CIS**', 'JUNI***'] },
+                    { label: '스토리지', items: ['DE**', 'HITA***'] },
+                  ],
+                  [
+                    { label: 'WAS', items: ['Tom**', 'JE**', 'Jbo**'] },
+                    { label: '보안', items: ['시큐**', '프****'] },
+                    { label: '백업', items: ['Comm****', 'Acro***'] },
+                  ],
+                ].map((col, ci) => (
+                  <div key={ci} className="bg-white border border-slate-200 rounded-lg overflow-hidden">
+                    <div className="grid grid-cols-[110px_1fr] bg-slate-50 border-b border-slate-200">
+                      <div className="px-4 py-3 text-sm font-semibold text-slate-700 text-center border-r border-slate-200">구분</div>
+                      <div className="px-4 py-3 text-sm font-semibold text-slate-700 text-center">제품명 (예)</div>
+                    </div>
+                    {col.map((row, ri) => (
+                      <div key={ri} className={`grid grid-cols-[110px_1fr] ${ri < col.length - 1 ? 'border-b border-slate-100' : ''}`}>
+                        <div className="px-4 py-5 text-sm font-semibold text-slate-700 text-center bg-slate-50/50 border-r border-slate-100 flex items-center justify-center">
+                          {row.label}
+                        </div>
+                        <div className="px-4 py-5 flex items-center justify-center">
+                          {row.items.length > 0 ? (
+                            <div className="flex flex-wrap gap-1.5 justify-center">
+                              {row.items.map((it, ii) => (
+                                <span
+                                  key={ii}
+                                  className="inline-block text-xs font-mono px-2.5 py-1 rounded"
+                                  style={{ background: 'var(--brand-light)', color: 'var(--brand)' }}
+                                >
+                                  {it}
+                                </span>
+                              ))}
+                            </div>
+                          ) : (
+                            <span className="text-sm text-slate-400">—</span>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
         </section>
 
