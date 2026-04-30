@@ -19,8 +19,7 @@ export default function App() {
           style={{
             position: 'fixed',
             top: '16px',
-            left: '50%',
-            transform: 'translateX(-50%)',
+            left: '16px',
             zIndex: 9999,
             display: 'flex',
             gap: '4px',
