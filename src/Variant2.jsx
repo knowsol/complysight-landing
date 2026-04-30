@@ -46,6 +46,9 @@ export default function Variant2() {
 
         @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        @keyframes marquee-rtl { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        .marquee-track { animation: marquee-rtl 40s linear infinite; will-change: transform; }
+        .marquee-track:hover { animation-play-state: paused; }
 
         .fade-up-1 { animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.0s both; }
         .fade-up-2 { animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both; }
@@ -370,71 +373,53 @@ export default function Variant2() {
           </div>
         </section>
 
-        {/* =========== §1.7 SCOPE (3분야 8항목 + 대상 시스템) =========== */}
-        <section className="pt-28 pb-32" style={{ background: 'var(--bg-alt)' }}>
+        {/* =========== §1.7 SCOPE (지원 대상 자원 - marquee) =========== */}
+        <section className="pt-28 pb-32 overflow-hidden" style={{ background: 'var(--bg-alt)' }}>
           <div className="max-w-7xl mx-auto px-6">
-            {/* 적용 자원 — 3-column tables */}
-            <div>
-              <div className="text-center text-xs font-mono tracking-[0.22em] mb-3" style={{ color: 'var(--brand)' }}>
-                적용 자원
-              </div>
-              <h3 className="text-2xl md:text-3xl font-semibold tracking-tight leading-[1.2] text-center" style={{ color: 'var(--navy)' }}>
-                지원 대상 자원 및 제품
-              </h3>
-
-              <div className="mt-12 grid md:grid-cols-3 gap-5">
-                {[
-                  [
-                    { label: '서버(OS)', items: ['LIN**', 'AIX', 'Solaris'] },
-                    { label: 'DBMS', items: ['ORA***', 'MS***', 'CUB***'] },
-                    { label: '클라우드', items: [] },
-                  ],
-                  [
-                    { label: 'WEB', items: ['Apa**', 'Web***'] },
-                    { label: '네트워크', items: ['CIS**', 'JUNI***'] },
-                    { label: '스토리지', items: ['DE**', 'HITA***'] },
-                  ],
-                  [
-                    { label: 'WAS', items: ['Tom**', 'JE**', 'Jbo**'] },
-                    { label: '보안', items: ['시큐**', '프****'] },
-                    { label: '백업', items: ['Comm****', 'Acro***'] },
-                  ],
-                ].map((col, ci) => (
-                  <div key={ci} className="bg-white border border-slate-200 rounded-lg overflow-hidden">
-                    <div className="grid grid-cols-[110px_1fr] bg-slate-50 border-b border-slate-200">
-                      <div className="px-4 py-3 text-sm font-semibold text-slate-700 text-center border-r border-slate-200">구분</div>
-                      <div className="px-4 py-3 text-sm font-semibold text-slate-700 text-center">제품명 (예)</div>
-                    </div>
-                    {col.map((row, ri) => (
-                      <div key={ri} className={`grid grid-cols-[110px_1fr] ${ri < col.length - 1 ? 'border-b border-slate-100' : ''}`}>
-                        <div className="px-4 py-5 text-sm font-semibold text-slate-700 text-center bg-slate-50/50 border-r border-slate-100 flex items-center justify-center">
-                          {row.label}
-                        </div>
-                        <div className="px-4 py-5 flex items-center justify-center">
-                          {row.items.length > 0 ? (
-                            <div className="flex flex-wrap gap-1.5 justify-center">
-                              {row.items.map((it, ii) => (
-                                <span
-                                  key={ii}
-                                  className="inline-block text-xs font-mono px-2.5 py-1 rounded"
-                                  style={{ background: 'var(--brand-light)', color: 'var(--brand)' }}
-                                >
-                                  {it}
-                                </span>
-                              ))}
-                            </div>
-                          ) : (
-                            <span className="text-sm text-slate-400">—</span>
-                          )}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                ))}
-              </div>
-            </div>
-
+            <h3 className="text-lg md:text-xl font-semibold tracking-tight text-center" style={{ color: 'var(--navy)' }}>
+              지원 대상 자원 및 제품
+            </h3>
           </div>
+
+          {(() => {
+            const resources = [
+              { label: '서버(OS)', items: ['LIN**', 'AIX', 'Solaris'] },
+              { label: 'DBMS', items: ['ORA***', 'MS***', 'CUB***'] },
+              { label: '클라우드', items: [] },
+              { label: 'WEB', items: ['Apa**', 'Web***'] },
+              { label: '네트워크', items: ['CIS**', 'JUNI***'] },
+              { label: '스토리지', items: ['DE**', 'HITA***'] },
+              { label: 'WAS', items: ['Tom**', 'JE**', 'Jbo**'] },
+              { label: '보안', items: ['시큐**', '프****'] },
+              { label: '백업', items: ['Comm****', 'Acro***'] },
+            ];
+            const doubled = [...resources, ...resources];
+            return (
+              <div
+                className="mt-10 overflow-hidden"
+                style={{
+                  WebkitMaskImage: 'linear-gradient(to right, transparent, black 4%, black 96%, transparent)',
+                  maskImage: 'linear-gradient(to right, transparent, black 4%, black 96%, transparent)',
+                }}
+              >
+                <div className="marquee-track flex gap-4 w-max">
+                  {doubled.map((r, i) => (
+                    <div
+                      key={i}
+                      className="flex-shrink-0 w-56 bg-white border border-slate-200 rounded-xl px-5 py-5 shadow-[0_8px_20px_-12px_rgba(11,31,58,0.15)]"
+                    >
+                      <div className="text-base font-semibold text-slate-900">
+                        {r.label}
+                      </div>
+                      <div className="mt-2 text-xs font-mono leading-relaxed" style={{ color: 'var(--brand)' }}>
+                        {r.items.length > 0 ? r.items.join(', ') : '—'}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })()}
         </section>
 
         {/* =========== §2 PROBLEM =========== */}
