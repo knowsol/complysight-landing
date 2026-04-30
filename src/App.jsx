@@ -255,7 +255,7 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-6">
             <h2 className="text-4xl md:text-5xl lg:text-[56px] font-semibold tracking-tight leading-[1.15] text-center" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
               2026년, 공공 정보시스템 예방점검체계<br />
-              의무화 적용 대상 <span style={{ color: 'var(--brand)' }}>확대!!</span>
+              의무화 적용 대상 <span style={{ color: 'var(--brand)' }}>확대</span>
             </h2>
 
             <div className="mt-14 grid md:grid-cols-2 gap-10 items-start">
