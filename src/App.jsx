@@ -453,9 +453,8 @@ export default function App() {
                 아직도 <span className="font-serif italic font-normal text-slate-500">수작업</span>으로 관리하고 계신가요?
               </h2>
               <p className="mt-8 text-slate-600 leading-relaxed text-lg">
-                매번 반복되는 예방점검 업무,<br />
-                흩어진 자료와 반복되는 수작업은 담당자의 시간을 소모하고,
-                결정적인 순간마다 리스크로 돌아옵니다.
+                흩어진 자료와 반복되는 수작업은 비효율 초래,
+                결정적인 순간에 리스크로 돌아옵니다.
               </p>
             </div>
 
