@@ -453,7 +453,7 @@ export default function App() {
                 아직도 <span className="font-serif italic font-normal text-slate-500">수작업</span>으로 관리하고 계신가요?
               </h2>
               <p className="mt-8 text-slate-600 leading-relaxed text-lg">
-                흩어진 자료와 반복되는 수작업은 비효율 초래,
+                흩어진 자료와 반복되는 수작업은 비효율 초래하며,
                 결정적인 순간에 리스크로 돌아옵니다.
               </p>
             </div>
