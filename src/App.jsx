@@ -377,7 +377,8 @@ export default function App() {
               3개 분야, 8개 점검항목
             </h2>
             <p className="mt-6 text-lg text-slate-600 leading-relaxed max-w-4xl mx-auto text-center" style={{ wordBreak: 'keep-all' }}>
-              예방점검체계 의무화 대응, <strong className="font-semibold" style={{ color: 'var(--brand)' }}>컴플리사이트</strong>로 손쉽게 준비하세요
+              3개 분야(<strong className="font-semibold text-slate-900">일상점검, 특별점검, 구조진단</strong>) 8개 점검항목<br />
+              (상태 점검, 서비스 점검, 유효성 점검, 오프라인 점검, 이중화 점검, 성능 점검, 업무집중기간 점검, 구조진단 및 개선)
             </p>
 
             {/* Inspection table */}
