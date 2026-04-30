@@ -374,10 +374,10 @@ export default function App() {
         <section className="py-32" style={{ background: 'var(--bg-alt)' }}>
           <div className="max-w-7xl mx-auto px-6">
             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight leading-[1.2] text-center" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
-              예방점검체계 의무화 대응, <span style={{ color: 'var(--brand)' }}>컴플리사이트</span>로 손쉽게 준비하세요
+              3개 분야, 8개 점검항목
             </h2>
             <p className="mt-6 text-lg text-slate-600 leading-relaxed max-w-4xl mx-auto text-center" style={{ wordBreak: 'keep-all' }}>
-              <strong className="font-semibold text-slate-900">3개 분야, 8개 점검항목</strong>
+              예방점검체계 의무화 대응, <strong className="font-semibold" style={{ color: 'var(--brand)' }}>컴플리사이트</strong>로 손쉽게 준비하세요
             </p>
 
             {/* Inspection table */}
