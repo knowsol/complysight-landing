@@ -253,7 +253,7 @@ export default function App() {
         {/* =========== §1.5 MANDATE OVERVIEW =========== */}
         <section className="pt-32 pb-28" style={{ background: 'var(--bg-alt)' }}>
           <div className="max-w-7xl mx-auto px-6">
-            <h2 className="text-4xl md:text-5xl lg:text-[56px] font-semibold tracking-tight leading-[1.15]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
+            <h2 className="text-4xl md:text-5xl lg:text-[56px] font-semibold tracking-tight leading-[1.15] text-center" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
               2026년, 모든 공공기관<br />
               예방점검체계 적용 <span style={{ color: 'var(--brand)' }}>의무화</span>
             </h2>
