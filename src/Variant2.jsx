@@ -374,52 +374,52 @@ export default function Variant2() {
         </section>
 
         {/* =========== §1.7 SCOPE (지원 대상 자원 - marquee) =========== */}
-        <section className="pt-28 pb-32 overflow-hidden" style={{ background: 'var(--bg-alt)' }}>
+        <section className="pt-28 pb-32" style={{ background: 'var(--bg-alt)' }}>
           <div className="max-w-7xl mx-auto px-6">
             <h3 className="text-lg md:text-xl font-semibold tracking-tight text-center" style={{ color: 'var(--navy)' }}>
               지원 대상 자원 및 제품
             </h3>
-          </div>
 
-          {(() => {
-            const resources = [
-              { label: '서버(OS)', items: ['LIN**', 'AIX', 'Solaris'] },
-              { label: 'DBMS', items: ['ORA***', 'MS***', 'CUB***'] },
-              { label: '클라우드', items: [] },
-              { label: 'WEB', items: ['Apa**', 'Web***'] },
-              { label: '네트워크', items: ['CIS**', 'JUNI***'] },
-              { label: '스토리지', items: ['DE**', 'HITA***'] },
-              { label: 'WAS', items: ['Tom**', 'JE**', 'Jbo**'] },
-              { label: '보안', items: ['시큐**', '프****'] },
-              { label: '백업', items: ['Comm****', 'Acro***'] },
-            ];
-            const doubled = [...resources, ...resources];
-            return (
-              <div
-                className="mt-10 overflow-hidden"
-                style={{
-                  WebkitMaskImage: 'linear-gradient(to right, transparent, black 4%, black 96%, transparent)',
-                  maskImage: 'linear-gradient(to right, transparent, black 4%, black 96%, transparent)',
-                }}
-              >
-                <div className="marquee-track flex gap-4 w-max">
-                  {doubled.map((r, i) => (
-                    <div
-                      key={i}
-                      className="flex-shrink-0 w-56 bg-white border border-slate-200 rounded-xl px-5 py-5 shadow-[0_8px_20px_-12px_rgba(11,31,58,0.15)]"
-                    >
-                      <div className="text-base font-semibold text-slate-900">
-                        {r.label}
+            {(() => {
+              const resources = [
+                { label: '서버(OS)', items: ['LIN**', 'AIX', 'Solaris'] },
+                { label: 'DBMS', items: ['ORA***', 'MS***', 'CUB***'] },
+                { label: '클라우드', items: [] },
+                { label: 'WEB', items: ['Apa**', 'Web***'] },
+                { label: '네트워크', items: ['CIS**', 'JUNI***'] },
+                { label: '스토리지', items: ['DE**', 'HITA***'] },
+                { label: 'WAS', items: ['Tom**', 'JE**', 'Jbo**'] },
+                { label: '보안', items: ['시큐**', '프****'] },
+                { label: '백업', items: ['Comm****', 'Acro***'] },
+              ];
+              const doubled = [...resources, ...resources];
+              return (
+                <div
+                  className="mt-10 overflow-hidden"
+                  style={{
+                    WebkitMaskImage: 'linear-gradient(to right, transparent, black 4%, black 96%, transparent)',
+                    maskImage: 'linear-gradient(to right, transparent, black 4%, black 96%, transparent)',
+                  }}
+                >
+                  <div className="marquee-track flex gap-4 w-max">
+                    {doubled.map((r, i) => (
+                      <div
+                        key={i}
+                        className="flex-shrink-0 w-56 bg-white border border-slate-200 rounded-xl px-5 py-5 shadow-[0_8px_20px_-12px_rgba(11,31,58,0.15)]"
+                      >
+                        <div className="text-base font-semibold text-slate-900">
+                          {r.label}
+                        </div>
+                        <div className="mt-2 text-xs font-mono leading-relaxed" style={{ color: 'var(--brand)' }}>
+                          {r.items.length > 0 ? r.items.join(', ') : '—'}
+                        </div>
                       </div>
-                      <div className="mt-2 text-xs font-mono leading-relaxed" style={{ color: 'var(--brand)' }}>
-                        {r.items.length > 0 ? r.items.join(', ') : '—'}
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
-            );
-          })()}
+              );
+            })()}
+          </div>
         </section>
 
         {/* =========== §2 PROBLEM =========== */}
