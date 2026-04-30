@@ -251,7 +251,7 @@ export default function App() {
         </section>
 
         {/* =========== §1.5 MANDATE OVERVIEW =========== */}
-        <section className="py-32" style={{ background: 'var(--bg-alt)' }}>
+        <section className="pt-32 pb-28" style={{ background: 'var(--bg-alt)' }}>
           <div className="max-w-7xl mx-auto px-6">
             <h2 className="text-4xl md:text-5xl lg:text-[56px] font-semibold tracking-tight leading-[1.15] text-center" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
               2026년, 공공 정보시스템 예방점검체계<br />
@@ -310,7 +310,7 @@ export default function App() {
         </section>
 
         {/* =========== §1.7 SCOPE (3분야 8항목 + 대상 시스템) =========== */}
-        <section className="py-32">
+        <section className="pt-28 pb-32" style={{ background: 'var(--bg-alt)' }}>
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center text-xs font-mono tracking-[0.22em] mb-3" style={{ color: 'var(--brand)' }}>
               적용 분야
@@ -447,7 +447,7 @@ export default function App() {
         </section>
 
         {/* =========== §2 PROBLEM =========== */}
-        <section className="py-32" style={{ background: 'var(--bg-alt)' }}>
+        <section className="py-32">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-20">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.2]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
@@ -508,7 +508,7 @@ export default function App() {
         </section>
 
         {/* =========== §3 SOLUTION (해결 방식) =========== */}
-        <section className="py-32">
+        <section className="py-32" style={{ background: 'var(--bg-alt)' }}>
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-20">
               <h2 className="text-2xl md:text-3xl font-semibold tracking-tight leading-[1.3]" style={{ color: 'var(--navy)' }}>
@@ -594,7 +594,7 @@ export default function App() {
         </section>
 
         {/* =========== §4 FEATURES =========== */}
-        <section className="py-32" style={{ background: 'var(--bg-alt)' }}>
+        <section className="py-32">
           <div className="max-w-7xl mx-auto px-6">
             <div className="max-w-3xl mb-20">
               <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1]" style={{ color: 'var(--navy)' }}>
@@ -726,7 +726,7 @@ export default function App() {
         </section>
 
         {/* =========== §5 OPERATIONS (운영 구조) =========== */}
-        <section className="py-32">
+        <section className="py-32" style={{ background: 'var(--bg-alt)' }}>
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center max-w-5xl mx-auto mb-20">
               <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.15]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
@@ -856,7 +856,7 @@ export default function App() {
         </section>
 
         {/* =========== §5.5 PRODUCTS (Manager × Sentinel) =========== */}
-        <section className="py-32" style={{ background: 'var(--bg-alt)' }}>
+        <section className="py-32">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-20">
               <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1]" style={{ color: 'var(--navy)' }}>
