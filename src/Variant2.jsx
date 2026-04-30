@@ -303,7 +303,11 @@ export default function Variant2() {
               </div>
 
               {/* Right: Inspection table */}
-              <div className="overflow-x-auto">
+              <div>
+                <div className="text-base md:text-lg font-semibold text-right mb-3" style={{ color: 'var(--navy)' }}>
+                  <span style={{ color: 'var(--brand)' }}>3개 분야, 8개</span> 점검 항목
+                </div>
+                <div className="overflow-x-auto">
                 <table className="w-full border-collapse text-sm bg-white border border-slate-200 rounded-lg overflow-hidden shadow-[0_20px_40px_-20px_rgba(11,31,58,0.12)]">
                   <thead>
                     <tr className="text-white" style={{ background: 'var(--navy)' }}>
@@ -359,6 +363,7 @@ export default function Variant2() {
                     ))}
                   </tbody>
                 </table>
+                </div>
               </div>
             </div>
 
