@@ -249,7 +249,7 @@ export default function Variant2() {
         {/* =========== §1.5 MANDATE OVERVIEW =========== */}
         <section className="pt-32 pb-28" style={{ background: 'var(--bg-alt)' }}>
           <div className="max-w-7xl mx-auto px-6">
-            <h2 className="text-4xl md:text-5xl lg:text-[56px] font-semibold tracking-tight leading-[1.15]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
+            <h2 className="text-3xl md:text-4xl lg:text-[50px] font-semibold tracking-tight leading-[1.15]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
               행정안전부 기준, 이제 <span style={{ color: 'var(--brand)' }}>'자동화 점검'</span>이 요구됩니다.
             </h2>
 
