@@ -283,19 +283,19 @@ export default function Variant2() {
                   <div className="text-sm font-semibold text-slate-900 mb-3">
                     제12조 (정보시스템 예방점검 체계)
                   </div>
-                  <div className="space-y-3 text-[13px] text-slate-700 leading-relaxed">
-                    <p>
+                  <div className="space-y-3 leading-relaxed">
+                    <p className="text-[11px] text-slate-500">
                       <span className="font-semibold mr-1">①</span>
                       중앙행정기관등의 장은 별표 5의 기준에 따라 정보시스템의 예방점검 체계와 매뉴얼을 마련하고 이를 준수하여 소관 정보시스템을 관리하여야 한다.
                     </p>
-                    <p>
+                    <p className="text-[11px] text-slate-500">
                       <span className="font-semibold mr-1">②</span>
                       중앙행정기관등의 장은 제1항에 따른{' '}
-                      <span className="text-[15px] md:text-base font-semibold text-slate-900">
+                      <span className="text-[15px] md:text-base font-bold text-slate-900 leading-snug">
                         예방점검 수행 시,
-                        <strong className="font-bold" style={{ color: 'var(--navy)' }}> 수작업으로 인한 누락 및 오류를 방지</strong>하고,
+                        <strong style={{ color: 'var(--navy)' }}> 수작업으로 인한 누락 및 오류를 방지</strong>하고,
                         점검 결과의 정확성과 신뢰성을 확보하기 위하여
-                        <strong className="font-bold" style={{ color: 'var(--brand)' }}> 자동화된 점검 도구 또는 시스템을 활용</strong>
+                        <strong style={{ color: 'var(--brand)' }}> 자동화된 점검 도구 또는 시스템을 활용</strong>
                       </span>
                       하도록 노력하여야 한다.
                     </p>
