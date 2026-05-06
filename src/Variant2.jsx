@@ -273,14 +273,14 @@ export default function Variant2() {
                     행정안전부 고시
                   </div>
                 </div>
-                <div className="text-sm font-semibold text-slate-900 leading-snug">
+                <div className="text-xs text-slate-500 leading-snug">
                   &lt;행정기관 및 공공기관 정보시스템 안정성 고시&gt;
                 </div>
-                <div className="mt-1 text-xs text-slate-600">
+                <div className="mt-1 text-xs text-slate-500">
                   제2장 정보시스템 운영·관리
                 </div>
                 <div className="mt-4 pt-4 border-t border-slate-100">
-                  <div className="text-sm font-semibold text-slate-900 mb-3">
+                  <div className="text-xs text-slate-500 mb-3">
                     제12조 (정보시스템 예방점검 체계)
                   </div>
                   <div className="space-y-3 leading-relaxed">
