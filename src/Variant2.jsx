@@ -964,30 +964,30 @@ export default function Variant2() {
         </section>
 
         {/* =========== §8 AI ROADMAP =========== */}
-        <section className="py-32 relative overflow-hidden" style={{ background: 'var(--navy-2)' }}>
-          {/* Subtle globe / dot pattern background */}
+        <section className="py-32 relative overflow-hidden" style={{ background: 'var(--bg-alt)' }}>
+          {/* Subtle dot pattern background */}
           <div
-            className="absolute inset-0 opacity-30"
+            className="absolute inset-0 opacity-50"
             style={{
-              backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(148, 163, 184, 0.15) 1px, transparent 0)',
+              backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(30, 64, 175, 0.08) 1px, transparent 0)',
               backgroundSize: '24px 24px',
             }}
           />
 
           <div className="relative max-w-7xl mx-auto px-6">
-            <div className="text-[11px] font-mono tracking-[0.22em] uppercase mb-4" style={{ color: '#7DD3FC' }}>
+            <div className="text-[11px] font-mono tracking-[0.22em] uppercase mb-4" style={{ color: 'var(--brand)' }}>
               컴플리사이트 AI 확장전략
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-[56px] font-semibold tracking-tight leading-[1.15] text-white" style={{ wordBreak: 'keep-all' }}>
-              점검 체계화를 넘어 <span className="font-serif italic font-normal" style={{ color: '#7DD3FC' }}>AI 기반 운영 플랫폼</span>으로 진화
+            <h2 className="text-4xl md:text-5xl lg:text-[56px] font-semibold tracking-tight leading-[1.15]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
+              점검 체계화를 넘어 <span className="font-serif italic font-normal" style={{ color: 'var(--brand)' }}>AI 기반 운영 플랫폼</span>으로 진화
             </h2>
-            <p className="mt-6 text-lg leading-relaxed max-w-3xl" style={{ color: '#94A3B8' }}>
+            <p className="mt-6 text-lg leading-relaxed max-w-3xl text-slate-600">
               점검 자동화로 데이터를 축적하고 이를 기반으로
-              운영 판단을 돕는 <strong className="font-semibold text-slate-200">AI 플랫폼으로 거듭납니다.</strong>
+              운영 판단을 돕는 <strong className="font-semibold text-slate-900">AI 플랫폼으로 거듭납니다.</strong>
             </p>
 
             {/* Roadmap label */}
-            <div className="mt-14 text-sm font-semibold" style={{ color: '#7DD3FC' }}>
+            <div className="mt-14 text-sm font-semibold" style={{ color: 'var(--brand)' }}>
               컴플리사이트 AI 미래비전과 단계별 확장 로드맵
             </div>
 
@@ -1045,10 +1045,10 @@ export default function Variant2() {
                           <div
                             className="h-full flex flex-col justify-center"
                             style={{
-                              background: 'rgba(255, 255, 255, 0.06)',
+                              background: 'rgba(255, 255, 255, 0.85)',
                               backdropFilter: 'blur(14px)',
                               WebkitBackdropFilter: 'blur(14px)',
-                              boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.12), 0 10px 30px -10px rgba(0,0,0,0.3)',
+                              boxShadow: 'inset 0 1px 0 rgba(255,255,255,1), 0 10px 30px -10px rgba(11, 31, 58, 0.15)',
                               clipPath,
                               padding,
                               minHeight: '108px',
@@ -1060,7 +1060,7 @@ export default function Variant2() {
                             >
                               {s.stage}
                             </div>
-                            <h3 className="text-base md:text-lg font-semibold text-white leading-snug" style={{ wordBreak: 'keep-all' }}>
+                            <h3 className="text-base md:text-lg font-semibold text-slate-900 leading-snug" style={{ wordBreak: 'keep-all' }}>
                               {s.title}
                             </h3>
                           </div>
@@ -1077,8 +1077,8 @@ export default function Variant2() {
                           {s.items.map((it, ii) => (
                             <li
                               key={ii}
-                              className="flex items-start gap-2 text-sm leading-relaxed"
-                              style={{ color: '#CBD5E1', wordBreak: 'keep-all' }}
+                              className="flex items-start gap-2 text-sm leading-relaxed text-slate-600"
+                              style={{ wordBreak: 'keep-all' }}
                             >
                               <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ background: s.badgeBg }} />
                               <span>{it}</span>
