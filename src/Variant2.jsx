@@ -258,7 +258,7 @@ export default function Variant2() {
               {/* Left: Subtitle paragraph + regulation card */}
               <div>
                 <p className="text-lg md:text-xl text-slate-700 leading-relaxed" style={{ wordBreak: 'keep-all' }}>
-                  기존 <strong className="font-semibold text-slate-900">1·2등급 중심</strong>의 예방점검체계 적용 대상이
+                  기존 1·2등급 중심의 <strong className="font-bold" style={{ color: 'var(--brand)' }}>예방점검체계 적용 대상</strong>이
                   2026년 4월 13일 시행 고시에 따라
                   <strong className="font-bold" style={{ color: 'var(--brand)' }}> 정보시스템 1·2·3·4등급 전체</strong>로 확대되었습니다.
                 </p>
