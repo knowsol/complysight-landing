@@ -250,8 +250,7 @@ export default function Variant2() {
         <section className="pt-32 pb-28" style={{ background: 'var(--bg-alt)' }}>
           <div className="max-w-7xl mx-auto px-6">
             <h2 className="text-4xl md:text-5xl lg:text-[56px] font-semibold tracking-tight leading-[1.15]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
-              행정안전부 기준, 이제<br />
-              <span style={{ color: 'var(--brand)' }}>'자동화 점검'</span>이 요구됩니다.
+              행정안전부 기준, 이제 <span style={{ color: 'var(--brand)' }}>'자동화 점검'</span>이 요구됩니다.
             </h2>
 
             {/* Left column (subtitle + regulation card) | Right column (inspection table) */}
