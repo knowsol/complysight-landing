@@ -286,7 +286,7 @@ export default function Variant2() {
                   <div className="space-y-3 leading-relaxed">
                     <p className="text-[11px] text-slate-500">
                       <span className="font-semibold mr-1">①</span>
-                      중앙행정기관등의 장은 별표 5의 기준에 따라 …
+                      …
                     </p>
                     <p className="text-[11px] text-slate-500">
                       <span className="font-semibold mr-1">②</span>
