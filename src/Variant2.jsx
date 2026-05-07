@@ -568,140 +568,8 @@ export default function Variant2() {
           </div>
         </section>
 
-        {/* =========== §4 FEATURES =========== */}
-        <section className="py-32">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="max-w-3xl mb-20">
-              <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1]" style={{ color: 'var(--navy)' }}>
-                컴플리사이트 도입,<br />
-                <span className="font-serif italic font-normal">실질적 업무 효율</span>을 가져옵니다.
-              </h2>
-              <p className="mt-8 text-slate-600 leading-relaxed text-lg">
-                컴플리사이트의 네 가지 핵심 기능은 각각 구체적인 업무 변화를 만들어냅니다.
-              </p>
-            </div>
-
-            {/* Two-column offset layout */}
-            <div className="grid md:grid-cols-2 gap-6">
-              {/* Left column */}
-              <div className="flex flex-col gap-6">
-                {/* 01 데이터 자동 확보 */}
-                <div className="bg-white border border-slate-200 rounded-xl p-8 card-hover">
-                  <div className="flex items-start justify-between mb-6">
-                    <div className="font-mono text-2xl font-semibold" style={{ color: 'var(--brand)' }}>01</div>
-                    <div className="relative w-16 h-16">
-                      <svg className="w-16 h-16 -rotate-90" viewBox="0 0 36 36">
-                        <circle cx="18" cy="18" r="15.915" fill="none" stroke="#E2E8F0" strokeWidth="2.5" />
-                        <circle cx="18" cy="18" r="15.915" fill="none" stroke="var(--brand)" strokeWidth="2.5" strokeDasharray="95, 100" strokeLinecap="round" pathLength="100" />
-                      </svg>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="font-mono text-[12px] font-bold" style={{ color: 'var(--brand)' }}>95%</span>
-                      </div>
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-semibold text-slate-900 tracking-tight">점검 데이터 자동 확보</h3>
-                  <div className="mt-1 text-xs font-mono tracking-wider text-slate-400">자동 수집률</div>
-                  <ul className="mt-5 space-y-2.5">
-                    {[
-                      'Web·WAS·DB·Server 등 주요 자원으로부터 데이터 자동 확보',
-                      '점검 대상별 수집 항목 및 주기 설정 가능',
-                      '보고서 제출율·수집 커버리지·유효 증적 충족율 등 시각화 자료 제공',
-                    ].map((t, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-sm text-slate-600 leading-relaxed">
-                        <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ background: 'var(--brand)' }} />
-                        <span>{t}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* 03 상태 자동 판별 */}
-                <div className="bg-white border border-slate-200 rounded-xl p-8 card-hover">
-                  <div className="flex items-start justify-between mb-6">
-                    <div className="font-mono text-2xl font-semibold" style={{ color: 'var(--brand)' }}>03</div>
-                    <div className="relative w-16 h-16">
-                      <svg className="w-16 h-16 -rotate-90" viewBox="0 0 36 36">
-                        <circle cx="18" cy="18" r="15.915" fill="none" stroke="#E2E8F0" strokeWidth="2.5" />
-                        <circle cx="18" cy="18" r="15.915" fill="none" stroke="var(--brand)" strokeWidth="2.5" strokeDasharray="90, 100" strokeLinecap="round" pathLength="100" />
-                      </svg>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="font-mono text-[12px] font-bold" style={{ color: 'var(--brand)' }}>90%</span>
-                      </div>
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-semibold text-slate-900 tracking-tight">상태 자동 판별</h3>
-                  <div className="mt-1 text-xs font-mono tracking-wider text-slate-400">자동 판별률</div>
-                  <ul className="mt-5 space-y-2.5">
-                    {[
-                      '검증 Code 기준에 따라 수집 데이터의 정상·비정상 여부 자동 분석',
-                      'CPU·Memory·Connection Pool 등 주요 성능 항목에 대한 임계값 판단',
-                      '장애 감지 시 관리자 알림',
-                    ].map((t, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-sm text-slate-600 leading-relaxed">
-                        <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ background: 'var(--brand)' }} />
-                        <span>{t}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              {/* Right column - offset down */}
-              <div className="flex flex-col gap-6 md:mt-20">
-                {/* 02 보고서 자동 생성 */}
-                <div className="bg-white border border-slate-200 rounded-xl p-8 card-hover">
-                  <div className="flex items-start justify-between mb-6">
-                    <div className="font-mono text-2xl font-semibold" style={{ color: 'var(--brand)' }}>02</div>
-                    <div className="relative w-16 h-16">
-                      <svg className="w-16 h-16 -rotate-90" viewBox="0 0 36 36">
-                        <circle cx="18" cy="18" r="15.915" fill="none" stroke="#E2E8F0" strokeWidth="2.5" />
-                        <circle cx="18" cy="18" r="15.915" fill="none" stroke="var(--brand)" strokeWidth="2.5" strokeDasharray="100, 100" strokeLinecap="round" pathLength="100" />
-                      </svg>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="font-mono text-[11px] font-bold" style={{ color: 'var(--brand)' }}>100%</span>
-                      </div>
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-semibold text-slate-900 tracking-tight">보고서 자동 생성</h3>
-                  <div className="mt-1 text-xs font-mono tracking-wider text-slate-400">자동 생성률</div>
-                  <ul className="mt-5 space-y-2.5">
-                    {[
-                      '일·주·월 단위 정기 운영 리포트 및 감사 대응 보고서 자동 생성',
-                      '점검 결과 및 증적 리포팅 생성 (직접 점검·배치 점검 선택)',
-                      '공공 표준 예방점검 절차에 부합한 보고서 포맷 지원',
-                    ].map((t, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-sm text-slate-600 leading-relaxed">
-                        <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ background: 'var(--brand)' }} />
-                        <span>{t}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* 04 통합 대시보드 */}
-                <div className="bg-white border border-slate-200 rounded-xl p-8 card-hover">
-                  <div className="flex items-start justify-between mb-6">
-                    <div className="font-mono text-2xl font-semibold" style={{ color: 'var(--brand)' }}>04</div>
-                    <div className="w-11 h-11 rounded-lg flex items-center justify-center" style={{ background: 'var(--bg-subtle)' }}>
-                      <BarChart3 className="w-5 h-5" style={{ color: 'var(--navy)' }} strokeWidth={1.5} />
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-semibold text-slate-900 tracking-tight">통합 대시보드 및 이력 관리</h3>
-                  <p className="mt-3 text-sm text-slate-600 leading-relaxed">
-                    흩어진 점검 정보를 하나의 대시보드에서 관리하고, 모든 점검 활동은 타임스탬프와 함께 이력으로 자동 보관됩니다.
-                  </p>
-                  <div className="mt-6 pt-6 border-t border-slate-100">
-                    <div className="eyebrow">업무상 효과</div>
-                    <div className="mt-2 font-semibold text-slate-900">감사·사후 대응 시간 단축</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* =========== §5 OPERATIONS (운영 구조) =========== */}
-        <section className="py-32" style={{ background: 'var(--bg-alt)' }}>
+        <section className="py-32" style={{ background: 'var(--bg)' }}>
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center max-w-5xl mx-auto mb-20">
               <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.15]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
@@ -831,19 +699,13 @@ export default function Variant2() {
         </section>
 
         {/* =========== §5.5 PRODUCTS (Manager × Sentinel) =========== */}
-        <section className="py-32">
+        <section className="py-32" style={{ background: 'var(--bg-alt)' }}>
           <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center max-w-3xl mx-auto mb-20">
-              <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1]" style={{ color: 'var(--navy)' }}>
-                <span style={{ color: 'var(--accent)' }}>점검보고</span>, <span style={{ color: 'var(--brand)' }}>보고확인</span>.<br />
-                <span className="font-serif italic font-normal">보고자와 관리자 모두</span><br />
-                하나의 시스템으로.
+            <div className="text-center max-w-4xl mx-auto mb-20">
+              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight leading-[1.3]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
+                컴플리사이트는 현장 데이터 수집과 결과 운영을<br />
+                실시간으로 연결하는 통합 솔루션입니다.
               </h2>
-              <p className="mt-8 text-slate-600 leading-relaxed text-lg">
-                컴플리사이트는 현장에서 데이터를 수집하는 Sentinel과
-                관리자가 결과를 운영하는 Manager,<br />
-                두 제품이 실시간으로 연결된 통합 솔루션입니다.
-              </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-5">
@@ -861,12 +723,6 @@ export default function Variant2() {
                   주요 시스템에서<br />데이터를 자동 수집합니다.
                 </h3>
 
-                <p className="mt-5 text-slate-600 leading-relaxed">
-                  Sentinel Agent가 Web·WAS·DB·Server 등 주요 시스템 자원에 접근하여
-                  점검 항목별 데이터를 자동 수집하고, 원천 증적까지 함께 보관합니다.
-                  사람이 캡처·기록하지 않아도 감사 근거가 자동으로 쌓입니다.
-                </p>
-
                 <ul className="mt-8 space-y-3">
                   {[
                     'Web·WAS·DB·Server 자동 데이터 수집',
@@ -880,11 +736,6 @@ export default function Variant2() {
                     </li>
                   ))}
                 </ul>
-
-                <div className="mt-8 pt-8 border-t border-slate-100">
-                  <div className="eyebrow">FOR</div>
-                  <div className="mt-1 text-sm font-semibold text-slate-900">운영 환경 상주</div>
-                </div>
               </div>
 
               {/* MANAGER */}
@@ -900,12 +751,6 @@ export default function Variant2() {
                   점검 기준을 내재화하고<br />결과를 한눈에.
                 </h3>
 
-                <p className="mt-5 text-slate-600 leading-relaxed">
-                  행정안전부 예방점검 기준과 기관 고유 기준을 시스템에 내재화하고,
-                  Sentinel이 수집한 데이터를 기준과 자동 대조하여
-                  상태 판별, 대시보드 시각화, 보고서 생성까지 한 화면에서 처리합니다.
-                </p>
-
                 <ul className="mt-8 space-y-3">
                   {[
                     '행정안전부 기준·기관 커스텀 룰 내재화',
@@ -919,11 +764,6 @@ export default function Variant2() {
                     </li>
                   ))}
                 </ul>
-
-                <div className="mt-8 pt-8 border-t border-slate-100">
-                  <div className="eyebrow">FOR</div>
-                  <div className="mt-1 text-sm font-semibold text-slate-900">관리자 · 감사 담당</div>
-                </div>
               </div>
             </div>
           </div>
@@ -979,7 +819,7 @@ export default function Variant2() {
               컴플리사이트 AI 확장전략
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-[56px] font-semibold tracking-tight leading-[1.15]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
-              점검 체계화를 넘어 <span className="font-serif italic font-normal" style={{ color: 'var(--brand)' }}>AI 기반 운영 플랫폼</span>으로 진화
+              점검 체계화를 넘어 <span className="font-serif italic font-normal" style={{ color: 'var(--brand)' }}>AI 기반 운영 플랫폼</span>으로 진화합니다
             </h2>
             <p className="mt-6 text-lg leading-relaxed max-w-3xl text-slate-600">
               점검 자동화로 데이터를 축적하고 이를 기반으로
