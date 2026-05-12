@@ -126,21 +126,22 @@ export default function Variant2() {
                   <span>2026, 범정부 예방점검체계 의무화 시대</span>
                 </div>
 
-                <h1 className="mt-8 text-xl md:text-2xl font-semibold leading-snug fade-up-2" style={{ color: 'var(--navy)' }}>
-                  공공기관 정보시스템 예방점검체계 자동화 솔루션
+                <h1 className="mt-8 text-2xl md:text-3xl font-semibold leading-snug fade-up-2" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
+                  공공기관 정보시스템 예방점검,<br />
+                  이제 <span style={{ color: 'var(--brand)' }}>자동화</span>가 필요합니다.
                 </h1>
 
-                <p className="mt-8 text-lg text-slate-600 leading-relaxed max-w-xl fade-up-3">
-                  행정기관 및 공공기관 정보시스템 안정성 고시(제2026-23호, 2026.4.13. 시행)를 반영하여
-                  자원점검, 증적, 보고서, 감사대응까지 한 번에 해결하는 예방점검체계관리 솔루션입니다.
+                <p className="mt-8 text-lg text-slate-600 leading-relaxed max-w-xl fade-up-3" style={{ wordBreak: 'keep-all' }}>
+                  행정안전부 예방점검 기준에 맞춘 공공기관 정보시스템 자동 점검 솔루션,
+                  <strong className="font-semibold text-slate-900"> 컴플리사이트(ComplySight)</strong>
                 </p>
 
                 <div className="mt-10 flex flex-wrap items-center gap-3 fade-up-4">
                   <button className="btn-primary px-6 py-3.5 rounded-md text-sm font-medium flex items-center gap-2">
-                    서비스 소개서 보기 <ArrowRight className="w-4 h-4" />
+                    도입 상담 <ArrowRight className="w-4 h-4" />
                   </button>
                   <button className="btn-ghost px-6 py-3.5 rounded-md text-sm font-medium bg-white flex items-center gap-2 text-slate-700">
-                    도입 문의하기 <ChevronRight className="w-4 h-4" />
+                    예방점검 항목 확인 <ChevronRight className="w-4 h-4" />
                   </button>
                 </div>
 
@@ -246,14 +247,77 @@ export default function Variant2() {
           </div>
         </section>
 
-        {/* =========== §1.5 MANDATE OVERVIEW =========== */}
-        <section className="pt-32 pb-28" style={{ background: 'var(--bg-alt)' }}>
+        {/* =========== §2 PROBLEM (now 2nd) =========== */}
+        <section className="py-20" style={{ background: 'var(--bg-alt)' }}>
           <div className="max-w-7xl mx-auto px-6">
-            <h2 className="text-3xl md:text-4xl lg:text-[50px] font-semibold tracking-tight leading-[1.15]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
-              행정안전부 기준, 이제 <span style={{ color: 'var(--brand)' }}>'자동화 점검'</span>이 요구됩니다.
+            <div className="max-w-3xl mx-auto mb-12 text-center">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.2]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
+                <span style={{ color: 'var(--brand)' }}>의무화</span>된 예방점검 체계,<br />
+                아직도 <span className="font-serif italic font-normal text-slate-500">수작업</span>으로 관리하고 계신가요?
+              </h2>
+              <p className="mt-8 text-slate-600 leading-relaxed text-lg">
+                흩어진 자료와 반복되는 수작업은 비효율 초래하며,
+                결정적인 순간에 리스크로 돌아옵니다.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-5">
+              {[
+                {
+                  icon: Layers,
+                  t: '시스템별 자료 분산',
+                  d: '"서버, DB, WAS, 보안장비별 자료가 흩어져 점검 준비에 시간이 소요됩니다."',
+                  impact: '담당자 간 인수인계 시 자료 누락 빈번',
+                },
+                {
+                  icon: FileText,
+                  t: '수기 점검의 한계',
+                  d: '"담당자마다 체크 방식이 달라 결과의 일관성이 떨어집니다."',
+                  impact: 'Human Error · 기준 편차 발생',
+                },
+                {
+                  icon: RefreshCcw,
+                  t: '반복되는 보고서 작성',
+                  d: '"정기보고서(일·월·분기) 및 감사 보고서를 매번 수작업으로 취합합니다."',
+                  impact: '본래 기획·개선 업무 집중 불가',
+                },
+                {
+                  icon: FileSearch,
+                  t: '이력 추적의 어려움',
+                  d: '"언제, 누가, 어떤 기준으로 점검했는지 증빙하기 어렵습니다."',
+                  impact: '감사·사후 대응 시 리스크',
+                },
+              ].map((p, i) => (
+                <div key={i} className="card-hover p-8 bg-white border border-slate-200 rounded-xl">
+                  <div className="flex items-start gap-5">
+                    <div className="w-11 h-11 rounded-lg flex items-center justify-center shrink-0" style={{ background: 'var(--bg-alt)' }}>
+                      <p.icon className="w-5 h-5" style={{ color: 'var(--navy)' }} strokeWidth={1.75} />
+                    </div>
+                    <div className="flex-1">
+                      <div className="text-lg font-semibold text-slate-900">{p.t}</div>
+                      <div className="mt-2 text-sm text-slate-600 leading-relaxed">{p.d}</div>
+                      <div className="mt-4 pt-4 border-t border-slate-100 flex items-center gap-2">
+                        <div className="w-1 h-1 rounded-full bg-red-500" />
+                        <span className="text-xs text-slate-500 font-medium">{p.impact}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* =========== §1.5 MANDATE OVERVIEW (now 3rd) =========== */}
+        <section className="pt-20 pb-16" style={{ background: 'var(--bg)' }}>
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="eyebrow mb-3">규제 변화</div>
+            <h2 className="text-3xl md:text-4xl lg:text-[44px] font-semibold tracking-tight leading-[1.2]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
+              행정안전부 고시 기준,<br />
+              이제 <span style={{ color: 'var(--brand)' }}>자동화 점검</span>이 요구됩니다.
             </h2>
 
-            {/* Left column (subtitle + regulation card) | Right column (inspection table) */}
+            {/* Left column (3 key changes overlaid on watermark) | Right column (inspection table) */}
             <div className="mt-12 grid lg:grid-cols-[1fr_1.4fr] gap-10 items-start">
               {/* Left: Subtitle paragraph + regulation card */}
               <div>
@@ -267,41 +331,41 @@ export default function Variant2() {
                   className="mt-8 bg-white border border-slate-200 rounded-lg p-6 md:p-8 shadow-[0_15px_30px_-15px_rgba(11,31,58,0.18)]"
                   style={{ transform: 'rotate(1.5deg)' }}
                 >
-                <div className="flex items-center gap-2 mb-3">
-                  <Landmark className="w-4 h-4 shrink-0" style={{ color: 'var(--navy)' }} strokeWidth={1.75} />
-                  <div className="text-[11px] font-mono text-slate-500 tracking-wider">
-                    행정안전부 고시
+                  <div className="flex items-center gap-2 mb-3">
+                    <Landmark className="w-4 h-4 shrink-0" style={{ color: 'var(--navy)' }} strokeWidth={1.75} />
+                    <div className="text-[11px] font-mono text-slate-500 tracking-wider">
+                      행정안전부 고시
+                    </div>
+                  </div>
+                  <div className="text-xs text-slate-500 leading-snug">
+                    &lt;행정기관 및 공공기관 정보시스템 안정성 고시&gt;
+                  </div>
+                  <div className="mt-1 text-xs text-slate-500">
+                    제2장 정보시스템 운영·관리
+                  </div>
+                  <div className="mt-4 pt-4 border-t border-slate-100">
+                    <div className="text-xs text-slate-500 mb-3">
+                      제12조 (정보시스템 예방점검 체계)
+                    </div>
+                    <div className="space-y-3 leading-relaxed">
+                      <p className="text-[11px] text-slate-500">
+                        <span className="font-semibold mr-1">①</span>
+                        중앙행정기관등의 장은 별표 5의 기준에 따라 정보시스템의 예방점검 체계와 매뉴얼을 마련하고 이를 준수하여 소관 정보시스템을 관리하여야 한다.
+                      </p>
+                      <p className="text-[11px] text-slate-500">
+                        <span className="font-semibold mr-1">②</span>
+                        중앙행정기관등의 장은 제1항에 따른{' '}
+                        <span className="text-[15px] md:text-base font-bold text-slate-900 leading-snug">
+                          예방점검 수행 시,
+                          <strong style={{ color: 'var(--navy)' }}> 수작업으로 인한 누락 및 오류를 방지</strong>하고,
+                          점검 결과의 정확성과 신뢰성을 확보하기 위하여
+                          <strong style={{ color: 'var(--brand)' }}> 자동화된 점검 도구 또는 시스템을 활용</strong>
+                        </span>
+                        하도록 노력하여야 한다.
+                      </p>
+                    </div>
                   </div>
                 </div>
-                <div className="text-xs text-slate-500 leading-snug">
-                  &lt;행정기관 및 공공기관 정보시스템 안정성 고시&gt;
-                </div>
-                <div className="mt-1 text-xs text-slate-500">
-                  제2장 정보시스템 운영·관리
-                </div>
-                <div className="mt-4 pt-4 border-t border-slate-100">
-                  <div className="text-xs text-slate-500 mb-3">
-                    제12조 (정보시스템 예방점검 체계)
-                  </div>
-                  <div className="space-y-3 leading-relaxed">
-                    <p className="text-[11px] text-slate-500">
-                      <span className="font-semibold mr-1">①</span>
-                      중앙행정기관등의 장은 별표 5의 기준에 따라 정보시스템의 예방점검 체계와 매뉴얼을 마련하고 이를 준수하여 소관 정보시스템을 관리하여야 한다.
-                    </p>
-                    <p className="text-[11px] text-slate-500">
-                      <span className="font-semibold mr-1">②</span>
-                      중앙행정기관등의 장은 제1항에 따른{' '}
-                      <span className="text-[15px] md:text-base font-bold text-slate-900 leading-snug">
-                        예방점검 수행 시,
-                        <strong style={{ color: 'var(--navy)' }}> 수작업으로 인한 누락 및 오류를 방지</strong>하고,
-                        점검 결과의 정확성과 신뢰성을 확보하기 위하여
-                        <strong style={{ color: 'var(--brand)' }}> 자동화된 점검 도구 또는 시스템을 활용</strong>
-                      </span>
-                      하도록 노력하여야 한다.
-                    </p>
-                  </div>
-                </div>
-              </div>
               </div>
 
               {/* Right: Inspection table */}
@@ -373,7 +437,7 @@ export default function Variant2() {
         </section>
 
         {/* =========== §1.7 SCOPE (지원 대상 자원 - marquee) =========== */}
-        <section className="pt-12 pb-32" style={{ background: 'var(--bg-alt)' }}>
+        <section className="pt-8 pb-20" style={{ background: 'var(--bg)' }}>
           <div className="max-w-7xl mx-auto px-6">
             <h3 className="text-sm md:text-base font-semibold tracking-tight" style={{ color: 'var(--navy)' }}>
               지원 대상 자원 및 제품
@@ -421,71 +485,10 @@ export default function Variant2() {
           </div>
         </section>
 
-        {/* =========== §2 PROBLEM =========== */}
-        <section className="py-32">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="max-w-3xl mx-auto mb-20 text-center">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.2]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
-                <span style={{ color: 'var(--brand)' }}>의무화</span>된 예방점검 체계,<br />
-                아직도 <span className="font-serif italic font-normal text-slate-500">수작업</span>으로 관리하고 계신가요?
-              </h2>
-              <p className="mt-8 text-slate-600 leading-relaxed text-lg">
-                흩어진 자료와 반복되는 수작업은 비효율 초래하며,
-                결정적인 순간에 리스크로 돌아옵니다.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-5">
-              {[
-                {
-                  icon: Layers,
-                  t: '시스템별 자료 분산',
-                  d: '점검 자료가 서버, DB, 보안 솔루션, 담당자 PC에 흩어져 있습니다. 필요할 때마다 수집부터 다시 시작해야 합니다.',
-                  impact: '담당자 간 인수인계 시 자료 누락 빈번',
-                },
-                {
-                  icon: FileText,
-                  t: '수기 점검의 한계',
-                  d: '화면 캡처, 엑셀 작성, 수기 체크리스트에 의존하다 보니 점검자마다 기준과 방식이 달라지고 증적의 재현성이 떨어집니다.',
-                  impact: 'Human Error · 기준 편차 발생',
-                },
-                {
-                  icon: RefreshCcw,
-                  t: '반복되는 보고서 작성',
-                  d: '정기 보고서(일, 월, 분기 등), 감사 보고서를 매번 처음부터 수작업으로 작성합니다. 담당자 한 명이 며칠씩 매달려야 하는 비효율이 반복됩니다.',
-                  impact: '본래 기획·개선 업무 집중 불가',
-                },
-                {
-                  icon: FileSearch,
-                  t: '이력 추적의 어려움',
-                  d: '누가, 언제, 어떤 기준으로 점검했는지 이력을 추적하기 어렵습니다. 감사 시 근거 자료를 찾느라 시간을 허비합니다.',
-                  impact: '감사·사후 대응 시 리스크',
-                },
-              ].map((p, i) => (
-                <div key={i} className="card-hover p-8 bg-white border border-slate-200 rounded-xl">
-                  <div className="flex items-start gap-5">
-                    <div className="w-11 h-11 rounded-lg flex items-center justify-center shrink-0" style={{ background: 'var(--bg-alt)' }}>
-                      <p.icon className="w-5 h-5" style={{ color: 'var(--navy)' }} strokeWidth={1.75} />
-                    </div>
-                    <div className="flex-1">
-                      <div className="text-lg font-semibold text-slate-900">{p.t}</div>
-                      <div className="mt-2 text-sm text-slate-600 leading-relaxed">{p.d}</div>
-                      <div className="mt-4 pt-4 border-t border-slate-100 flex items-center gap-2">
-                        <div className="w-1 h-1 rounded-full bg-red-500" />
-                        <span className="text-xs text-slate-500 font-medium">{p.impact}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* =========== §3 SOLUTION (해결 방식) =========== */}
-        <section className="py-32" style={{ background: 'var(--bg-alt)' }}>
+        <section className="py-20" style={{ background: 'var(--bg-alt)' }}>
           <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center max-w-3xl mx-auto mb-20">
+            <div className="text-center max-w-3xl mx-auto mb-12">
               <h2 className="text-2xl md:text-3xl font-semibold tracking-tight leading-[1.3]" style={{ color: 'var(--navy)' }}>
                 개별·수동 관리에서 <span style={{ color: 'var(--brand)' }}>통합·자동 관리</span>로
               </h2>
@@ -569,12 +572,12 @@ export default function Variant2() {
         </section>
 
         {/* =========== §5 OPERATIONS (운영 구조) =========== */}
-        <section className="py-32" style={{ background: 'var(--bg)' }}>
+        <section className="py-20" style={{ background: 'var(--bg)' }}>
           <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center max-w-5xl mx-auto mb-20">
-              <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.15]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
-                입력부터, 처리, 결과 보고까지<br />
-                흩어진 점검 정보를 <span className="font-serif italic font-normal whitespace-nowrap">하나로 통합</span>하였습니다.
+            <div className="text-center max-w-5xl mx-auto mb-12">
+              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight leading-[1.25]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
+                점검 기준 입력부터 결과 보고까지,<br />
+                흩어진 예방점검 업무를 <span className="font-serif italic font-normal whitespace-nowrap">하나의 프로세스</span>로 통합합니다.
               </h2>
             </div>
 
@@ -699,12 +702,11 @@ export default function Variant2() {
         </section>
 
         {/* =========== §5.5 PRODUCTS (Manager × Sentinel) =========== */}
-        <section className="py-32" style={{ background: 'var(--bg-alt)' }}>
+        <section className="py-20" style={{ background: 'var(--bg-alt)' }}>
           <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center max-w-4xl mx-auto mb-20">
-              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight leading-[1.3]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
-                컴플리사이트는 현장 데이터 수집과 결과 운영을<br />
-                실시간으로 연결하는 통합 솔루션입니다.
+            <div className="text-center max-w-4xl mx-auto mb-12">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.2]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
+                제품 구성 : <span style={{ color: 'var(--accent)' }}>Sentinel</span> / <span style={{ color: 'var(--brand)' }}>Manager</span>
               </h2>
             </div>
 
@@ -719,8 +721,8 @@ export default function Variant2() {
                   <div className="eyebrow" style={{ marginTop: 0 }}>자동 수집 · 증적 관리</div>
                 </div>
 
-                <h3 className="text-2xl md:text-3xl font-semibold tracking-tight leading-snug" style={{ color: 'var(--navy)' }}>
-                  주요 시스템에서<br />데이터를 자동 수집합니다.
+                <h3 className="text-xl md:text-2xl font-semibold tracking-tight leading-snug" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
+                  정보시스템 내 각 자원으로부터<br />점검 데이터를 자동으로 수집
                 </h3>
 
                 <ul className="mt-8 space-y-3">
@@ -747,8 +749,8 @@ export default function Variant2() {
                   <div className="eyebrow" style={{ marginTop: 0 }}>통합 관리 · 대시보드</div>
                 </div>
 
-                <h3 className="text-2xl md:text-3xl font-semibold tracking-tight leading-snug" style={{ color: 'var(--navy)' }}>
-                  점검 기준을 내재화하고<br />결과를 한눈에.
+                <h3 className="text-xl md:text-2xl font-semibold tracking-tight leading-snug" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
+                  점검 기준, 판별 결과, 리포트,<br />점검 이력을 통합 관리
                 </h3>
 
                 <ul className="mt-8 space-y-3">
@@ -770,15 +772,15 @@ export default function Variant2() {
         </section>
 
         {/* =========== §6 EFFECTS (도입 효과) =========== */}
-        <section className="py-32" style={{ background: 'var(--navy)' }}>
+        <section className="py-20" style={{ background: 'var(--navy)' }}>
           <div className="max-w-7xl mx-auto px-6">
-            <div className="max-w-3xl mb-20">
+            <div className="max-w-3xl mb-12">
               <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.15] text-white" style={{ wordBreak: 'keep-all' }}>
                 도입 이후, <span className="font-serif italic font-normal text-slate-400">예방점검 업무</span>는<br />
                 체계적으로 운영됩니다.
               </h2>
               <p className="mt-8 text-slate-300 leading-relaxed text-lg max-w-2xl">
-                점검 수행부터 보고서 작성까지 예방점검 업무 전 과정이 자동화됩니다.
+                기준은 내재화, 점검은 자동화, 결과는 보고서로!
               </p>
             </div>
 
@@ -804,7 +806,7 @@ export default function Variant2() {
         </section>
 
         {/* =========== §8 AI ROADMAP =========== */}
-        <section className="py-32 relative overflow-hidden" style={{ background: 'var(--bg-alt)' }}>
+        <section className="py-20 relative overflow-hidden" style={{ background: 'var(--bg-alt)' }}>
           {/* Subtle dot pattern background */}
           <div
             className="absolute inset-0 opacity-50"
@@ -985,7 +987,7 @@ export default function Variant2() {
         </section>
 
         {/* =========== §9 CTA =========== */}
-        <section className="py-32 relative overflow-hidden" style={{ background: '#050D1A' }}>
+        <section className="py-20 relative overflow-hidden" style={{ background: '#050D1A' }}>
           <div className="absolute inset-0" style={{
             background: 'radial-gradient(ellipse 60% 80% at 50% 50%, rgba(30, 64, 175, 0.25), transparent 70%)'
           }} />
