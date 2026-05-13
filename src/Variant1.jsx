@@ -6,7 +6,7 @@ import {
   FileSearch, TrendingUp, Gauge, BookCheck, Server, Network, HardDrive
 } from 'lucide-react';
 
-export default function Variant1() {
+export default function Variant1({ onOpenDiagnostic }) {
   return (
     <>
       <style>{`
@@ -138,6 +138,16 @@ export default function Variant1() {
                   </button>
                   <button className="btn-ghost px-6 py-3.5 rounded-md text-sm font-medium bg-white flex items-center gap-2 text-slate-700">
                     도입 문의하기 <ChevronRight className="w-4 h-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={onOpenDiagnostic}
+                    className="px-6 py-3.5 rounded-md text-sm font-medium flex items-center gap-2 text-white transition"
+                    style={{ background: 'var(--brand)' }}
+                    onMouseOver={(e) => (e.currentTarget.style.background = '#1E3A8A')}
+                    onMouseOut={(e) => (e.currentTarget.style.background = 'var(--brand)')}
+                  >
+                    우리기관 간편 진단 <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
 
@@ -1305,6 +1315,13 @@ export default function Variant1() {
             </h2>
 
             <div className="mt-12 flex flex-wrap items-center justify-center gap-3">
+              <button
+                type="button"
+                onClick={onOpenDiagnostic}
+                className="px-7 py-4 rounded-md text-sm font-semibold flex items-center gap-2 transition border border-white/30 text-white hover:bg-white/10"
+              >
+                우리기관 간편 진단하기 <ArrowRight className="w-4 h-4" />
+              </button>
               <button className="px-7 py-4 bg-white text-slate-900 rounded-md text-sm font-semibold flex items-center gap-2 hover:bg-slate-100 transition">
                 도입 문의하기 <ArrowRight className="w-4 h-4" />
               </button>

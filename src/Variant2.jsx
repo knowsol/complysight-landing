@@ -6,7 +6,7 @@ import {
   FileSearch, TrendingUp, Gauge, BookCheck, Server, Network, HardDrive
 } from 'lucide-react';
 
-export default function Variant2() {
+export default function Variant2({ onOpenDiagnostic }) {
   return (
     <>
       <style>{`
@@ -105,11 +105,8 @@ export default function Variant2() {
               </div>
               <span className="font-semibold tracking-tight text-[17px]" style={{ color: 'var(--navy)' }}>COMPLYSIGHT</span>
             </div>
-            <div className="flex items-center gap-2">
-              <button className="btn-primary px-4 py-2 text-sm rounded-md flex items-center gap-1.5">
-                도입 문의 <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
+            <div />
+
           </div>
         </nav>
 
@@ -142,6 +139,16 @@ export default function Variant2() {
                   </button>
                   <button className="btn-ghost px-6 py-3.5 rounded-md text-sm font-medium bg-white flex items-center gap-2 text-slate-700">
                     예방점검 항목 확인 <ChevronRight className="w-4 h-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={onOpenDiagnostic}
+                    className="px-6 py-3.5 rounded-md text-sm font-medium flex items-center gap-2 text-white transition"
+                    style={{ background: 'var(--brand)' }}
+                    onMouseOver={(e) => (e.currentTarget.style.background = '#1E3A8A')}
+                    onMouseOut={(e) => (e.currentTarget.style.background = 'var(--brand)')}
+                  >
+                    우리기관 간편 진단 <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
 
@@ -538,7 +545,6 @@ export default function Variant2() {
                     { t: '데이터 확보', icon: Database, auto: true },
                     { t: '상태 판별', icon: Gauge, auto: true },
                     { t: '리포트 생성', icon: FileCheck, auto: true },
-                    { t: '리포트 제출', icon: FileSearch, auto: false },
                     { t: '점검 이력 자동 기록', icon: BookCheck, auto: true },
                   ].map((s, i, arr) => (
                     <React.Fragment key={i}>
@@ -1000,6 +1006,13 @@ export default function Variant2() {
             </h2>
 
             <div className="mt-12 flex flex-wrap items-center justify-center gap-3">
+              <button
+                type="button"
+                onClick={onOpenDiagnostic}
+                className="px-7 py-4 rounded-md text-sm font-semibold flex items-center gap-2 transition border border-white/30 text-white hover:bg-white/10"
+              >
+                우리기관 간편 진단하기 <ArrowRight className="w-4 h-4" />
+              </button>
               <button className="px-7 py-4 bg-white text-slate-900 rounded-md text-sm font-semibold flex items-center gap-2 hover:bg-slate-100 transition">
                 도입 문의하기 <ArrowRight className="w-4 h-4" />
               </button>
