@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>컴플리사이트DM</title>
+<style>
+  body { margin: 0; padding: 0; background: #f0f0f0; }
+  #toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #1a1a2e;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  #copyBtn {
+    background: #4f8ef7;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 28px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  #copyBtn:hover { background: #2d6fe0; }
+  #copyBtn.success { background: #28a745; }
+  #msg { color: #fff; font-size: 13px; opacity: 0; transition: opacity 0.3s; }
+  #dm-wrap {
+    display: block;
+    max-width: 720px;
+    margin: 0 auto;
+    background: #fff;
+  }
+  #dm-wrap table { width: 100% !important; border-collapse: collapse; }
+  #dm-wrap td { padding: 0 !important; line-height: 0; font-size: 0; vertical-align: top; }
+  #dm-wrap img { width: 100% !important; height: auto !important; display: block !important; }
+  #dm-wrap a img { border: 0; }
+</style>
+</head>
+<body>
+
+<div id="toolbar">
+  <button id="copyBtn" onclick="copyDM()">📋 메일 내용 복사</button>
+  <span id="msg">✅ 복사 완료! 아웃룩에 붙여넣기 하세요.</span>
+</div>
+
+<!-- 아웃룩 호환 테이블 레이아웃 -->
+<div id="dm-wrap">
+<table width="720" cellpadding="0" cellspacing="0" border="0" align="center" style="border-collapse:collapse;">
+  <!-- 상단 이미지 (링크 위) -->
+  <tr>
+    <td colspan="3">
+      <img src="https://complysight-landing.vercel.app/dm_top_a.png" width="720" style="display:block;width:720px;" alt="">
+    </td>
+  </tr>
+  <!-- 상단 텍스트 링크 행 -->
+  <tr>
+    <td colspan="3">
+      <a href="https://naver.me/Gmpf14e5" target="_blank">
+        <img src="https://complysight-landing.vercel.app/dm_top_b.png" width="720" style="display:block;width:720px;" alt="내용확인">
+      </a>
+    </td>
+  </tr>
+  <!-- 상단 이미지 (링크 아래) -->
+  <tr>
+    <td colspan="3">
+      <img src="https://complysight-landing.vercel.app/dm_top_c.png" width="720" style="display:block;width:720px;" alt="">
+    </td>
+  </tr>
+  <!-- 버튼 3개 -->
+  <tr>
+    <td width="240">
+      <a href="https://naver.me/58q0tzYJ" target="_blank">
+        <img src="https://complysight-landing.vercel.app/dm_btn1.png" width="240" style="display:block;width:240px;" alt="제품소개서 확인">
+      </a>
+    </td>
+    <td width="240">
+      <a href="https://digitalmall.g2b.go.kr/" target="_blank">
+        <img src="https://complysight-landing.vercel.app/dm_btn2.png" width="240" style="display:block;width:240px;" alt="조달 등록 정보 확인">
+      </a>
+    </td>
+    <td width="240">
+      <a href="https://www.knowwheresoft.com/pages/contact-solution.html#comply" target="_blank">
+        <img src="https://complysight-landing.vercel.app/dm_btn3.png" width="240" style="display:block;width:240px;" alt="제품 문의하기">
+      </a>
+    </td>
+  </tr>
+  <!-- 하단 이미지 -->
+  <tr>
+    <td colspan="3">
+      <img src="https://complysight-landing.vercel.app/dm_bottom.png" width="720" style="display:block;width:720px;" alt="">
+    </td>
+  </tr>
+</table>
+</div>
+
+<script>
+function copyDM() {
+  const wrap = document.getElementById('dm-wrap');
+  const btn = document.getElementById('copyBtn');
+  const msg = document.getElementById('msg');
+
+  const html = wrap.innerHTML;
+  const blob = new Blob([html], { type: 'text/html' });
+  const item = new ClipboardItem({ 'text/html': blob });
+
+  navigator.clipboard.write([item]).then(() => {
+    showCopied(btn, msg);
+  }).catch(() => {
+    const range = document.createRange();
+    range.selectNode(wrap);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    document.execCommand('copy');
+    sel.removeAllRanges();
+    showCopied(btn, msg);
+  });
+}
+
+function showCopied(btn, msg) {
+  btn.textContent = '✅ 복사됨';
+  btn.classList.add('success');
+  msg.style.opacity = '1';
+  setTimeout(() => {
+    btn.textContent = '📋 메일 내용 복사';
+    btn.classList.remove('success');
+    msg.style.opacity = '0';
+  }, 3000);
+}
+</script>
+</body>
+</html>
