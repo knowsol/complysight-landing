@@ -704,9 +704,10 @@ export default function Variant2() {
         {/* =========== §5.5 PRODUCTS (Manager × Sentinel) =========== */}
         <section className="py-20" style={{ background: 'var(--bg-alt)' }}>
           <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center max-w-4xl mx-auto mb-12">
+            <div className="max-w-4xl mb-12">
+              <div className="eyebrow mb-3">제품 구성</div>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.2]" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
-                제품 구성 : <span style={{ color: 'var(--accent)' }}>Sentinel</span> / <span style={{ color: 'var(--brand)' }}>Manager</span>
+                <span style={{ color: 'var(--accent)' }}>Sentinel</span> / <span style={{ color: 'var(--brand)' }}>Manager</span>
               </h2>
             </div>
 
