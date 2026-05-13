@@ -125,7 +125,7 @@ export default function Variant2({ onOpenDiagnostic }) {
 
                 <h1 className="mt-8 text-2xl md:text-3xl font-semibold leading-snug fade-up-2" style={{ color: 'var(--navy)', wordBreak: 'keep-all' }}>
                   공공기관 정보시스템 예방점검,<br />
-                  이제 <span style={{ color: 'var(--brand)' }}>자동화</span>가 필요합니다.
+                  이제 <span style={{ color: 'var(--brand)' }}>모든 등급</span>이 대상입니다.
                 </h1>
 
                 <p className="mt-8 text-lg text-slate-600 leading-relaxed max-w-xl fade-up-3" style={{ wordBreak: 'keep-all' }}>
